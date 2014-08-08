@@ -206,3 +206,109 @@ Processing by UsersController#index as HTML
   [1m[35mUser Load (13.5ms)[0m  SELECT "users".* FROM "users"
   Rendered users/index.html.erb within layouts/application (26.5ms)
 Completed 200 OK in 41ms (Views: 26.2ms | ActiveRecord: 13.5ms)
+PG::UndefinedTable: ERROR:  relation "check_ins" does not exist
+LINE 5:                WHERE a.attrelid = '"check_ins"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"check_ins"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCheckIns (20140808193629)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (21.8ms)[0m  [1mCREATE TABLE "check_ins" ("id" serial primary key, "checked_in_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (13.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140808193629"]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "check_ins"[0m
+
+
+Started GET "/check_ins" for 127.0.0.1 at 2014-08-08 12:38:32 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CheckInsController#index as HTML
+  [1m[35mCheckIn Load (0.5ms)[0m  SELECT "check_ins".* FROM "check_ins"
+  Rendered check_ins/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 893ms (Views: 852.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-08 12:38:33 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-08-08 12:38:33 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-08-08 12:38:33 -0700
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-08-08 12:38:33 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-08 12:38:33 -0700
+
+
+Started GET "/assets/check_ins.css?body=1" for 127.0.0.1 at 2014-08-08 12:38:33 -0700
+
+
+Started GET "/assets/check_ins.js?body=1" for 127.0.0.1 at 2014-08-08 12:38:33 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-08 12:38:33 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-08-08 12:38:33 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-08 12:38:33 -0700
+
+
+Started GET "/check_ins/new" for 127.0.0.1 at 2014-08-08 12:38:35 -0700
+Processing by CheckInsController#new as HTML
+  Rendered check_ins/_form.html.erb (39.7ms)
+  Rendered check_ins/new.html.erb within layouts/application (42.2ms)
+Completed 200 OK in 56ms (Views: 49.9ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/check_ins" for 127.0.0.1 at 2014-08-08 12:38:42 -0700
+Processing by CheckInsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WVpaexdIPDxoIicPb6vXBzUCCn/UsorMvwiEYxIwzS4=", "check_in"=>{"checked_in_at(1i)"=>"2014", "checked_in_at(2i)"=>"8", "checked_in_at(3i)"=>"8", "checked_in_at(4i)"=>"19", "checked_in_at(5i)"=>"38"}, "commit"=>"Create Check in"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "check_ins" ("checked_in_at", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["checked_in_at", "2014-08-08 19:38:00.000000"], ["created_at", "2014-08-08 19:38:42.063931"], ["updated_at", "2014-08-08 19:38:42.063931"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/check_ins/1
+Completed 302 Found in 13ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/check_ins/1" for 127.0.0.1 at 2014-08-08 12:38:42 -0700
+Processing by CheckInsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCheckIn Load (0.3ms)[0m  SELECT  "check_ins".* FROM "check_ins"  WHERE "check_ins"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered check_ins/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-08-08 12:38:42 -0700
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-08-08 12:38:42 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-08 12:38:42 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-08 12:38:42 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-08 12:38:42 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-08-08 12:38:42 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-08 12:38:42 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-08-08 12:38:42 -0700
