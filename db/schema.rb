@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808193629) do
+ActiveRecord::Schema.define(version: 20140808194344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "check_ins", force: true do |t|
     t.datetime "checked_in_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "schedules", force: true do |t|
+    t.time     "check_in"
+    t.time     "check_out"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :schedules
+
   resources :check_ins
 
   resources :users
