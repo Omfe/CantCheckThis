@@ -1317,3 +1317,125 @@ Processing by UsersController#new as HTML
   Rendered users/_form.html.erb (6.4ms)
   Rendered users/new.html.erb within layouts/application (7.9ms)
 Completed 200 OK in 16ms (Views: 15.6ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToCheckIn (20140811182729)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "check_ins" ADD COLUMN "user_id" integer[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140811182729"]]
+  [1m[36m (15.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/check_ins" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by CheckInsController#index as HTML
+  [1m[36mCheckIn Load (27.3ms)[0m  [1mSELECT "check_ins".* FROM "check_ins"[0m
+  Rendered check_ins/index.html.erb within layouts/application (29.7ms)
+Completed 200 OK in 43ms (Views: 12.5ms | ActiveRecord: 27.3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/assets/check_ins.css?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/assets/schedules.css?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/assets/check_ins.js?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/assets/schedules.js?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-11 11:28:55 -0700
+
+
+Started GET "/check_ins/new" for 127.0.0.1 at 2014-08-11 11:28:57 -0700
+Processing by CheckInsController#new as HTML
+  Rendered check_ins/_form.html.erb (80.8ms)
+  Rendered check_ins/new.html.erb within layouts/application (85.9ms)
+Completed 200 OK in 105ms (Views: 94.9ms | ActiveRecord: 8.3ms)
+
+
+Started POST "/check_ins" for 127.0.0.1 at 2014-08-11 11:29:01 -0700
+Processing by CheckInsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qpSqrI9hv4xU7twh+ZUlKLiX4gfrWDQvXavPJqfq4AA=", "check_in"=>{"checked_in_at(1i)"=>"2014", "checked_in_at(2i)"=>"8", "checked_in_at(3i)"=>"11", "checked_in_at(4i)"=>"18", "checked_in_at(5i)"=>"28"}, "commit"=>"Create Check in"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "check_ins" ("checked_in_at", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["checked_in_at", "2014-08-11 18:28:00.000000"], ["created_at", "2014-08-11 18:29:01.806278"], ["updated_at", "2014-08-11 18:29:01.806278"]]
+  [1m[35m (48.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/check_ins/1
+Completed 302 Found in 55ms (ActiveRecord: 49.0ms)
+
+
+Started GET "/check_ins/1" for 127.0.0.1 at 2014-08-11 11:29:01 -0700
+Processing by CheckInsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCheckIn Load (0.4ms)[0m  [1mSELECT  "check_ins".* FROM "check_ins"  WHERE "check_ins"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered check_ins/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/check_ins.css?body=1" for 127.0.0.1 at 2014-08-11 11:29:01 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-08-11 11:29:01 -0700
+
+
+Started GET "/assets/schedules.css?body=1" for 127.0.0.1 at 2014-08-11 11:29:01 -0700
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-08-11 11:29:01 -0700
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-08-11 11:29:01 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-08-11 11:29:01 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-08-11 11:29:01 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-08-11 11:29:01 -0700
+
+
+Started GET "/assets/check_ins.js?body=1" for 127.0.0.1 at 2014-08-11 11:29:01 -0700
+
+
+Started GET "/assets/schedules.js?body=1" for 127.0.0.1 at 2014-08-11 11:29:02 -0700
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-08-11 11:29:02 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-08-11 11:29:02 -0700
+
+
+Started GET "/check_ins" for 127.0.0.1 at 2014-08-11 11:29:05 -0700
+Processing by CheckInsController#index as HTML
+  [1m[35mCheckIn Load (1.9ms)[0m  SELECT "check_ins".* FROM "check_ins"
+  Rendered check_ins/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 1.9ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mCheckIn Load (1.1ms)[0m  SELECT  "check_ins".* FROM "check_ins"   ORDER BY "check_ins"."id" ASC LIMIT 1
+  [1m[36mSchedule Load (0.6ms)[0m  [1mSELECT  "schedules".* FROM "schedules"  WHERE "schedules"."id" = $1 LIMIT 1[0m  [["id", 1]]
