@@ -1,6 +1,6 @@
 <h1>Listing check_ins</h1>
 
-<table>
+<table border="2">
   <thead>
     <tr>
       <th>Checked in at</th>
@@ -11,7 +11,7 @@
   <tbody>
     <% @check_ins.each do |check_in| %>
       <tr>
-        <td><%= check_in.checked_in_at %></td>
+        <td><%= check_in.checked_in_at.strftime("%A %B %d %H:%M:%S") %></td>
         <td><%= link_to 'Show', check_in %></td>
         <td><%= link_to 'Edit', edit_check_in_path(check_in) %></td>
         <td><%= link_to 'Destroy', check_in, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -35,6 +35,10 @@
     <%= f.label :is_admin %><br>
     <%= f.check_box :is_admin %>
   </div>
+  <div class="field">
+    <%= f.label :schedule_id %><br>
+    <%= f.collection_select :schedule_id, Schedule.order(:check_in),:id,:check_in, include_blank: false %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

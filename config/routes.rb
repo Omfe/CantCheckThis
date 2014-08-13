@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   resources :users
   
+  post 'register' => 'users#register'
+  
+  post 'login' => 'users#login'
+  
   root :to => 'users#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

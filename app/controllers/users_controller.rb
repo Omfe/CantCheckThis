@@ -20,10 +20,29 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
   end
+  
+  # POST /register
+  def register
+    @user = User.new(user_params)
+
+    respond_to do |format|
+      if @user.save
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  #POST /login
+  def login
+    
+  end
 
   # POST /users
   # POST /users.json
   def create
+    puts "bla <<<<<<<<<<<<<<<<<<<<<<<"
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -69,6 +88,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :points, :is_admin)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :points, :is_admin, :schedule_id)
     end
 end
