@@ -33,11 +33,6 @@ class UsersController < ApplicationController
       end
     end
   end
-  
-  #POST /login
-  def login
-    
-  end
 
   # POST /users
   # POST /users.json
@@ -49,6 +44,8 @@ class UsersController < ApplicationController
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
+        sign_in @user
+        flash[:success] = "Dont be late!"
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }

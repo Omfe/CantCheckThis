@@ -16,9 +16,39 @@ class CheckInsController < ApplicationController
   def new
     @check_in = CheckIn.new
   end
-
+  
   # GET /check_ins/1/edit
   def edit
+  end
+  
+  def check_for_previous_checkin
+    user = current_user
+    CheckIn.all.each do |check_in|
+      if check_in.user_id
+        if check_in.checked_in_at.strftime("%d") == Time.now.strftime("%d")
+          false
+        end
+      end
+    end    
+  end
+  
+  # POST /checkin
+  def checkin
+    if check_for_previous_checkin == true
+      user = current_user
+      @check_in = CheckIn.new(:checked_in_at => Time.now, :user_id => user.id)
+
+      respond_to do |format|
+        if @check_in.save
+          format.json { render :show, status: :created, location: @check_in }
+        else
+          format.json { render json: @check_in.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      puts "si fue falso y todo cool   >>>>>>>>>>>>>"
+      render status: 200, json: "Cant Check This! Until tommorow...".to_json
+    end
   end
 
   # POST /check_ins

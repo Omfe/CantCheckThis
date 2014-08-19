@@ -3,13 +3,19 @@ Rails.application.routes.draw do
 
   resources :check_ins
 
-  resources :users
+  resources :users, except: :create
+  
+  resources :sessions
   
   post 'register' => 'users#register'
   
-  post 'login' => 'users#login'
+  post 'signin' => 'sessions#create'
   
-  root :to => 'users#index'
+  delete 'signout' => 'sessions#destroy'
+  
+  post 'checkin' => 'check_ins#checkin'
+  
+  root :to => 'sessions#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
