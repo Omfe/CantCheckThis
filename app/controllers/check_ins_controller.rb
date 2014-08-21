@@ -27,7 +27,7 @@ class CheckInsController < ApplicationController
       puts "Entro al ciclo"
       if check_in.user_id == user.id
         "Entro a lo del user_id"
-        if check_in.checked_in_at.strftime("%d") == Time.zone.now.strftime("%d")
+        if check_in.checked_in_at.strftime("%d") == Time.now.strftime("%d")
           puts "Entro al de false"
           false
           #return
@@ -41,11 +41,13 @@ class CheckInsController < ApplicationController
   def checkin
     if did_previous_checkin == true
       user = current_user
-      @check_in = CheckIn.new(:checked_in_at => Time.zone.now, :user_id => user.id)
-      puts "#{user.schedule.check_in}"
+      @check_in = CheckIn.new(:checked_in_at => Time.now, :user_id => user.id)
+      puts "#{user.schedule.check_in} >>>>>>>>>>>>>>>>>"
+      userTolerance = user.schedule.check_in + 30.minutes
+      puts "#{userTolerance} >>>>>>>>>>>>>>>>>"
       
-      if user.schedule.check_in.utc.strftime("%H%M") < @check_in.checked_in_at.utc.strftime("%H%M")
-        puts "Si llego tarde"
+      if userTolerance.strftime("%H%M") < @check_in.checked_in_at.strftime("%H%M")
+        puts "Si llego tarde >>>>>>>>>>>>"
         user.points = user.points + 1
         user.save!
       end
