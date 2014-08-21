@@ -9,11 +9,15 @@ Rails.application.routes.draw do
   
   post 'register' => 'users#register'
   
-  post 'signin' => 'sessions#create'
+  post 'signin' => 'sessions#signin'
   
   delete 'signout' => 'sessions#destroy'
   
   post 'checkin' => 'check_ins#checkin'
+  
+  post 'forgot_password' => 'users#forgot_password'
+  
+  post 'reset_password' => 'users#reset_password'
   
   root :to => 'sessions#new'
 

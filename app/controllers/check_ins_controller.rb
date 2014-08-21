@@ -21,23 +21,35 @@ class CheckInsController < ApplicationController
   def edit
   end
   
-  def check_for_previous_checkin
+  def did_previous_checkin
     user = current_user
     CheckIn.all.each do |check_in|
-      if check_in.user_id
-        if check_in.checked_in_at.strftime("%d") == Time.now.strftime("%d")
+      puts "Entro al ciclo"
+      if check_in.user_id == user.id
+        "Entro a lo del user_id"
+        if check_in.checked_in_at.strftime("%d") == Time.zone.now.strftime("%d")
+          puts "Entro al de false"
           false
+          #return
         end
       end
-    end    
+    end
+    true    
   end
   
   # POST /checkin
   def checkin
-    if check_for_previous_checkin == true
+    if did_previous_checkin == true
       user = current_user
-      @check_in = CheckIn.new(:checked_in_at => Time.now, :user_id => user.id)
-
+      @check_in = CheckIn.new(:checked_in_at => Time.zone.now, :user_id => user.id)
+      puts "#{user.schedule.check_in}"
+      
+      if user.schedule.check_in.utc.strftime("%H%M") < @check_in.checked_in_at.utc.strftime("%H%M")
+        puts "Si llego tarde"
+        user.points = user.points + 1
+        user.save!
+      end
+      
       respond_to do |format|
         if @check_in.save
           format.json { render :show, status: :created, location: @check_in }
@@ -102,3 +114,5 @@ class CheckInsController < ApplicationController
       params.require(:check_in).permit(:checked_in_at)
     end
 end
+
+#Hacer la suma de puntos con los check ins y los horarios de los usuarios

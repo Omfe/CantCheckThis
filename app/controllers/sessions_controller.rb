@@ -1,16 +1,17 @@
 class SessionsController < ApplicationController
-  before_filter :restrict_access
+  #before_filter :restrict_access
   
   def new
   end
 
-  def create
-    puts "entre <<<<<<<<<<<<<<<<<<<<"
+  def signin
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    puts "#{user.password} <<<<<<<<<<<<<<<<<<<<"
+    #if user && user.authenticate(params[:session][:password])
+    if user.password == params[:password]
+      puts "Si entro >>>>>>>>>>>>>>"
       user.generate_remember_token
-      
-      respond_to do |format|
+      respond_to do |format| 
         if user.save!
           format.json { render json: {test: "test"}, status: :created}
         else

@@ -21,9 +21,43 @@ class UsersController < ApplicationController
   def edit
   end
   
+  # POST /forgot_password
+  def forgot_password
+    email = (params[:email])
+    User.all.each do |user|
+      if user.email == email
+        random_password = Array.new(10).map { (65 + rand(58)).chr }.join
+         user.password = random_password
+         user.save!
+        UserMailer.send_forgot_password_email(user, random_password).deliver
+      end
+    end
+    
+    render json: {status: 'ok'}, status: 200
+  end
+  
+  def reset_password
+    user = current_user
+    puts "#{user.encrypted_password}"
+    new_password = params[:new_password]
+    puts "#{new_password}"
+    puts "CASI ENTRA"
+    if user.password == params[:password]
+      puts "Si entro!"
+      user.password = new_password
+      user.save!
+      puts "Segun si guardo"
+      puts "#{new_password}"
+      render json: {status: 'ok'}, status: 200
+    else
+    render json: {status: 'exc'}, status: 200
+    end
+  end
+  
   # POST /register
   def register
     @user = User.new(user_params)
+    @user.password = params[:password]
 
     respond_to do |format|
       if @user.save

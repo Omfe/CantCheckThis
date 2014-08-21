@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   include SessionsHelper
   
-  before_action :restrict_access, :except => [:sign_up, :login, :forgot_password]
+  before_action :restrict_access, :except => [:register, :signin, :forgot_password]
 
     def current_user
       User.find_by :remember_token => @token
