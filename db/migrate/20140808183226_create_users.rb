@@ -7,7 +7,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password
       t.integer :points
       t.boolean :is_admin
-      t.integer :schedule_id
 
       t.timestamps
     end
