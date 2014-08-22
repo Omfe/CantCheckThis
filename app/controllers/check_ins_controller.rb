@@ -30,7 +30,7 @@ class CheckInsController < ApplicationController
         if check_in.checked_in_at.strftime("%d") == Time.now.strftime("%d")
           puts "Entro al de false"
           false
-          #return
+          return
         end
       end
     end
