@@ -21,6 +21,12 @@ class CheckInsController < ApplicationController
   def edit
   end
   
+  # GET/daily_report
+  def daily_report 
+    @check_ins = CheckIn.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day)
+    render status: 200, json: @check_ins
+  end
+  
   def did_previous_checkin
     user = current_user
     CheckIn.all.each do |check_in|

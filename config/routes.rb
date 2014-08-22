@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   
   resources :sessions
   
+  get 'daily_report' => 'check_ins#daily_report'
+  
   post 'register' => 'users#register'
   
   post 'signin' => 'sessions#signin'
