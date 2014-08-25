@@ -22,9 +22,10 @@ class CheckInsController < ApplicationController
   end
   
   # GET/daily_report
-  def daily_report 
-    @check_ins = CheckIn.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day)
-    render status: 200, json: @check_ins
+  def daily_report
+    str = (params[:checked_in_at])
+    date = Date.parse str
+    @check_ins = CheckIn.where(created_at: (date.midnight)..date.midnight + 1.day)
   end
   
   def did_previous_checkin
