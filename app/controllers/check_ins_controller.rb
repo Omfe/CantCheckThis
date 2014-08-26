@@ -30,18 +30,15 @@ class CheckInsController < ApplicationController
   
   def did_previous_checkin
     user = current_user
-    CheckIn.all.each do |check_in|
-      puts "Entro al ciclo"
-      if check_in.user_id == user.id
-        "Entro a lo del user_id"
-        if check_in.checked_in_at.strftime("%d") == Time.now.strftime("%d")
-          puts "Entro al de false"
-          false
-          return
-        end
+    @check_ins = CheckIn.where(user_id: user.id)
+    @check_ins.each do |check_in|
+      if check_in.checked_in_at.strftime("%d") == Time.now.strftime("%d")
+        puts "Entro al de false"
+        false
+        return
       end
     end
-    true    
+    true
   end
   
   # POST /checkin
