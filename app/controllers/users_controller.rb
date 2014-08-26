@@ -63,11 +63,6 @@ class UsersController < ApplicationController
   def register
     @user = User.new(user_params)
     @user.password = params[:password]
-    @users = User.where(email: (params[:email]))
-    if @users.count > 0
-      render json: {status: 'Email alredy used'}, status: 200
-      return
-    end
     respond_to do |format|
       if @user.save
         format.json { render :show, status: :created, location: @user }

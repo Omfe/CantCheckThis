@@ -28,17 +28,28 @@ class CheckInsController < ApplicationController
     @check_ins = CheckIn.where(created_at: (date.midnight)..date.midnight + 1.day)
   end
   
+  # def did_previous_checkin
+#     user = current_user
+#     @check_ins = CheckIn.where(user_id: user.id)
+#     @check_ins.each do |check_in|
+#       if check_in.checked_in_at.strftime("%d") == Time.now.strftime("%d")
+#         puts "Entro al de false"
+#         false
+#         return
+#       end
+#     end
+#     true
+#   end
+  
   def did_previous_checkin
     user = current_user
-    @check_ins = CheckIn.where(user_id: user.id)
-    @check_ins.each do |check_in|
-      if check_in.checked_in_at.strftime("%d") == Time.now.strftime("%d")
-        puts "Entro al de false"
-        false
-        return
-      end
+    @check_ins = CheckIn.where(checked_in_at: DateTime.now.beginning_of_day..DateTime.now).where(user_id: user.id)
+    if @check_ins.count > 0
+      false
+      return
+    else
+      true
     end
-    true
   end
   
   # POST /checkin
@@ -46,12 +57,9 @@ class CheckInsController < ApplicationController
     if did_previous_checkin == true
       user = current_user
       @check_in = CheckIn.new(:checked_in_at => Time.now, :user_id => user.id)
-      puts "#{user.schedule.check_in} >>>>>>>>>>>>>>>>>"
       userTolerance = user.schedule.check_in + 30.minutes
-      puts "#{userTolerance} >>>>>>>>>>>>>>>>>"
       
       if userTolerance.strftime("%H%M") < @check_in.checked_in_at.strftime("%H%M")
-        puts "Si llego tarde >>>>>>>>>>>>"
         user.points = user.points + 1
         user.save!
       end

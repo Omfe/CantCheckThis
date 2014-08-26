@@ -2,7 +2,9 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   belongs_to :schedule
-  validates :first_name, :email, :password, :schedule_id, presence:true
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :first_name, :password, :schedule_id, presence:true
+  validates :email, presence:true, format: { with: EMAIL_REGEX }, uniqueness: true
   include BCrypt
   
   before_save { self.email = email.downcase }
