@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   
   post 'reset_password' => 'users#reset_password'
   
+  get 'users_list' => 'users#users_list'
+  
   root :to => 'sessions#new'
 
   # The priority is based upon order of creation: first created -> highest priority.

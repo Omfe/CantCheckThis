@@ -21,6 +21,11 @@ class UsersController < ApplicationController
   def edit
   end
   
+  # GET /users_list
+  def users_list
+    @users = User.all
+  end
+  
   # POST /forgot_password
   def forgot_password
     email = (params[:email])
