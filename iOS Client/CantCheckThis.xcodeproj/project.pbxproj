@@ -13,6 +13,8 @@
 		9968435719B629D0001CBBAB /* CCTDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968435519B629D0001CBBAB /* CCTDatePickerViewController.xib */; };
 		9968435B19B655DC001CBBAB /* CCTDailyCheckInsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968435919B655DC001CBBAB /* CCTDailyCheckInsViewController.m */; };
 		9968435C19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968435A19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib */; };
+		9968436019B8E222001CBBAB /* CCTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968435E19B8E222001CBBAB /* CCTRegisterViewController.m */; };
+		9968436119B8E222001CBBAB /* CCTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968435F19B8E222001CBBAB /* CCTRegisterViewController.xib */; };
 		999DF24919AD1A9800DB8E31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF24819AD1A9800DB8E31 /* Foundation.framework */; };
 		999DF24B19AD1A9800DB8E31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF24A19AD1A9800DB8E31 /* CoreGraphics.framework */; };
 		999DF24D19AD1A9800DB8E31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF24C19AD1A9800DB8E31 /* UIKit.framework */; };
@@ -54,6 +56,9 @@
 		9968435819B655DC001CBBAB /* CCTDailyCheckInsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTDailyCheckInsViewController.h; sourceTree = "<group>"; };
 		9968435919B655DC001CBBAB /* CCTDailyCheckInsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTDailyCheckInsViewController.m; sourceTree = "<group>"; };
 		9968435A19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTDailyCheckInsViewController.xib; sourceTree = "<group>"; };
+		9968435D19B8E222001CBBAB /* CCTRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTRegisterViewController.h; sourceTree = "<group>"; };
+		9968435E19B8E222001CBBAB /* CCTRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTRegisterViewController.m; sourceTree = "<group>"; };
+		9968435F19B8E222001CBBAB /* CCTRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTRegisterViewController.xib; sourceTree = "<group>"; };
 		999DF24519AD1A9800DB8E31 /* CantCheckThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CantCheckThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		999DF24819AD1A9800DB8E31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		999DF24A19AD1A9800DB8E31 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -221,6 +226,9 @@
 				9968435819B655DC001CBBAB /* CCTDailyCheckInsViewController.h */,
 				9968435919B655DC001CBBAB /* CCTDailyCheckInsViewController.m */,
 				9968435A19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib */,
+				9968435D19B8E222001CBBAB /* CCTRegisterViewController.h */,
+				9968435E19B8E222001CBBAB /* CCTRegisterViewController.m */,
+				9968435F19B8E222001CBBAB /* CCTRegisterViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -302,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9968435719B629D0001CBBAB /* CCTDatePickerViewController.xib in Resources */,
+				9968436119B8E222001CBBAB /* CCTRegisterViewController.xib in Resources */,
 				999DF25319AD1A9800DB8E31 /* InfoPlist.strings in Resources */,
 				999DF25B19AD1A9900DB8E31 /* Images.xcassets in Resources */,
 				9968435C19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib in Resources */,
@@ -329,6 +338,7 @@
 				9968435619B629D0001CBBAB /* CCTDatePickerViewController.m in Sources */,
 				999DF25519AD1A9800DB8E31 /* main.m in Sources */,
 				999DF28F19AE42D800DB8E31 /* CCTWebServicesManager.m in Sources */,
+				9968436019B8E222001CBBAB /* CCTRegisterViewController.m in Sources */,
 				999DF27A19AD217500DB8E31 /* CCTSignInViewController.m in Sources */,
 				999DF28619AE3E1600DB8E31 /* CCTSchedule.m in Sources */,
 				999DF28919AE3E2800DB8E31 /* CCTUser.m in Sources */,

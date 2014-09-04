@@ -120,4 +120,47 @@
 
 }
 
+- (void)forgotPasswordWithEmail:(NSString *)email andCompletion:(CCTWebServicesForgotPasswordCompletionBlock)completion
+{
+    NSMutableURLRequest *urlRequest;
+    NSURL *url;
+    NSString *urlString;
+    NSData *bodyData;
+    NSDictionary *bodyDictionary;
+    
+    urlString = [kServerURL stringByAppendingPathComponent:@"forgot_password"];
+    url = [NSURL URLWithString:urlString];
+    urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest addValue:@"application/json" forHTTPHeaderField:@"content-type"];
+    bodyDictionary = @{ @"email": email };
+    bodyData = [NSJSONSerialization dataWithJSONObject:bodyDictionary options:0 error:nil];
+    [urlRequest setHTTPBody:bodyData];
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {
+        NSDictionary *responseDictionary;
+        
+        if (error) {
+            if (completion) {
+                completion(nil, error);
+            }
+            return;
+        }
+        
+        responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if ([(NSHTTPURLResponse *)urlResponse statusCode] == 200) {
+            if (completion) {
+                completion(responseDictionary[@"status"], nil);
+            }
+            return;
+        }
+        
+        if (completion) {
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Incorrect email or password" }];
+            completion(responseDictionary[@"status"], error);
+        }
+    }];
+}
+
 @end

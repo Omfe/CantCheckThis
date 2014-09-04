@@ -10,6 +10,7 @@
 #import "CCTAuthenticationManager.h"
 #import "CCTCheckInViewController.h"
 #import "CCTDatePickerViewController.h"
+#import "CCTWebServicesManager.h"
 
 @interface CCTSignInViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -63,10 +64,37 @@
     [self.passwordTextField resignFirstResponder];
 }
 
+#pragma mark - AlertView Delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSString *email = [alertView textFieldAtIndex:0].text;
+        CCTWebServicesManager *webServicesManager;
+        
+        webServicesManager = [[CCTWebServicesManager alloc] init];
+        [webServicesManager forgotPasswordWithEmail:email andCompletion:^(NSString *message, NSError *error) {
+            UIAlertView *confirmation=[[UIAlertView alloc] initWithTitle:@"Thank You!"      message:@"Email Sent" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [confirmation show];
+        }];
+    }
+}
+
 #pragma mark - Action Methods
 - (IBAction)loginButtonWasPressed:(id)sender
 {
     [self login];
+}
+
+- (IBAction)registerButtonWasPressed:(id)sender
+{
+    
+}
+
+- (IBAction)forgotPasswordButtonWasPressed:(id)sender
+{
+    UIAlertView *forgotPassword=[[UIAlertView alloc] initWithTitle:@"Forgot Password"      message:@"Please enter your email id" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    forgotPassword.alertViewStyle=UIAlertViewStylePlainTextInput;
+    [forgotPassword textFieldAtIndex:0].delegate=self;
+    [forgotPassword show];
 }
 
 #pragma mark - Private Methods
@@ -87,7 +115,7 @@
         [tabBarController setViewControllers:[self tabBarViewControllers]];
         tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout:)];
         tabBarController.navigationItem.hidesBackButton = YES;
-
+        
         
         [self.navigationController pushViewController:tabBarController animated:YES];
     }];
@@ -125,7 +153,6 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];
 }
-
 @end
 
 //    self.navigationItem.hidesBackButton = YES;

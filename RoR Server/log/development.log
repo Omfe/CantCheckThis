@@ -20574,3 +20574,130 @@ Can't verify CSRF token authenticity
   [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 29[0m  [["remember_token", nil], ["updated_at", "2014-09-04 10:36:24.720317"]]
   [1m[35m (1.0ms)[0m  COMMIT
 Completed 200 OK in 10ms (Views: 1.2ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/forgot_password" for 127.0.0.1 at 2014-09-04 11:21:58 -0700
+
+SyntaxError (/Users/Omfe/Documents/Xcode/CantCheckThis/RoR Server/app/controllers/users_controller.rb:33: syntax error, unexpected keyword_do, expecting keyword_end
+    @users do |user|
+             ^
+/Users/Omfe/Documents/Xcode/CantCheckThis/RoR Server/app/controllers/users_controller.rb:129: syntax error, unexpected keyword_end, expecting end-of-input):
+  app/controllers/users_controller.rb:33: syntax error, unexpected keyword_do, expecting keyword_end
+  app/controllers/users_controller.rb:129: syntax error, unexpected keyword_end, expecting end-of-input
+
+
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (52.6ms)
+
+
+Started POST "/forgot_password" for 127.0.0.1 at 2014-09-04 11:23:28 -0700
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"omfegumo6@gmail.com", "user"=>{"email"=>"omfegumo6@gmail.com"}}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `users' for #<UsersController:0x007fd4d4da24c8>):
+  app/controllers/users_controller.rb:33:in `forgot_password'
+
+
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (40.7ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.2ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (102.4ms)
+
+
+Started POST "/forgot_password" for 127.0.0.1 at 2014-09-04 11:24:23 -0700
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"omfegumo6@gmail.com", "user"=>{"email"=>"omfegumo6@gmail.com"}}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `users' for #<UsersController:0x007fd4d6af00e8>):
+  app/controllers/users_controller.rb:34:in `forgot_password'
+
+
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (43.0ms)
+
+
+Started POST "/forgot_password" for 127.0.0.1 at 2014-09-04 11:27:09 -0700
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"omfegumo6@gmail.com", "user"=>{"email"=>"omfegumo6@gmail.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"  WHERE "users"."email" = 'omfegumo6@gmail.com'[0m
+Completed 500 Internal Server Error in 14ms
+
+NoMethodError (undefined method `email' for #<User::ActiveRecord_Relation:0x007fd4d6802750>):
+  app/controllers/users_controller.rb:34:in `forgot_password'
+
+
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (37.1ms)
+
+
+Started POST "/forgot_password" for 127.0.0.1 at 2014-09-04 11:27:55 -0700
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"omfegumo6@gmail.com", "user"=>{"email"=>"omfegumo6@gmail.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.7ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'omfegumo6@gmail.com' AND "users"."id" != 19) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "encrypted_password" = $1, "updated_at" = $2 WHERE "users"."id" = 19[0m  [["encrypted_password", "$2a$10$n.girp2v6HLTFXuAuY2G5ubRY1nL3ZnWD0st3vrYvw1JKWSD5NnIe"], ["updated_at", "2014-09-04 11:27:55.395611"]]
+  [1m[35m (17.8ms)[0m  COMMIT
+  Rendered user_mailer/send_forgot_password_email.text.erb (0.8ms)
+
+UserMailer#send_forgot_password_email: processed outbound mail in 61.1ms
+
+Sent mail to omfegumo6@gmail.com (10256.5ms)
+Date: Thu, 04 Sep 2014 11:27:55 -0700
+From: omfegumo6@gmail.com
+To: omfegumo6@gmail.com
+Message-ID: <5408af2bc39f2_1ec83fea6a733d38442d7@Omar-Gudinos-MacBook-Pro.local.mail>
+Subject: Forgot Password
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Roberto
+
+Tu nueva clave es: PrakAK\v[m
+Completed 200 OK in 10771ms (Views: 0.3ms | ActiveRecord: 22.1ms)
+
+
+Started POST "/forgot_password" for 127.0.0.1 at 2014-09-04 12:26:34 -0700
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"omfegumo6@gmail.com", "user"=>{"email"=>"omfegumo6@gmail.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35m (3.7ms)[0m  BEGIN
+  [1m[36mUser Exists (1.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'omfegumo6@gmail.com' AND "users"."id" != 19) LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "encrypted_password" = $1, "updated_at" = $2 WHERE "users"."id" = 19  [["encrypted_password", "$2a$10$ZR6AknwwvDW4iUg4hP85KePlSweVA7T4kF921InS5M/47yDoHpBMm"], ["updated_at", "2014-09-04 12:26:35.019498"]]
+  [1m[36m (22.1ms)[0m  [1mCOMMIT[0m
+  Rendered user_mailer/send_forgot_password_email.text.erb (0.1ms)
+
+UserMailer#send_forgot_password_email: processed outbound mail in 26.9ms
+
+Sent mail to omfegumo6@gmail.com (2648.7ms)
+Date: Thu, 04 Sep 2014 12:26:35 -0700
+From: omfegumo6@gmail.com
+To: omfegumo6@gmail.com
+Message-ID: <5408bceb11c62_1ec83fea692d950444343@Omar-Gudinos-MacBook-Pro.local.mail>
+Subject: Forgot Password
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Roberto
+
+Tu nueva clave es: HmCetgUNRd
+Completed 200 OK in 2807ms (Views: 0.4ms | ActiveRecord: 28.4ms)
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35mUser Load (10.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 28]]
