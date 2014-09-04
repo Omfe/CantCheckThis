@@ -1,0 +1,549 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		994C73F519AF8E8600FD1090 /* CCTCheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994C73F319AF8E8600FD1090 /* CCTCheckInViewController.m */; };
+		994C73F619AF8E8600FD1090 /* CCTCheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 994C73F419AF8E8600FD1090 /* CCTCheckInViewController.xib */; };
+		9968435619B629D0001CBBAB /* CCTDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968435419B629D0001CBBAB /* CCTDatePickerViewController.m */; };
+		9968435719B629D0001CBBAB /* CCTDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968435519B629D0001CBBAB /* CCTDatePickerViewController.xib */; };
+		9968435B19B655DC001CBBAB /* CCTDailyCheckInsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968435919B655DC001CBBAB /* CCTDailyCheckInsViewController.m */; };
+		9968435C19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968435A19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib */; };
+		999DF24919AD1A9800DB8E31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF24819AD1A9800DB8E31 /* Foundation.framework */; };
+		999DF24B19AD1A9800DB8E31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF24A19AD1A9800DB8E31 /* CoreGraphics.framework */; };
+		999DF24D19AD1A9800DB8E31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF24C19AD1A9800DB8E31 /* UIKit.framework */; };
+		999DF25319AD1A9800DB8E31 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 999DF25119AD1A9800DB8E31 /* InfoPlist.strings */; };
+		999DF25519AD1A9800DB8E31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF25419AD1A9800DB8E31 /* main.m */; };
+		999DF25919AD1A9800DB8E31 /* CCTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF25819AD1A9800DB8E31 /* CCTAppDelegate.m */; };
+		999DF25B19AD1A9900DB8E31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 999DF25A19AD1A9900DB8E31 /* Images.xcassets */; };
+		999DF26219AD1A9900DB8E31 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF26119AD1A9900DB8E31 /* XCTest.framework */; };
+		999DF26319AD1A9900DB8E31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF24819AD1A9800DB8E31 /* Foundation.framework */; };
+		999DF26419AD1A9900DB8E31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF24C19AD1A9800DB8E31 /* UIKit.framework */; };
+		999DF26C19AD1A9900DB8E31 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 999DF26A19AD1A9900DB8E31 /* InfoPlist.strings */; };
+		999DF26E19AD1A9900DB8E31 /* CantCheckThisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF26D19AD1A9900DB8E31 /* CantCheckThisTests.m */; };
+		999DF27A19AD217500DB8E31 /* CCTSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF27819AD217500DB8E31 /* CCTSignInViewController.m */; };
+		999DF27B19AD217500DB8E31 /* CCTSignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999DF27919AD217500DB8E31 /* CCTSignInViewController.xib */; };
+		999DF28319AE3DF800DB8E31 /* CCTCheckIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF28219AE3DF800DB8E31 /* CCTCheckIn.m */; };
+		999DF28619AE3E1600DB8E31 /* CCTSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF28519AE3E1600DB8E31 /* CCTSchedule.m */; };
+		999DF28919AE3E2800DB8E31 /* CCTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF28819AE3E2800DB8E31 /* CCTUser.m */; };
+		999DF28C19AE429D00DB8E31 /* CCTAuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF28B19AE429D00DB8E31 /* CCTAuthenticationManager.m */; };
+		999DF28F19AE42D800DB8E31 /* CCTWebServicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF28E19AE42D800DB8E31 /* CCTWebServicesManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		999DF26519AD1A9900DB8E31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 999DF23D19AD1A9700DB8E31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 999DF24419AD1A9700DB8E31;
+			remoteInfo = CantCheckThis;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		994C73F219AF8E8600FD1090 /* CCTCheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTCheckInViewController.h; sourceTree = "<group>"; };
+		994C73F319AF8E8600FD1090 /* CCTCheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTCheckInViewController.m; sourceTree = "<group>"; };
+		994C73F419AF8E8600FD1090 /* CCTCheckInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTCheckInViewController.xib; sourceTree = "<group>"; };
+		9968435319B629D0001CBBAB /* CCTDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTDatePickerViewController.h; sourceTree = "<group>"; };
+		9968435419B629D0001CBBAB /* CCTDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTDatePickerViewController.m; sourceTree = "<group>"; };
+		9968435519B629D0001CBBAB /* CCTDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTDatePickerViewController.xib; sourceTree = "<group>"; };
+		9968435819B655DC001CBBAB /* CCTDailyCheckInsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTDailyCheckInsViewController.h; sourceTree = "<group>"; };
+		9968435919B655DC001CBBAB /* CCTDailyCheckInsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTDailyCheckInsViewController.m; sourceTree = "<group>"; };
+		9968435A19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTDailyCheckInsViewController.xib; sourceTree = "<group>"; };
+		999DF24519AD1A9800DB8E31 /* CantCheckThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CantCheckThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		999DF24819AD1A9800DB8E31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		999DF24A19AD1A9800DB8E31 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		999DF24C19AD1A9800DB8E31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		999DF25019AD1A9800DB8E31 /* CantCheckThis-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CantCheckThis-Info.plist"; sourceTree = "<group>"; };
+		999DF25219AD1A9800DB8E31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		999DF25419AD1A9800DB8E31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		999DF25619AD1A9800DB8E31 /* CantCheckThis-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CantCheckThis-Prefix.pch"; sourceTree = "<group>"; };
+		999DF25719AD1A9800DB8E31 /* CCTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCTAppDelegate.h; sourceTree = "<group>"; };
+		999DF25819AD1A9800DB8E31 /* CCTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCTAppDelegate.m; sourceTree = "<group>"; };
+		999DF25A19AD1A9900DB8E31 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		999DF26019AD1A9900DB8E31 /* CantCheckThisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CantCheckThisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		999DF26119AD1A9900DB8E31 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		999DF26919AD1A9900DB8E31 /* CantCheckThisTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CantCheckThisTests-Info.plist"; sourceTree = "<group>"; };
+		999DF26B19AD1A9900DB8E31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		999DF26D19AD1A9900DB8E31 /* CantCheckThisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CantCheckThisTests.m; sourceTree = "<group>"; };
+		999DF27719AD217500DB8E31 /* CCTSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTSignInViewController.h; sourceTree = "<group>"; };
+		999DF27819AD217500DB8E31 /* CCTSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTSignInViewController.m; sourceTree = "<group>"; };
+		999DF27919AD217500DB8E31 /* CCTSignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTSignInViewController.xib; sourceTree = "<group>"; };
+		999DF28119AE3DF800DB8E31 /* CCTCheckIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTCheckIn.h; sourceTree = "<group>"; };
+		999DF28219AE3DF800DB8E31 /* CCTCheckIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTCheckIn.m; sourceTree = "<group>"; };
+		999DF28419AE3E1600DB8E31 /* CCTSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTSchedule.h; sourceTree = "<group>"; };
+		999DF28519AE3E1600DB8E31 /* CCTSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTSchedule.m; sourceTree = "<group>"; };
+		999DF28719AE3E2800DB8E31 /* CCTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTUser.h; sourceTree = "<group>"; };
+		999DF28819AE3E2800DB8E31 /* CCTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTUser.m; sourceTree = "<group>"; };
+		999DF28A19AE429D00DB8E31 /* CCTAuthenticationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTAuthenticationManager.h; sourceTree = "<group>"; };
+		999DF28B19AE429D00DB8E31 /* CCTAuthenticationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTAuthenticationManager.m; sourceTree = "<group>"; };
+		999DF28D19AE42D800DB8E31 /* CCTWebServicesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTWebServicesManager.h; sourceTree = "<group>"; };
+		999DF28E19AE42D800DB8E31 /* CCTWebServicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTWebServicesManager.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		999DF24219AD1A9700DB8E31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				999DF24B19AD1A9800DB8E31 /* CoreGraphics.framework in Frameworks */,
+				999DF24D19AD1A9800DB8E31 /* UIKit.framework in Frameworks */,
+				999DF24919AD1A9800DB8E31 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		999DF25D19AD1A9900DB8E31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				999DF26219AD1A9900DB8E31 /* XCTest.framework in Frameworks */,
+				999DF26419AD1A9900DB8E31 /* UIKit.framework in Frameworks */,
+				999DF26319AD1A9900DB8E31 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		999DF23C19AD1A9600DB8E31 = {
+			isa = PBXGroup;
+			children = (
+				999DF24E19AD1A9800DB8E31 /* CantCheckThis */,
+				999DF26719AD1A9900DB8E31 /* CantCheckThisTests */,
+				999DF24719AD1A9800DB8E31 /* Frameworks */,
+				999DF24619AD1A9800DB8E31 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		999DF24619AD1A9800DB8E31 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				999DF24519AD1A9800DB8E31 /* CantCheckThis.app */,
+				999DF26019AD1A9900DB8E31 /* CantCheckThisTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		999DF24719AD1A9800DB8E31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				999DF24819AD1A9800DB8E31 /* Foundation.framework */,
+				999DF24A19AD1A9800DB8E31 /* CoreGraphics.framework */,
+				999DF24C19AD1A9800DB8E31 /* UIKit.framework */,
+				999DF26119AD1A9900DB8E31 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		999DF24E19AD1A9800DB8E31 /* CantCheckThis */ = {
+			isa = PBXGroup;
+			children = (
+				999DF28019AE3BC300DB8E31 /* ViewControllers */,
+				999DF27F19AE3BA600DB8E31 /* Controllers */,
+				999DF27C19AE3B3000DB8E31 /* Models */,
+				999DF25719AD1A9800DB8E31 /* CCTAppDelegate.h */,
+				999DF25819AD1A9800DB8E31 /* CCTAppDelegate.m */,
+				999DF25A19AD1A9900DB8E31 /* Images.xcassets */,
+				999DF24F19AD1A9800DB8E31 /* Supporting Files */,
+			);
+			path = CantCheckThis;
+			sourceTree = "<group>";
+		};
+		999DF24F19AD1A9800DB8E31 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				999DF25019AD1A9800DB8E31 /* CantCheckThis-Info.plist */,
+				999DF25119AD1A9800DB8E31 /* InfoPlist.strings */,
+				999DF25419AD1A9800DB8E31 /* main.m */,
+				999DF25619AD1A9800DB8E31 /* CantCheckThis-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		999DF26719AD1A9900DB8E31 /* CantCheckThisTests */ = {
+			isa = PBXGroup;
+			children = (
+				999DF26D19AD1A9900DB8E31 /* CantCheckThisTests.m */,
+				999DF26819AD1A9900DB8E31 /* Supporting Files */,
+			);
+			path = CantCheckThisTests;
+			sourceTree = "<group>";
+		};
+		999DF26819AD1A9900DB8E31 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				999DF26919AD1A9900DB8E31 /* CantCheckThisTests-Info.plist */,
+				999DF26A19AD1A9900DB8E31 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		999DF27C19AE3B3000DB8E31 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				999DF28119AE3DF800DB8E31 /* CCTCheckIn.h */,
+				999DF28219AE3DF800DB8E31 /* CCTCheckIn.m */,
+				999DF28419AE3E1600DB8E31 /* CCTSchedule.h */,
+				999DF28519AE3E1600DB8E31 /* CCTSchedule.m */,
+				999DF28719AE3E2800DB8E31 /* CCTUser.h */,
+				999DF28819AE3E2800DB8E31 /* CCTUser.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		999DF27F19AE3BA600DB8E31 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				999DF28A19AE429D00DB8E31 /* CCTAuthenticationManager.h */,
+				999DF28B19AE429D00DB8E31 /* CCTAuthenticationManager.m */,
+				999DF28D19AE42D800DB8E31 /* CCTWebServicesManager.h */,
+				999DF28E19AE42D800DB8E31 /* CCTWebServicesManager.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		999DF28019AE3BC300DB8E31 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				999DF27719AD217500DB8E31 /* CCTSignInViewController.h */,
+				999DF27819AD217500DB8E31 /* CCTSignInViewController.m */,
+				999DF27919AD217500DB8E31 /* CCTSignInViewController.xib */,
+				994C73F219AF8E8600FD1090 /* CCTCheckInViewController.h */,
+				994C73F319AF8E8600FD1090 /* CCTCheckInViewController.m */,
+				994C73F419AF8E8600FD1090 /* CCTCheckInViewController.xib */,
+				9968435319B629D0001CBBAB /* CCTDatePickerViewController.h */,
+				9968435419B629D0001CBBAB /* CCTDatePickerViewController.m */,
+				9968435519B629D0001CBBAB /* CCTDatePickerViewController.xib */,
+				9968435819B655DC001CBBAB /* CCTDailyCheckInsViewController.h */,
+				9968435919B655DC001CBBAB /* CCTDailyCheckInsViewController.m */,
+				9968435A19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		999DF24419AD1A9700DB8E31 /* CantCheckThis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 999DF27119AD1A9900DB8E31 /* Build configuration list for PBXNativeTarget "CantCheckThis" */;
+			buildPhases = (
+				999DF24119AD1A9700DB8E31 /* Sources */,
+				999DF24219AD1A9700DB8E31 /* Frameworks */,
+				999DF24319AD1A9700DB8E31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CantCheckThis;
+			productName = CantCheckThis;
+			productReference = 999DF24519AD1A9800DB8E31 /* CantCheckThis.app */;
+			productType = "com.apple.product-type.application";
+		};
+		999DF25F19AD1A9900DB8E31 /* CantCheckThisTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 999DF27419AD1A9900DB8E31 /* Build configuration list for PBXNativeTarget "CantCheckThisTests" */;
+			buildPhases = (
+				999DF25C19AD1A9900DB8E31 /* Sources */,
+				999DF25D19AD1A9900DB8E31 /* Frameworks */,
+				999DF25E19AD1A9900DB8E31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				999DF26619AD1A9900DB8E31 /* PBXTargetDependency */,
+			);
+			name = CantCheckThisTests;
+			productName = CantCheckThisTests;
+			productReference = 999DF26019AD1A9900DB8E31 /* CantCheckThisTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		999DF23D19AD1A9700DB8E31 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CCT;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Omar Gudino";
+				TargetAttributes = {
+					999DF25F19AD1A9900DB8E31 = {
+						TestTargetID = 999DF24419AD1A9700DB8E31;
+					};
+				};
+			};
+			buildConfigurationList = 999DF24019AD1A9700DB8E31 /* Build configuration list for PBXProject "CantCheckThis" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 999DF23C19AD1A9600DB8E31;
+			productRefGroup = 999DF24619AD1A9800DB8E31 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				999DF24419AD1A9700DB8E31 /* CantCheckThis */,
+				999DF25F19AD1A9900DB8E31 /* CantCheckThisTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		999DF24319AD1A9700DB8E31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9968435719B629D0001CBBAB /* CCTDatePickerViewController.xib in Resources */,
+				999DF25319AD1A9800DB8E31 /* InfoPlist.strings in Resources */,
+				999DF25B19AD1A9900DB8E31 /* Images.xcassets in Resources */,
+				9968435C19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib in Resources */,
+				999DF27B19AD217500DB8E31 /* CCTSignInViewController.xib in Resources */,
+				994C73F619AF8E8600FD1090 /* CCTCheckInViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		999DF25E19AD1A9900DB8E31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				999DF26C19AD1A9900DB8E31 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		999DF24119AD1A9700DB8E31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				994C73F519AF8E8600FD1090 /* CCTCheckInViewController.m in Sources */,
+				9968435619B629D0001CBBAB /* CCTDatePickerViewController.m in Sources */,
+				999DF25519AD1A9800DB8E31 /* main.m in Sources */,
+				999DF28F19AE42D800DB8E31 /* CCTWebServicesManager.m in Sources */,
+				999DF27A19AD217500DB8E31 /* CCTSignInViewController.m in Sources */,
+				999DF28619AE3E1600DB8E31 /* CCTSchedule.m in Sources */,
+				999DF28919AE3E2800DB8E31 /* CCTUser.m in Sources */,
+				9968435B19B655DC001CBBAB /* CCTDailyCheckInsViewController.m in Sources */,
+				999DF28C19AE429D00DB8E31 /* CCTAuthenticationManager.m in Sources */,
+				999DF28319AE3DF800DB8E31 /* CCTCheckIn.m in Sources */,
+				999DF25919AD1A9800DB8E31 /* CCTAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		999DF25C19AD1A9900DB8E31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				999DF26E19AD1A9900DB8E31 /* CantCheckThisTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		999DF26619AD1A9900DB8E31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 999DF24419AD1A9700DB8E31 /* CantCheckThis */;
+			targetProxy = 999DF26519AD1A9900DB8E31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		999DF25119AD1A9800DB8E31 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				999DF25219AD1A9800DB8E31 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		999DF26A19AD1A9900DB8E31 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				999DF26B19AD1A9900DB8E31 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		999DF26F19AD1A9900DB8E31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		999DF27019AD1A9900DB8E31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		999DF27219AD1A9900DB8E31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CantCheckThis/CantCheckThis-Prefix.pch";
+				INFOPLIST_FILE = "CantCheckThis/CantCheckThis-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		999DF27319AD1A9900DB8E31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CantCheckThis/CantCheckThis-Prefix.pch";
+				INFOPLIST_FILE = "CantCheckThis/CantCheckThis-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		999DF27519AD1A9900DB8E31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CantCheckThis.app/CantCheckThis";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CantCheckThis/CantCheckThis-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CantCheckThisTests/CantCheckThisTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		999DF27619AD1A9900DB8E31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CantCheckThis.app/CantCheckThis";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CantCheckThis/CantCheckThis-Prefix.pch";
+				INFOPLIST_FILE = "CantCheckThisTests/CantCheckThisTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		999DF24019AD1A9700DB8E31 /* Build configuration list for PBXProject "CantCheckThis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				999DF26F19AD1A9900DB8E31 /* Debug */,
+				999DF27019AD1A9900DB8E31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		999DF27119AD1A9900DB8E31 /* Build configuration list for PBXNativeTarget "CantCheckThis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				999DF27219AD1A9900DB8E31 /* Debug */,
+				999DF27319AD1A9900DB8E31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		999DF27419AD1A9900DB8E31 /* Build configuration list for PBXNativeTarget "CantCheckThisTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				999DF27519AD1A9900DB8E31 /* Debug */,
+				999DF27619AD1A9900DB8E31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 999DF23D19AD1A9700DB8E31 /* Project object */;
+}

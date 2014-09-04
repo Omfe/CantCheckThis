@@ -21,9 +21,9 @@ class CheckInsController < ApplicationController
   def edit
   end
   
-  # GET/daily_report
+  # POST/daily_report
   def daily_report
-    str = (params[:checked_in_at])
+    str = (params[:date])
     date = Date.parse str
     @check_ins = CheckIn.where(created_at: (date.midnight)..date.midnight + 1.day)
   end
@@ -60,20 +60,31 @@ class CheckInsController < ApplicationController
       userTolerance = user.schedule.check_in + 30.minutes
       
       if userTolerance.strftime("%H%M") < @check_in.checked_in_at.strftime("%H%M")
+        if user.points == nil
+          user.points = 0
+        end
         user.points = user.points + 1
         user.save!
+        status = 0
+      end
+      
+      if status == 0
+        status = "You were late! +1 Point Added"
+      else
+        status = "Thank you for not being late!"
       end
       
       respond_to do |format|
         if @check_in.save
-          format.json { render :show, status: :created, location: @check_in }
+#          format.json { render :show, status: :created, location: @check_in }
+          format.json { render :json => {:show => @check_in, :report => status}}
         else
           format.json { render json: @check_in.errors, status: :unprocessable_entity }
         end
       end
     else
       puts "si fue falso y todo cool   >>>>>>>>>>>>>"
-      render status: 200, json: "Cant Check This! Until tommorow...".to_json
+      render status: 422, json: "Cant Check This! Until tommorow...".to_json
     end
   end
 

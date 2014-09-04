@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   
   post 'register' => 'users#register'
   
-  post 'signin' => 'sessions#signin'
+  post 'login' => 'sessions#signin'
   
-  delete 'signout' => 'sessions#destroy'
+  delete 'logout' => 'sessions#destroy'
   
   post 'checkin' => 'check_ins#checkin'
   
