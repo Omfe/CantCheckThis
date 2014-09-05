@@ -15,6 +15,8 @@
 		9968435C19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968435A19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib */; };
 		9968436019B8E222001CBBAB /* CCTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968435E19B8E222001CBBAB /* CCTRegisterViewController.m */; };
 		9968436119B8E222001CBBAB /* CCTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968435F19B8E222001CBBAB /* CCTRegisterViewController.xib */; };
+		9968436519BA1FD9001CBBAB /* CCTResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968436319BA1FD9001CBBAB /* CCTResetPasswordViewController.m */; };
+		9968436619BA1FD9001CBBAB /* CCTResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968436419BA1FD9001CBBAB /* CCTResetPasswordViewController.xib */; };
 		999DF24919AD1A9800DB8E31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF24819AD1A9800DB8E31 /* Foundation.framework */; };
 		999DF24B19AD1A9800DB8E31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF24A19AD1A9800DB8E31 /* CoreGraphics.framework */; };
 		999DF24D19AD1A9800DB8E31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999DF24C19AD1A9800DB8E31 /* UIKit.framework */; };
@@ -59,6 +61,9 @@
 		9968435D19B8E222001CBBAB /* CCTRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTRegisterViewController.h; sourceTree = "<group>"; };
 		9968435E19B8E222001CBBAB /* CCTRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTRegisterViewController.m; sourceTree = "<group>"; };
 		9968435F19B8E222001CBBAB /* CCTRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTRegisterViewController.xib; sourceTree = "<group>"; };
+		9968436219BA1FD9001CBBAB /* CCTResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTResetPasswordViewController.h; sourceTree = "<group>"; };
+		9968436319BA1FD9001CBBAB /* CCTResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTResetPasswordViewController.m; sourceTree = "<group>"; };
+		9968436419BA1FD9001CBBAB /* CCTResetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTResetPasswordViewController.xib; sourceTree = "<group>"; };
 		999DF24519AD1A9800DB8E31 /* CantCheckThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CantCheckThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		999DF24819AD1A9800DB8E31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		999DF24A19AD1A9800DB8E31 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -229,6 +234,9 @@
 				9968435D19B8E222001CBBAB /* CCTRegisterViewController.h */,
 				9968435E19B8E222001CBBAB /* CCTRegisterViewController.m */,
 				9968435F19B8E222001CBBAB /* CCTRegisterViewController.xib */,
+				9968436219BA1FD9001CBBAB /* CCTResetPasswordViewController.h */,
+				9968436319BA1FD9001CBBAB /* CCTResetPasswordViewController.m */,
+				9968436419BA1FD9001CBBAB /* CCTResetPasswordViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -281,6 +289,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Omar Gudino";
 				TargetAttributes = {
+					999DF24419AD1A9700DB8E31 = {
+						DevelopmentTeam = 427763X8KQ;
+					};
 					999DF25F19AD1A9900DB8E31 = {
 						TestTargetID = 999DF24419AD1A9700DB8E31;
 					};
@@ -311,6 +322,7 @@
 			files = (
 				9968435719B629D0001CBBAB /* CCTDatePickerViewController.xib in Resources */,
 				9968436119B8E222001CBBAB /* CCTRegisterViewController.xib in Resources */,
+				9968436619BA1FD9001CBBAB /* CCTResetPasswordViewController.xib in Resources */,
 				999DF25319AD1A9800DB8E31 /* InfoPlist.strings in Resources */,
 				999DF25B19AD1A9900DB8E31 /* Images.xcassets in Resources */,
 				9968435C19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib in Resources */,
@@ -343,6 +355,7 @@
 				999DF28619AE3E1600DB8E31 /* CCTSchedule.m in Sources */,
 				999DF28919AE3E2800DB8E31 /* CCTUser.m in Sources */,
 				9968435B19B655DC001CBBAB /* CCTDailyCheckInsViewController.m in Sources */,
+				9968436519BA1FD9001CBBAB /* CCTResetPasswordViewController.m in Sources */,
 				999DF28C19AE429D00DB8E31 /* CCTAuthenticationManager.m in Sources */,
 				999DF28319AE3DF800DB8E31 /* CCTCheckIn.m in Sources */,
 				999DF25919AD1A9800DB8E31 /* CCTAppDelegate.m in Sources */,
@@ -462,9 +475,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CantCheckThis/CantCheckThis-Prefix.pch";
 				INFOPLIST_FILE = "CantCheckThis/CantCheckThis-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -475,9 +490,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CantCheckThis/CantCheckThis-Prefix.pch";
 				INFOPLIST_FILE = "CantCheckThis/CantCheckThis-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

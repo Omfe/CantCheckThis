@@ -20701,3 +20701,589 @@ Tu nueva clave es: HmCetgUNRd
 Completed 200 OK in 2807ms (Views: 0.4ms | ActiveRecord: 28.4ms)
   [1m[36mUser Load (1.3ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" DESC LIMIT 1[0m
   [1m[35mUser Load (10.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 28]]
+
+
+Started POST "/login" for 172.31.20.230 at 2014-09-04 12:58:58 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (28.7ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", "116b14f19f54c036b1c53829dc3a6796"], ["updated_at", "2014-09-04 12:58:58.538620"]]
+  [1m[35m (21.9ms)[0m  COMMIT
+Completed 201 Created in 156ms (Views: 0.8ms | ActiveRecord: 51.8ms)
+
+
+Started DELETE "/logout" for 172.31.20.230 at 2014-09-04 12:59:48 -0700
+Processing by SessionsController#destroy as */*
+  Parameters: {"session"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '116b14f19f54c036b1c53829dc3a6796' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '116b14f19f54c036b1c53829dc3a6796' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", nil], ["updated_at", "2014-09-04 12:59:48.481927"]]
+  [1m[35m (1.3ms)[0m  COMMIT
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/login" for 172.31.20.230 at 2014-09-04 13:05:27 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27  [["remember_token", "002f421aed4639bc65d7872a7e2931d5"], ["updated_at", "2014-09-04 13:05:28.084153"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 96ms (Views: 0.7ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/login" for 172.31.20.230 at 2014-09-04 13:08:36 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (64.3ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", "3cafe75def41ad5bed69ccef95d7d6d9"], ["updated_at", "2014-09-04 13:08:36.276634"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+Completed 201 Created in 164ms (Views: 1.2ms | ActiveRecord: 67.6ms)
+
+
+Started POST "/checkin" for 172.31.20.230 at 2014-09-04 13:08:38 -0700
+Processing by CheckInsController#checkin as */*
+  Parameters: {"check_in"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (1.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '3cafe75def41ad5bed69ccef95d7d6d9' LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '3cafe75def41ad5bed69ccef95d7d6d9' LIMIT 1
+  [1m[36m (32.7ms)[0m  [1mSELECT COUNT(*) FROM "check_ins"  WHERE ("check_ins"."checked_in_at" BETWEEN '2014-09-04 00:00:00.000000' AND '2014-09-04 13:08:38.321833') AND "check_ins"."user_id" = 27[0m
+Completed 422 Unprocessable Entity in 59ms (Views: 0.4ms | ActiveRecord: 37.4ms)
+
+
+Started POST "/daily_report" for 172.31.20.230 at 2014-09-04 13:09:02 -0700
+Processing by CheckInsController#daily_report as */*
+  Parameters: {"date"=>"2014-09-04", "check_in"=>{}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '3cafe75def41ad5bed69ccef95d7d6d9' LIMIT 1
+  [1m[36mCheckIn Load (0.5ms)[0m  [1mSELECT "check_ins".* FROM "check_ins"  WHERE ("check_ins"."created_at" BETWEEN '2014-09-04 00:00:00.000000' AND '2014-09-05 00:00:00.000000')[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 27]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 28]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 29]]
+  Rendered check_ins/daily_report.json.jbuilder (12.2ms)
+Completed 200 OK in 65ms (Views: 33.3ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/daily_report" for 172.31.20.230 at 2014-09-04 13:09:12 -0700
+Processing by CheckInsController#daily_report as */*
+  Parameters: {"date"=>"2014-09-04", "check_in"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '3cafe75def41ad5bed69ccef95d7d6d9' LIMIT 1[0m
+  [1m[35mCheckIn Load (0.4ms)[0m  SELECT "check_ins".* FROM "check_ins"  WHERE ("check_ins"."created_at" BETWEEN '2014-09-04 00:00:00.000000' AND '2014-09-05 00:00:00.000000')
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 27]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 28]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 29]]
+  Rendered check_ins/daily_report.json.jbuilder (5.3ms)
+Completed 200 OK in 14ms (Views: 10.5ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/logout" for 172.31.20.230 at 2014-09-04 13:09:25 -0700
+Processing by SessionsController#destroy as */*
+  Parameters: {"session"=>{}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '3cafe75def41ad5bed69ccef95d7d6d9' LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '3cafe75def41ad5bed69ccef95d7d6d9' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27  [["remember_token", nil], ["updated_at", "2014-09-04 13:09:25.296857"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/login" for 172.31.20.230 at 2014-09-04 13:11:16 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", "c6d8fe2db74d411219ab261faa266da6"], ["updated_at", "2014-09-04 13:11:16.707016"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+Completed 201 Created in 96ms (Views: 0.7ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/daily_report" for 172.31.20.230 at 2014-09-04 13:11:39 -0700
+Processing by CheckInsController#daily_report as */*
+  Parameters: {"date"=>"2014-09-03", "check_in"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = 'c6d8fe2db74d411219ab261faa266da6' LIMIT 1[0m
+  [1m[35mCheckIn Load (0.4ms)[0m  SELECT "check_ins".* FROM "check_ins"  WHERE ("check_ins"."created_at" BETWEEN '2014-09-03 00:00:00.000000' AND '2014-09-04 00:00:00.000000')
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 27]]
+  Rendered check_ins/daily_report.json.jbuilder (3.3ms)
+Completed 200 OK in 13ms (Views: 9.5ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/daily_report" for 172.31.20.230 at 2014-09-04 13:11:47 -0700
+Processing by CheckInsController#daily_report as */*
+  Parameters: {"date"=>"2014-09-04", "check_in"=>{}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = 'c6d8fe2db74d411219ab261faa266da6' LIMIT 1
+  [1m[36mCheckIn Load (0.4ms)[0m  [1mSELECT "check_ins".* FROM "check_ins"  WHERE ("check_ins"."created_at" BETWEEN '2014-09-04 00:00:00.000000' AND '2014-09-05 00:00:00.000000')[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 27]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 28]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 29]]
+  Rendered check_ins/daily_report.json.jbuilder (5.5ms)
+Completed 200 OK in 15ms (Views: 10.9ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/logout" for 172.31.20.230 at 2014-09-04 13:12:24 -0700
+Processing by SessionsController#destroy as */*
+  Parameters: {"session"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = 'c6d8fe2db74d411219ab261faa266da6' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = 'c6d8fe2db74d411219ab261faa266da6' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", nil], ["updated_at", "2014-09-04 13:12:24.624567"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/forgot_password" for 172.31.20.230 at 2014-09-04 13:13:05 -0700
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"omfegumo6@gmail.com", "user"=>{"email"=>"omfegumo6@gmail.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'omfegumo6@gmail.com' AND "users"."id" != 19) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "encrypted_password" = $1, "updated_at" = $2 WHERE "users"."id" = 19  [["encrypted_password", "$2a$10$gbicsCWxoZeN76aUx/XU9.VL0cv9YiXP1hGJtVPzvTSIa0K3rr6kC"], ["updated_at", "2014-09-04 13:13:05.255786"]]
+  [1m[36m (54.8ms)[0m  [1mCOMMIT[0m
+  Rendered user_mailer/send_forgot_password_email.text.erb (0.2ms)
+
+UserMailer#send_forgot_password_email: processed outbound mail in 68.6ms
+
+Sent mail to omfegumo6@gmail.com (3908.4ms)
+Date: Thu, 04 Sep 2014 13:13:05 -0700
+From: omfegumo6@gmail.com
+To: omfegumo6@gmail.com
+Message-ID: <5408c7d160f06_1ec83fea6b0ace7844490@Omar-Gudinos-MacBook-Pro.local.mail>
+Subject: Forgot Password
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Roberto
+
+Tu nueva clave es: wUfpQaZJy`
+Completed 200 OK in 4130ms (Views: 0.6ms | ActiveRecord: 56.2ms)
+
+
+Started POST "/login" for 172.31.20.230 at 2014-09-04 13:14:12 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"igonzalez@arkusnexus.com", "session"=>{"password"=>"[FILTERED]", "email"=>"igonzalez@arkusnexus.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'igonzalez@arkusnexus.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.8ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'igonzalez@arkusnexus.com' AND "users"."id" != 28) LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 28[0m  [["remember_token", "74a8df2dbabd9bd6db0ed657ec2b27b0"], ["updated_at", "2014-09-04 13:14:12.475701"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+Completed 201 Created in 98ms (Views: 0.7ms | ActiveRecord: 4.0ms)
+
+
+Started DELETE "/logout" for 172.31.20.230 at 2014-09-04 13:14:15 -0700
+Processing by SessionsController#destroy as */*
+  Parameters: {"session"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '74a8df2dbabd9bd6db0ed657ec2b27b0' LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '74a8df2dbabd9bd6db0ed657ec2b27b0' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'igonzalez@arkusnexus.com' AND "users"."id" != 28) LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 28[0m  [["remember_token", nil], ["updated_at", "2014-09-04 13:14:15.686097"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/forgot_password" for 172.31.20.230 at 2014-09-04 13:14:36 -0700
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"igonzalez@arkusnexus.com", "user"=>{"email"=>"igonzalez@arkusnexus.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'igonzalez@arkusnexus.com' AND "users"."id" != 28) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "encrypted_password" = $1, "updated_at" = $2 WHERE "users"."id" = 28  [["encrypted_password", "$2a$10$uU.cYzzC7kg6nY7vHRCTDuqVud5z6IYFD7gKi3h8hYUEpRn9JtfmS"], ["updated_at", "2014-09-04 13:14:36.264912"]]
+  [1m[36m (16.1ms)[0m  [1mCOMMIT[0m
+  Rendered user_mailer/send_forgot_password_email.text.erb (0.1ms)
+
+UserMailer#send_forgot_password_email: processed outbound mail in 15.0ms
+
+Sent mail to igonzalez@arkusnexus.com (2964.3ms)
+Date: Thu, 04 Sep 2014 13:14:36 -0700
+From: omfegumo6@gmail.com
+To: igonzalez@arkusnexus.com
+Message-ID: <5408c82c560f2_1ec83fea6b07456444588@Omar-Gudinos-MacBook-Pro.local.mail>
+Subject: Forgot Password
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Ivan
+
+Tu nueva clave es: LGPg[\dCiT
+Completed 200 OK in 3148ms (Views: 0.3ms | ActiveRecord: 17.5ms)
+
+
+Started POST "/login" for 172.31.20.230 at 2014-09-04 13:32:35 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", "b50a193638e68ae22881c3bc8173dd7d"], ["updated_at", "2014-09-04 13:32:35.483305"]]
+  [1m[35m (23.4ms)[0m  COMMIT
+Completed 201 Created in 139ms (Views: 0.7ms | ActiveRecord: 24.8ms)
+
+
+Started POST "/daily_report" for 172.31.20.230 at 2014-09-04 13:32:59 -0700
+Processing by CheckInsController#daily_report as */*
+  Parameters: {"date"=>"2014-09-04", "check_in"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = 'b50a193638e68ae22881c3bc8173dd7d' LIMIT 1[0m
+  [1m[35mCheckIn Load (0.4ms)[0m  SELECT "check_ins".* FROM "check_ins"  WHERE ("check_ins"."created_at" BETWEEN '2014-09-04 00:00:00.000000' AND '2014-09-05 00:00:00.000000')
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 27]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 28]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 29]]
+  Rendered check_ins/daily_report.json.jbuilder (7.0ms)
+Completed 200 OK in 83ms (Views: 78.0ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 11:02:03 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1
+  [1m[36m (28.5ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (42.1ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", "05d778487df97979d1b76932794e412c"], ["updated_at", "2014-09-05 11:02:05.853721"]]
+  [1m[35m (47.0ms)[0m  COMMIT
+Completed 201 Created in 509ms (Views: 22.1ms | ActiveRecord: 121.9ms)
+
+
+Started POST "/checkin" for 127.0.0.1 at 2014-09-05 11:02:25 -0700
+Processing by CheckInsController#checkin as */*
+  Parameters: {"check_in"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '05d778487df97979d1b76932794e412c' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '05d778487df97979d1b76932794e412c' LIMIT 1
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "check_ins"  WHERE ("check_ins"."checked_in_at" BETWEEN '2014-09-05 00:00:00.000000' AND '2014-09-05 11:02:25.268429') AND "check_ins"."user_id" = 27[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '05d778487df97979d1b76932794e412c' LIMIT 1
+  [1m[36mSchedule Load (2.4ms)[0m  [1mSELECT  "schedules".* FROM "schedules"  WHERE "schedules"."id" = $1 LIMIT 1[0m  [["id", 15]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "points" = $1, "updated_at" = $2 WHERE "users"."id" = 27  [["points", 5], ["updated_at", "2014-09-05 11:02:25.438222"]]
+  [1m[36m (140.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "check_ins" ("checked_in_at", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["checked_in_at", "2014-09-05 11:02:25.275778"], ["created_at", "2014-09-05 11:02:25.582554"], ["updated_at", "2014-09-05 11:02:25.582554"], ["user_id", 27]]
+  [1m[35m (1.6ms)[0m  COMMIT
+Completed 200 OK in 342ms (Views: 0.6ms | ActiveRecord: 153.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 11:07:54 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27  [["remember_token", "4bcaf06490cda6c6b8e2640aee19f3c1"], ["updated_at", "2014-09-05 11:07:54.462742"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 105ms (Views: 0.7ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 11:17:14 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (1.9ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", "2fb418665b1f10110646b499bf66e4cb"], ["updated_at", "2014-09-05 11:17:14.335645"]]
+  [1m[35m (15.6ms)[0m  COMMIT
+Completed 201 Created in 128ms (Views: 0.8ms | ActiveRecord: 18.6ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 11:23:56 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27  [["remember_token", "9712f588b002cdd30ffd12320dbbaa33"], ["updated_at", "2014-09-05 11:23:56.380370"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 110ms (Views: 0.7ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 11:30:25 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1
+  [1m[36m (0.9ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", "719a032d906666e716a3c5f755038cb3"], ["updated_at", "2014-09-05 11:30:25.959950"]]
+  [1m[35m (20.6ms)[0m  COMMIT
+Completed 201 Created in 139ms (Views: 0.7ms | ActiveRecord: 22.9ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 12:08:50 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27  [["remember_token", "514cb9efcc7136700f50dc11329b0cba"], ["updated_at", "2014-09-05 12:08:50.402182"]]
+  [1m[36m (101.1ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 206ms (Views: 0.8ms | ActiveRecord: 102.6ms)
+
+
+Started POST "/daily_report" for 127.0.0.1 at 2014-09-05 12:08:58 -0700
+Processing by CheckInsController#daily_report as */*
+  Parameters: {"date"=>"2014-09-04", "check_in"=>{}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Exists (0.7ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '514cb9efcc7136700f50dc11329b0cba' LIMIT 1
+  [1m[36mCheckIn Load (0.5ms)[0m  [1mSELECT "check_ins".* FROM "check_ins"  WHERE ("check_ins"."created_at" BETWEEN '2014-09-04 00:00:00.000000' AND '2014-09-05 00:00:00.000000')[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 27]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 28]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 29]]
+  Rendered check_ins/daily_report.json.jbuilder (62.4ms)
+Completed 200 OK in 234ms (Views: 214.5ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 12:14:15 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27  [["remember_token", "ba31b021a877a18ce3478d9de50a1875"], ["updated_at", "2014-09-05 12:14:15.209073"]]
+  [1m[36m (17.2ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 117ms (Views: 0.9ms | ActiveRecord: 19.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 12:21:47 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", "c37ef7e0d1486eb011b76f0a9e744d52"], ["updated_at", "2014-09-05 12:21:48.108452"]]
+  [1m[35m (11.4ms)[0m  COMMIT
+Completed 201 Created in 109ms (Views: 0.7ms | ActiveRecord: 12.6ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 12:52:54 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27  [["remember_token", "14b549785af7e997f35f6e3ce587a305"], ["updated_at", "2014-09-05 12:52:54.273638"]]
+  [1m[36m (15.4ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 116ms (Views: 0.7ms | ActiveRecord: 16.9ms)
+
+
+Started POST "/logout" for 127.0.0.1 at 2014-09-05 12:53:22 -0700
+
+ActionController::RoutingError (No route matches [POST] "/logout"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Omfe/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Omfe/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Omfe/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.5ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (23.3ms)
+  Rendered /Users/Omfe/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (247.6ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 12:54:27 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", "6f542804d2145f7247e122cce3da7705"], ["updated_at", "2014-09-05 12:54:28.103041"]]
+  [1m[35m (23.3ms)[0m  COMMIT
+Completed 201 Created in 128ms (Views: 1.1ms | ActiveRecord: 24.8ms)
+
+
+Started POST "/reset_password" for 127.0.0.1 at 2014-09-05 12:54:51 -0700
+Processing by UsersController#reset_password as */*
+  Parameters: {"new_password"=>"[FILTERED]", "old_password"=>"[FILTERED]", "user"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '6f542804d2145f7247e122cce3da7705' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '6f542804d2145f7247e122cce3da7705' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "encrypted_password" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["encrypted_password", "$2a$10$6dLYQs1WYE9D4AmuYBBJn.jrW4NHvGRhmXxbo5b0VI5SaiHW3v9fu"], ["updated_at", "2014-09-05 12:54:51.970303"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+Completed 200 OK in 194ms (Views: 0.3ms | ActiveRecord: 2.8ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2014-09-05 12:55:11 -0700
+Processing by SessionsController#destroy as */*
+  Parameters: {"session"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '6f542804d2145f7247e122cce3da7705' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '6f542804d2145f7247e122cce3da7705' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", nil], ["updated_at", "2014-09-05 12:55:11.737688"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 12:55:16 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1[0m
+Completed 422 Unprocessable Entity in 98ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 12:55:22 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", "6f4f7b8b47554d5c1c88cfe84703588f"], ["updated_at", "2014-09-05 12:55:22.498528"]]
+  [1m[35m (3.4ms)[0m  COMMIT
+Completed 201 Created in 100ms (Views: 0.7ms | ActiveRecord: 4.9ms)
+
+
+Started POST "/reset_password" for 127.0.0.1 at 2014-09-05 12:55:50 -0700
+Processing by UsersController#reset_password as */*
+  Parameters: {"new_password"=>"[FILTERED]", "old_password"=>"[FILTERED]", "user"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '6f4f7b8b47554d5c1c88cfe84703588f' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '6f4f7b8b47554d5c1c88cfe84703588f' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "encrypted_password" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["encrypted_password", "$2a$10$3y5rJYeH.o77S87G3Ory6.4Prdu5Bry4qFa6aREI8TX8wBIpADskS"], ["updated_at", "2014-09-05 12:55:50.887417"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Completed 200 OK in 215ms (Views: 0.3ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/checkin" for 127.0.0.1 at 2014-09-05 12:55:55 -0700
+Processing by CheckInsController#checkin as */*
+  Parameters: {"check_in"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '6f4f7b8b47554d5c1c88cfe84703588f' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '6f4f7b8b47554d5c1c88cfe84703588f' LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "check_ins"  WHERE ("check_ins"."checked_in_at" BETWEEN '2014-09-05 00:00:00.000000' AND '2014-09-05 12:55:55.255892') AND "check_ins"."user_id" = 27[0m
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/daily_report" for 127.0.0.1 at 2014-09-05 12:56:03 -0700
+Processing by CheckInsController#daily_report as */*
+  Parameters: {"date"=>"2014-09-05", "check_in"=>{}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '6f4f7b8b47554d5c1c88cfe84703588f' LIMIT 1
+  [1m[36mCheckIn Load (0.7ms)[0m  [1mSELECT "check_ins".* FROM "check_ins"  WHERE ("check_ins"."created_at" BETWEEN '2014-09-05 00:00:00.000000' AND '2014-09-06 00:00:00.000000')[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 27]]
+  Rendered check_ins/daily_report.json.jbuilder (4.7ms)
+Completed 200 OK in 21ms (Views: 17.0ms | ActiveRecord: 1.7ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2014-09-05 12:56:08 -0700
+Processing by SessionsController#destroy as */*
+  Parameters: {"session"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '6f4f7b8b47554d5c1c88cfe84703588f' LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '6f4f7b8b47554d5c1c88cfe84703588f' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", nil], ["updated_at", "2014-09-05 12:56:08.939560"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 13:11:57 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27  [["remember_token", "81293d090ce63be4277e4f0623a28845"], ["updated_at", "2014-09-05 13:11:57.850113"]]
+  [1m[36m (15.1ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 116ms (Views: 0.7ms | ActiveRecord: 16.8ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 13:13:04 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27[0m  [["remember_token", "130c3448500032028d765caac46c1ccd"], ["updated_at", "2014-09-05 13:13:04.368247"]]
+  [1m[35m (35.7ms)[0m  COMMIT
+Completed 201 Created in 139ms (Views: 0.8ms | ActiveRecord: 37.1ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-09-05 13:13:42 -0700
+Processing by SessionsController#signin as */*
+  Parameters: {"password"=>"[FILTERED]", "email"=>"validado4@test.com", "session"=>{"password"=>"[FILTERED]", "email"=>"validado4@test.com"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'validado4@test.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27  [["remember_token", "fbe044ac36f55f845452a8bf80f2336b"], ["updated_at", "2014-09-05 13:13:42.203020"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 109ms (Views: 0.8ms | ActiveRecord: 2.5ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2014-09-05 13:14:10 -0700
+Processing by SessionsController#destroy as */*
+  Parameters: {"session"=>{}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = 'fbe044ac36f55f845452a8bf80f2336b' LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."remember_token" = 'fbe044ac36f55f845452a8bf80f2336b' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'validado4@test.com' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 27  [["remember_token", nil], ["updated_at", "2014-09-05 13:14:10.196563"]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 3.5ms)

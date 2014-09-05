@@ -121,4 +121,53 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
     }];
 }
 
+- (void)resetPasswordWithOldPassword:(NSString *)oldPassword withNewPassword:(NSString *)newPassword andCompletion:(CCTAuthenticationResetPasswordCompletionBlock)completion
+{
+    NSMutableURLRequest *urlRequest;
+    NSURL *url;
+    NSString *urlString;
+    NSString *headerValue;
+    NSData *bodyData;
+    NSDictionary *bodyDictionary;
+    
+    urlString = [kServerURL stringByAppendingPathComponent:@"reset_password"];
+    url = [NSURL URLWithString:urlString];
+    urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    headerValue = [NSString stringWithFormat:@"Token token=%@", [[CCTAuthenticationManager sharedManager] loggedInUser].rememberToken];
+    [urlRequest setValue:headerValue forHTTPHeaderField:@"Authorization"];
+    [urlRequest addValue:@"application/json" forHTTPHeaderField:@"content-type"];
+    bodyDictionary = @{ @"old_password": oldPassword, @"new_password": newPassword };
+    bodyData = [NSJSONSerialization dataWithJSONObject:bodyDictionary options:0 error:nil];
+    [urlRequest setHTTPBody:bodyData];
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {
+        NSDictionary *responseDictionary;
+        
+        if (error) {
+            if (completion) {
+                completion(nil, error);
+            }
+            return;
+        }
+        
+        responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if ([(NSHTTPURLResponse *)urlResponse statusCode] == 200) {
+            
+            if (completion) {
+                completion(responseDictionary[@"status"], nil);
+            }
+            return;
+        }
+        
+        if (completion) {
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Exited" }];
+            completion(responseDictionary[@"status"], error);
+            
+        }
+    }];
+
+}
+
 @end

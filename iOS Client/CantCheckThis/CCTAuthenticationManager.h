@@ -12,6 +12,7 @@ extern NSString *CCTServerError;
 
 typedef void(^CCTAuthenticationLoginCompletionBlock)(NSString *message, NSError *error);
 typedef void(^CCTAuthenticationLogoutCompletionBlock)(NSString *message, NSError *error);
+typedef void(^CCTAuthenticationResetPasswordCompletionBlock)(NSString *message, NSError *error);
 
 @interface CCTAuthenticationManager : NSObject
 
@@ -21,5 +22,6 @@ typedef void(^CCTAuthenticationLogoutCompletionBlock)(NSString *message, NSError
 
 - (void)loginWithEmail:(NSString *)email withPassword:(NSString *)password andCompletion:(CCTAuthenticationLoginCompletionBlock)completion;
 - (void)logoutWithCompletion:(CCTAuthenticationLogoutCompletionBlock)completion;
+- (void)resetPasswordWithOldPassword:(NSString *)oldPassword withNewPassword:(NSString *)newPassword andCompletion:(CCTAuthenticationResetPasswordCompletionBlock)completion;
 
 @end

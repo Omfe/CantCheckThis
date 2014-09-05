@@ -9,6 +9,7 @@
 #import "CCTCheckInViewController.h"
 #import "CCTWebServicesManager.h"
 #import "CCTAuthenticationManager.h"
+#import "CCTResetPasswordViewController.h"
 
 @interface CCTCheckInViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *checkInButton;
@@ -20,7 +21,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitle:@"Check In!"];
 }
 
 - (IBAction)checkInButtonWasPressed:(id)sender
@@ -28,6 +28,15 @@
     [self checkIn];
 }
 
+- (IBAction)resetPasswordButtonWasPressed:(id)sender
+{
+    CCTResetPasswordViewController *resetPasswordViewController;
+    UINavigationController *navigationController;
+    
+    resetPasswordViewController = [[CCTResetPasswordViewController alloc] initWithNibName:@"CCTResetPasswordViewController" bundle:nil];
+    navigationController = [[UINavigationController alloc] initWithRootViewController:resetPasswordViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
 #pragma mark - Private Methods
 - (void)checkIn
 {

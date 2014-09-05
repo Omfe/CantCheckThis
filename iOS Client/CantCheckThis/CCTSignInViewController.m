@@ -11,6 +11,7 @@
 #import "CCTCheckInViewController.h"
 #import "CCTDatePickerViewController.h"
 #import "CCTWebServicesManager.h"
+#import "CCTUser.h"
 
 @interface CCTSignInViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -115,7 +116,7 @@
         [tabBarController setViewControllers:[self tabBarViewControllers]];
         tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout:)];
         tabBarController.navigationItem.hidesBackButton = YES;
-        
+        tabBarController.title = [CCTAuthenticationManager sharedManager].loggedInUser.firstName;
         
         [self.navigationController pushViewController:tabBarController animated:YES];
     }];
@@ -136,8 +137,9 @@
     datePickerNavController = [[UINavigationController alloc]initWithRootViewController:datePickerViewController];
     
     viewControllers = @[checkInNavController, datePickerNavController];
-    [datePickerViewController setTitle:@"Daily Check Ins"];
     
+    [datePickerViewController setTitle:@"Daily Check Ins"];
+    [checkInViewController setTitle:@"Check In!"];
     return viewControllers;
 }
 

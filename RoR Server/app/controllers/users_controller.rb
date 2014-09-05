@@ -43,19 +43,13 @@ class UsersController < ApplicationController
   
   def reset_password
     user = current_user
-    puts "#{user.encrypted_password}"
     new_password = params[:new_password]
-    puts "#{new_password}"
-    puts "CASI ENTRA"
-    if user.password == params[:password]
-      puts "Si entro!"
+    if user.password == params[:old_password]
       user.password = new_password
       user.save!
-      puts "Segun si guardo"
-      puts "#{new_password}"
-      render json: {status: 'ok'}, status: 200
+      render json: {status: 'Password Changed Successfully'}, status: 200
     else
-    render json: {status: 'exc'}, status: 200
+    render json: {status: 'Incorrect Password'}, status: 401
     end
   end
   
