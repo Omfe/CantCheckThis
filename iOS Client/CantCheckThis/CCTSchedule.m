@@ -10,4 +10,11 @@
 
 @implementation CCTSchedule
 
+- (void)updateFromDictionary:(NSDictionary *)dictionary
+{
+    self.scheduleId = dictionary[@"id"];
+    self.checkIn = dictionary[@"check_in"];
+    self.checkOut = dictionary[@"check_out"];
+}
+
 @end

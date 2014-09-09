@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCTRegisterViewController : UIViewController
-
+@interface CCTRegisterViewController : UIViewController {
+    IBOutlet UIScrollView *scroller;
+}
 @end

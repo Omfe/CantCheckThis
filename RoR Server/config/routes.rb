@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   
   get 'users_list' => 'users#users_list'
   
+  get 'all_schedules' => 'schedules#all_schedules'
+  
   root :to => 'sessions#new'
 
   # The priority is based upon order of creation: first created -> highest priority.

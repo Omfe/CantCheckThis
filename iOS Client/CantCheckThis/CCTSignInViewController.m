@@ -12,6 +12,7 @@
 #import "CCTDatePickerViewController.h"
 #import "CCTWebServicesManager.h"
 #import "CCTUser.h"
+#import "CCTRegisterViewController.h"
 
 @interface CCTSignInViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -87,7 +88,12 @@
 
 - (IBAction)registerButtonWasPressed:(id)sender
 {
+    CCTRegisterViewController *registerViewController;
+    UINavigationController *navigationController;
     
+    registerViewController = [[CCTRegisterViewController alloc] initWithNibName:@"CCTRegisterViewController" bundle:nil];
+    navigationController = [[UINavigationController alloc] initWithRootViewController:registerViewController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (IBAction)forgotPasswordButtonWasPressed:(id)sender
@@ -156,5 +162,3 @@
     }];
 }
 @end
-
-//    self.navigationItem.hidesBackButton = YES;

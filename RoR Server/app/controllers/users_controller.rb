@@ -57,6 +57,7 @@ class UsersController < ApplicationController
   def register
     @user = User.new(user_params)
     @user.password = params[:password]
+    @user.generate_remember_token
     respond_to do |format|
       if @user.save
         format.json { render :show, status: :created, location: @user }

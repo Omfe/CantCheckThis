@@ -170,4 +170,53 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
 
 }
 
+- (void)registerWithFirstName:(NSString *)firstName andlastName:(NSString *)lastName andEmail:(NSString *)email andPassword:(NSString *)password andScheduleId:(NSString *)scheduleId andCompletion:(CCTAuthenticationRegisterCompletionBlock)completion
+{
+    NSMutableURLRequest *urlRequest;
+    NSURL *url;
+    NSString *urlString;
+    NSData *bodyData;
+    NSDictionary *bodyDictionary;
+    
+    urlString = [kServerURL stringByAppendingPathComponent:@"register"];
+    url = [NSURL URLWithString:urlString];
+    urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest addValue:@"application/json" forHTTPHeaderField:@"content-type"];
+    bodyDictionary = @{ @"first_name": firstName, @"last_name": lastName, @"email": email, @"password": password, @"schedule_id": scheduleId };
+    bodyData = [NSJSONSerialization dataWithJSONObject:bodyDictionary options:0 error:nil];
+    [urlRequest setHTTPBody:bodyData];
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {
+        NSDictionary *responseDictionary;
+        
+        if (error) {
+            if (completion) {
+                completion(nil, error);
+            }
+            return;
+        }
+        
+        responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if ([(NSHTTPURLResponse *)urlResponse statusCode] == 201) {
+            if (!self.loggedInUser) {
+                self.loggedInUser = [[CCTUser alloc] init];
+            }
+            [self.loggedInUser updateUserFromDictionary:responseDictionary];
+            
+            if (completion) {
+                completion(responseDictionary[@"status"], nil);
+            }
+            return;
+        }
+        
+        if (completion) {
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Make sure its a unique email and fill the text fields." }];
+            completion(responseDictionary[@"status"], error);
+        }
+    }];
+    
+}
+
 @end

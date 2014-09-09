@@ -10,6 +10,7 @@
 #import "CCTUser.h"
 #import "CCTAuthenticationManager.h"
 #import "CCTCheckIn.h"
+#import "CCTSchedule.h"
 
 #define kServerURL @"http://localhost:3000"
 
@@ -20,7 +21,6 @@
     NSMutableURLRequest *urlRequest;
     NSURL *url;
     NSString *urlString;
-    //NSData *bodyData;
     NSString *headerValue;
     
     urlString = [kServerURL stringByAppendingPathComponent:@"checkin"];
@@ -159,6 +159,54 @@
         if (completion) {
             error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Incorrect email or password" }];
             completion(responseDictionary[@"status"], error);
+        }
+    }];
+}
+
+- (void)getSchedulesWithCompletion:(CCTWebServicesGetSchedules)completion
+{
+    NSMutableURLRequest *urlRequest;
+    NSURL *url;
+    NSString *urlString;
+    
+    urlString = [kServerURL stringByAppendingPathComponent:@"all_schedules"];
+    url = [NSURL URLWithString:urlString];
+    urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setHTTPMethod:@"GET"];
+    [urlRequest addValue:@"application/json" forHTTPHeaderField:@"content-type"];
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {
+        NSDictionary *responseDictionary;
+        NSMutableArray *schedules;
+        CCTSchedule *schedule;
+        
+        if (error) {
+            if (completion) {
+                completion(nil, error);
+            }
+            return;
+        }
+        
+        responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if ([(NSHTTPURLResponse *)urlResponse statusCode] == 200) {
+            schedules = [[NSMutableArray alloc] init];
+            for (NSDictionary *dictionary in responseDictionary) {
+                schedule = [[CCTSchedule alloc] init];
+                [schedule updateFromDictionary:dictionary];
+                [schedules addObject:schedule];
+            }
+            
+            if (completion) {
+                completion(schedules, nil);
+            }
+            return;
+        }
+        
+        if (completion) {
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Wait until tommorow" }];
+            completion(responseDictionary[@"status"], error);
+            
         }
     }];
 }

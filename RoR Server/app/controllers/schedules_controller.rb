@@ -11,6 +11,11 @@ class SchedulesController < ApplicationController
   # GET /schedules/1.json
   def show
   end
+  
+  # GET /all_schedules
+  def all_schedules
+    @schedules = Schedule.all
+  end
 
   # GET /schedules/new
   def new

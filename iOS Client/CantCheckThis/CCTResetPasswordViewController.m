@@ -69,7 +69,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self.view setFrame:CGRectMake(0,-50,320,460)];
+    [self.view setFrame:CGRectMake(0,-40,320,460)];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField

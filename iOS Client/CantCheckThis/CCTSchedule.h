@@ -10,7 +10,10 @@
 
 @interface CCTSchedule : NSObject
 
-@property (strong, nonatomic) NSDate *checkIn;
-@property (strong, nonatomic) NSDate *checkOut;
+@property (strong, nonatomic) NSNumber *scheduleId;
+@property (strong, nonatomic) NSString *checkIn;
+@property (strong, nonatomic) NSString *checkOut;
+
+- (void)updateFromDictionary:(NSDictionary *)dictionary;
 
 @end
