@@ -16,6 +16,7 @@
 
 @implementation CCTWebServicesManager
 
+#pragma mark - Public Methods
 - (void)checkInWithCompletion:(CCTWebServicesCheckInCompletionBlock)completion;
 {
     NSMutableURLRequest *urlRequest;

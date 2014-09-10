@@ -10,6 +10,7 @@
 #import "CCTDailyCheckInsViewController.h"
 
 @interface CCTDatePickerViewController ()<UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *dateTextField;
 
 @end
@@ -22,7 +23,6 @@
     UIDatePicker *datePicker;
     
     [super viewDidLoad];
-    
     datePicker = [[UIDatePicker alloc]init];
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker setDate:[NSDate date]];
@@ -33,12 +33,14 @@
     [self.view addGestureRecognizer:tapGestureRecognizer];
 }
 
+#pragma mark - UITextFieldDelegate Methods
 - (void)_hideDatePickerView:(UITapGestureRecognizer *)tapGestureRecognizer
 {
     [self.dateTextField resignFirstResponder];
 }
 
--(void)updateTextField:(id)sender
+#pragma mark - UIDatePicker Action Method
+- (void)updateTextField:(id)sender
 {
     NSDateFormatter *dateFormat;
     dateFormat = [[NSDateFormatter alloc] init];
@@ -47,7 +49,14 @@
     self.dateTextField.text = [dateFormat stringFromDate:picker.date];
 }
 
+#pragma mark - Action Methods
 - (IBAction)okButtonWasPressed:(id)sender
+{
+    [self choseDate];
+}
+
+#pragma mark - Private Methods
+- (void)choseDate
 {
     NSDateFormatter *dateFormatter;
     NSDate *dateFromString;
@@ -66,8 +75,6 @@
         navigationController = [[UINavigationController alloc] initWithRootViewController:dailyCheckInsViewController];
         dailyCheckInsViewController.date = dateFromString;
         [self presentViewController:navigationController animated:YES completion:nil];
-       // [self.navigationController presentViewController:dailyCheckInsViewController animated:YES completion:nil];
-//        [self.navigationController pushViewController:dailyCheckInsViewController animated:YES];
     }
 }
 @end

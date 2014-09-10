@@ -125,6 +125,19 @@
     }];
 }
 
+- (void)logout:(UIBarButtonItem *)sender
+{
+    [[CCTAuthenticationManager sharedManager] logoutWithCompletion:^(NSString *message, NSError *error) {
+        if (error) {
+            [[[UIAlertView alloc] initWithTitle:@"There was an error!" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            return;
+        }
+        
+        [[[UIAlertView alloc] initWithTitle:@"Logged Out!" message:[NSString stringWithFormat:@"%@", message] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
+}
+
 - (void)loggedInUserTravelsToCheckInView
 {
     UITabBarController *tabBarController;
@@ -157,18 +170,5 @@
     [datePickerViewController setTitle:@"Daily Check Ins"];
     [checkInViewController setTitle:@"Check In!"];
     return viewControllers;
-}
-
-- (void)logout:(UIBarButtonItem *)sender
-{
-    [[CCTAuthenticationManager sharedManager] logoutWithCompletion:^(NSString *message, NSError *error) {
-        if (error) {
-            [[[UIAlertView alloc] initWithTitle:@"There was an error!" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-            return;
-        }
-        
-        [[[UIAlertView alloc] initWithTitle:@"Logged Out!" message:[NSString stringWithFormat:@"%@", message] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }];
 }
 @end

@@ -14,8 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *theNewPasswordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmNewPasswordTextField;
 
-
-
 @end
 
 @implementation CCTResetPasswordViewController

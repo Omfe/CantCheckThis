@@ -21,14 +21,18 @@
 
 - (void)viewDidLoad
 {
-    //UINavigationBar *navigationBar;
     [super viewDidLoad];
     [self setTitle:@"CheckIns"];
     [self fetchDailyCheckIns];
 
-    //navigationBar = [[UINavigationBar alloc] init];
     UIBarButtonItem *dismissListBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissViewController:)];
     self.navigationItem.leftBarButtonItem = dismissListBarButtonItem;
+}
+
+#pragma mark - UIBarButtonItem Methods
+- (void)dismissViewController:(UIBarButtonItem *)sender
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource Methods
@@ -56,7 +60,7 @@
     return cell;
 }
 
-#pragma mark - Class Methods
+#pragma mark - Private Methods
 - (void)fetchDailyCheckIns
 {
     CCTWebServicesManager *webServicesManager;
@@ -88,10 +92,4 @@
     }
     return nil;
 }
-
-- (void)dismissViewController:(UIBarButtonItem *)sender
-{
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
 @end
