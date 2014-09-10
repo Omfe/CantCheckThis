@@ -84,18 +84,18 @@
                 [[[UIAlertView alloc] initWithTitle:@"There was an error with our Server!" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
                 return;
             } else {
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                 [[[UIAlertView alloc] initWithTitle:@"Thank you for Signin Up!" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show ];
-//                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                 
-                UITabBarController *tabBarController;
-                
-                tabBarController = [[UITabBarController alloc] init];
-                [tabBarController setViewControllers:[self tabBarViewControllers]];
-                tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout:)];
-                tabBarController.navigationItem.hidesBackButton = YES;
-                tabBarController.title = [CCTAuthenticationManager sharedManager].loggedInUser.firstName;
-                
-                [self.navigationController pushViewController:tabBarController animated:YES];
+//                UITabBarController *tabBarController;
+//                
+//                tabBarController = [[UITabBarController alloc] init];
+//                [tabBarController setViewControllers:[self tabBarViewControllers]];
+//                tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout:)];
+//                tabBarController.navigationItem.hidesBackButton = YES;
+//                tabBarController.title = [CCTAuthenticationManager sharedManager].loggedInUser.firstName;
+//                
+//                [self.navigationController pushViewController:tabBarController animated:YES];
                 
             }
         }];

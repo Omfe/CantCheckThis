@@ -34,6 +34,11 @@
     } else {
         [self.passwordTextField becomeFirstResponder];
     }
+    
+    if ([CCTAuthenticationManager sharedManager].loggedInUser)
+    {
+        [self loggedInUserTravelsToCheckInView];
+    }
 }
 
 - (void)viewDidLoad
@@ -116,16 +121,21 @@
         [self.view endEditing:YES];
         self.passwordTextField.text = @"";
         
-        UITabBarController *tabBarController;
-        
-        tabBarController = [[UITabBarController alloc] init];
-        [tabBarController setViewControllers:[self tabBarViewControllers]];
-        tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout:)];
-        tabBarController.navigationItem.hidesBackButton = YES;
-        tabBarController.title = [CCTAuthenticationManager sharedManager].loggedInUser.firstName;
-        
-        [self.navigationController pushViewController:tabBarController animated:YES];
+        [self loggedInUserTravelsToCheckInView];
     }];
+}
+
+- (void)loggedInUserTravelsToCheckInView
+{
+    UITabBarController *tabBarController;
+    
+    tabBarController = [[UITabBarController alloc] init];
+    [tabBarController setViewControllers:[self tabBarViewControllers]];
+    tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout:)];
+    tabBarController.navigationItem.hidesBackButton = YES;
+    tabBarController.title = [CCTAuthenticationManager sharedManager].loggedInUser.firstName;
+    
+    [self.navigationController pushViewController:tabBarController animated:YES];
 }
 
 - (NSArray *)tabBarViewControllers

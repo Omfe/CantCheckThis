@@ -106,7 +106,7 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
         responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
         if ([(NSHTTPURLResponse *)urlResponse statusCode] == 200) {
-            
+            self.loggedInUser = nil;
             if (completion) {
                 completion(responseDictionary[@"status"], nil);
             }

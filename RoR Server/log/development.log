@@ -22269,3 +22269,159 @@ Can't verify CSRF token authenticity
   [1m[35mSQL (0.7ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 44  [["remember_token", nil], ["updated_at", "2014-09-09 12:44:06.385409"]]
   [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
 Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/all_schedules" for 127.0.0.1 at 2014-09-09 13:06:46 -0700
+Processing by SchedulesController#all_schedules as */*
+  Parameters: {"schedule"=>{}}
+  [1m[35mSchedule Load (84.1ms)[0m  SELECT "schedules".* FROM "schedules"
+  Rendered schedules/all_schedules.json.jbuilder (131.9ms)
+Completed 200 OK in 158ms (Views: 70.6ms | ActiveRecord: 84.1ms)
+
+
+Started POST "/register" for 127.0.0.1 at 2014-09-09 13:07:05 -0700
+Processing by UsersController#register as */*
+  Parameters: {"password"=>"[FILTERED]", "first_name"=>"please", "email"=>"trans@please.com", "last_name"=>"work", "schedule_id"=>"2", "user"=>{"first_name"=>"please", "last_name"=>"work", "email"=>"trans@please.com", "schedule_id"=>"2"}}
+Can't verify CSRF token authenticity
+  [1m[36m (42.9ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (140.9ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'trans@please.com' LIMIT 1
+  [1m[36mSQL (72.0ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "first_name", "last_name", "remember_token", "schedule_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", "2014-09-09 13:07:06.363855"], ["email", "trans@please.com"], ["encrypted_password", "$2a$10$zXZlDPp8.SL0RZwQ0xMENOR4NXZRMrb6OmOU./icNoaqBMQJTpBRy"], ["first_name", "please"], ["last_name", "work"], ["remember_token", "19ed449df5f8b21f65a15c34a2b2cde1"], ["schedule_id", 2], ["updated_at", "2014-09-09 13:07:06.363855"]]
+  [1m[35m (22.5ms)[0m  COMMIT
+  Rendered users/show.json.jbuilder (0.9ms)
+Completed 201 Created in 467ms (Views: 6.1ms | ActiveRecord: 278.3ms)
+
+
+Started GET "/all_schedules" for 127.0.0.1 at 2014-09-09 13:31:54 -0700
+Processing by SchedulesController#all_schedules as */*
+  Parameters: {"schedule"=>{}}
+  [1m[36mSchedule Load (130.0ms)[0m  [1mSELECT "schedules".* FROM "schedules"[0m
+  Rendered schedules/all_schedules.json.jbuilder (255.2ms)
+Completed 200 OK in 303ms (Views: 167.3ms | ActiveRecord: 130.0ms)
+
+
+Started GET "/all_schedules" for 127.0.0.1 at 2014-09-09 13:31:56 -0700
+Processing by SchedulesController#all_schedules as */*
+  Parameters: {"schedule"=>{}}
+  [1m[35mSchedule Load (0.5ms)[0m  SELECT "schedules".* FROM "schedules"
+  Rendered schedules/all_schedules.json.jbuilder (30.4ms)
+Completed 200 OK in 46ms (Views: 44.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/register" for 127.0.0.1 at 2014-09-09 13:32:12 -0700
+Processing by UsersController#register as */*
+  Parameters: {"password"=>"[FILTERED]", "first_name"=>"d", "email"=>"d@d.com", "last_name"=>"d", "schedule_id"=>"2", "user"=>{"first_name"=>"d", "last_name"=>"d", "email"=>"d@d.com", "schedule_id"=>"2"}}
+Can't verify CSRF token authenticity
+  [1m[36m (28.6ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (181.9ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'd@d.com' LIMIT 1
+  [1m[36mSQL (52.1ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "first_name", "last_name", "remember_token", "schedule_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", "2014-09-09 13:32:13.069477"], ["email", "d@d.com"], ["encrypted_password", "$2a$10$5kEJaAM56EYkpoe.xdyB1uV9IL4dtpBL9FWvMgt3qDWgP4Bzgo36m"], ["first_name", "d"], ["last_name", "d"], ["remember_token", "a168b2dc3c8e4516ac0b15d4a919d37b"], ["schedule_id", 2], ["updated_at", "2014-09-09 13:32:13.069477"]]
+  [1m[35m (24.8ms)[0m  COMMIT
+  Rendered users/show.json.jbuilder (0.4ms)
+Completed 201 Created in 465ms (Views: 15.2ms | ActiveRecord: 287.4ms)
+
+
+Started GET "/all_schedules" for 127.0.0.1 at 2014-09-09 13:33:41 -0700
+Processing by SchedulesController#all_schedules as */*
+  Parameters: {"schedule"=>{}}
+  [1m[36mSchedule Load (0.5ms)[0m  [1mSELECT "schedules".* FROM "schedules"[0m
+  Rendered schedules/all_schedules.json.jbuilder (4.3ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/register" for 127.0.0.1 at 2014-09-09 13:34:00 -0700
+Processing by UsersController#register as */*
+  Parameters: {"password"=>"[FILTERED]", "first_name"=>"e", "email"=>"e@e.com", "last_name"=>"e", "schedule_id"=>"2", "user"=>{"first_name"=>"e", "last_name"=>"e", "email"=>"e@e.com", "schedule_id"=>"2"}}
+Can't verify CSRF token authenticity
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'e@e.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "first_name", "last_name", "remember_token", "schedule_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["created_at", "2014-09-09 13:34:00.655051"], ["email", "e@e.com"], ["encrypted_password", "$2a$10$ZZkmnVSmer1qz8ZMCmFVj.46/aRUYYdklY7XSX2Fe5Irm3tq8p7A2"], ["first_name", "e"], ["last_name", "e"], ["remember_token", "39f4ecf53f7de91212f83222c96936ba"], ["schedule_id", 2], ["updated_at", "2014-09-09 13:34:00.655051"]]
+  [1m[36m (16.8ms)[0m  [1mCOMMIT[0m
+  Rendered users/show.json.jbuilder (0.5ms)
+Completed 201 Created in 134ms (Views: 18.8ms | ActiveRecord: 17.9ms)
+
+
+Started GET "/all_schedules" for 127.0.0.1 at 2014-09-09 13:34:29 -0700
+Processing by SchedulesController#all_schedules as */*
+  Parameters: {"schedule"=>{}}
+  [1m[35mSchedule Load (0.5ms)[0m  SELECT "schedules".* FROM "schedules"
+  Rendered schedules/all_schedules.json.jbuilder (4.6ms)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/all_schedules" for 127.0.0.1 at 2014-09-09 13:34:33 -0700
+Processing by SchedulesController#all_schedules as */*
+  Parameters: {"schedule"=>{}}
+  [1m[36mSchedule Load (0.6ms)[0m  [1mSELECT "schedules".* FROM "schedules"[0m
+  Rendered schedules/all_schedules.json.jbuilder (4.5ms)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/register" for 127.0.0.1 at 2014-09-09 13:34:33 -0700
+Processing by UsersController#register as */*
+  Parameters: {"password"=>"[FILTERED]", "first_name"=>"", "email"=>"", "last_name"=>"", "schedule_id"=>"2", "user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "schedule_id"=>"2"}}
+Can't verify CSRF token authenticity
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = '' LIMIT 1[0m
+  [1m[35m (89.4ms)[0m  ROLLBACK
+Completed 422 Unprocessable Entity in 250ms (Views: 0.4ms | ActiveRecord: 90.0ms)
+
+
+Started GET "/all_schedules" for 127.0.0.1 at 2014-09-10 09:05:42 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (106.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SchedulesController#all_schedules as */*
+  Parameters: {"schedule"=>{}}
+  [1m[35mSchedule Load (64.3ms)[0m  SELECT "schedules".* FROM "schedules"
+  Rendered schedules/all_schedules.json.jbuilder (214.6ms)
+Completed 200 OK in 564ms (Views: 379.3ms | ActiveRecord: 121.5ms)
+
+
+Started POST "/register" for 127.0.0.1 at 2014-09-10 09:06:08 -0700
+Processing by UsersController#register as */*
+  Parameters: {"password"=>"[FILTERED]", "first_name"=>"a", "email"=>"a@me.com", "last_name"=>"please", "schedule_id"=>"2", "user"=>{"first_name"=>"a", "last_name"=>"please", "email"=>"a@me.com", "schedule_id"=>"2"}}
+Can't verify CSRF token authenticity
+  [1m[36m (32.6ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (238.5ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'a@me.com' LIMIT 1
+  [1m[36mSQL (209.7ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "first_name", "last_name", "remember_token", "schedule_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", "2014-09-10 09:06:10.083677"], ["email", "a@me.com"], ["encrypted_password", "$2a$10$So6V7HJ.wxuFHV9CtN1hYe0KEJxKtNHWtMYZLD8cHQRAirRsei3Ey"], ["first_name", "a"], ["last_name", "please"], ["remember_token", "84ae1ef15ff362bef23d0d4d884234e7"], ["schedule_id", 2], ["updated_at", "2014-09-10 09:06:10.083677"]]
+  [1m[35m (98.6ms)[0m  COMMIT
+  Rendered users/show.json.jbuilder (0.9ms)
+Completed 201 Created in 1232ms (Views: 16.0ms | ActiveRecord: 705.6ms)
+
+
+Started GET "/all_schedules" for 127.0.0.1 at 2014-09-10 09:10:02 -0700
+Processing by SchedulesController#all_schedules as */*
+  Parameters: {"schedule"=>{}}
+  [1m[36mSchedule Load (0.6ms)[0m  [1mSELECT "schedules".* FROM "schedules"[0m
+  Rendered schedules/all_schedules.json.jbuilder (4.9ms)
+Completed 200 OK in 178ms (Views: 176.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/all_schedules" for 127.0.0.1 at 2014-09-10 09:10:10 -0700
+Processing by SchedulesController#all_schedules as */*
+  Parameters: {"schedule"=>{}}
+  [1m[35mSchedule Load (0.5ms)[0m  SELECT "schedules".* FROM "schedules"
+  Rendered schedules/all_schedules.json.jbuilder (4.4ms)
+Completed 200 OK in 66ms (Views: 64.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/register" for 127.0.0.1 at 2014-09-10 09:10:33 -0700
+Processing by UsersController#register as */*
+  Parameters: {"password"=>"[FILTERED]", "first_name"=>"ya", "email"=>"please@work.com", "last_name"=>"porfin", "schedule_id"=>"2", "user"=>{"first_name"=>"ya", "last_name"=>"porfin", "email"=>"please@work.com", "schedule_id"=>"2"}}
+Can't verify CSRF token authenticity
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'please@work.com' LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "first_name", "last_name", "remember_token", "schedule_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["created_at", "2014-09-10 09:10:33.871895"], ["email", "please@work.com"], ["encrypted_password", "$2a$10$ap4m8cWM8.bVNmyU0OgVDOJ5wq0F6YvfD39qkAZNQtr.Ja9l14Z9C"], ["first_name", "ya"], ["last_name", "porfin"], ["remember_token", "4faf302f04c5b87b3513788d1ca4cc29"], ["schedule_id", 2], ["updated_at", "2014-09-10 09:10:33.871895"]]
+  [1m[35m (155.9ms)[0m  COMMIT
+  Rendered users/show.json.jbuilder (1.8ms)
+Completed 201 Created in 318ms (Views: 37.4ms | ActiveRecord: 157.2ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2014-09-10 09:11:02 -0700
+Processing by SessionsController#destroy as */*
+  Parameters: {"session"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."remember_token" = '4faf302f04c5b87b3513788d1ca4cc29' LIMIT 1[0m
+  [1m[35mUser Load (96.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."remember_token" = '4faf302f04c5b87b3513788d1ca4cc29' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (226.9ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'please@work.com' AND "users"."id" != 49) LIMIT 1
+  [1m[36mSQL (46.2ms)[0m  [1mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = 49[0m  [["remember_token", nil], ["updated_at", "2014-09-10 09:11:02.580123"]]
+  [1m[35m (16.1ms)[0m  COMMIT
+Completed 200 OK in 586ms (Views: 0.4ms | ActiveRecord: 386.0ms)
