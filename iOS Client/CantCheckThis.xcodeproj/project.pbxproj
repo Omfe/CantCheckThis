@@ -11,8 +11,6 @@
 		994C73F619AF8E8600FD1090 /* CCTCheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 994C73F419AF8E8600FD1090 /* CCTCheckInViewController.xib */; };
 		9968435619B629D0001CBBAB /* CCTDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968435419B629D0001CBBAB /* CCTDatePickerViewController.m */; };
 		9968435719B629D0001CBBAB /* CCTDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968435519B629D0001CBBAB /* CCTDatePickerViewController.xib */; };
-		9968435B19B655DC001CBBAB /* CCTDailyCheckInsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968435919B655DC001CBBAB /* CCTDailyCheckInsViewController.m */; };
-		9968435C19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968435A19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib */; };
 		9968436019B8E222001CBBAB /* CCTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968435E19B8E222001CBBAB /* CCTRegisterViewController.m */; };
 		9968436119B8E222001CBBAB /* CCTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968435F19B8E222001CBBAB /* CCTRegisterViewController.xib */; };
 		9968436519BA1FD9001CBBAB /* CCTResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968436319BA1FD9001CBBAB /* CCTResetPasswordViewController.m */; };
@@ -36,6 +34,10 @@
 		999DF28919AE3E2800DB8E31 /* CCTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF28819AE3E2800DB8E31 /* CCTUser.m */; };
 		999DF28C19AE429D00DB8E31 /* CCTAuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF28B19AE429D00DB8E31 /* CCTAuthenticationManager.m */; };
 		999DF28F19AE42D800DB8E31 /* CCTWebServicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 999DF28E19AE42D800DB8E31 /* CCTWebServicesManager.m */; };
+		99D8DDED19C2334C00332F15 /* CCTUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D8DDEB19C2334C00332F15 /* CCTUsersViewController.m */; };
+		99D8DDEE19C2334C00332F15 /* CCTUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D8DDEC19C2334C00332F15 /* CCTUsersViewController.xib */; };
+		99D8DDF219C9F73C00332F15 /* CCTUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D8DDF019C9F73C00332F15 /* CCTUserProfileViewController.m */; };
+		99D8DDF319C9F73C00332F15 /* CCTUserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D8DDF119C9F73C00332F15 /* CCTUserProfileViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +57,6 @@
 		9968435319B629D0001CBBAB /* CCTDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTDatePickerViewController.h; sourceTree = "<group>"; };
 		9968435419B629D0001CBBAB /* CCTDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTDatePickerViewController.m; sourceTree = "<group>"; };
 		9968435519B629D0001CBBAB /* CCTDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTDatePickerViewController.xib; sourceTree = "<group>"; };
-		9968435819B655DC001CBBAB /* CCTDailyCheckInsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTDailyCheckInsViewController.h; sourceTree = "<group>"; };
-		9968435919B655DC001CBBAB /* CCTDailyCheckInsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTDailyCheckInsViewController.m; sourceTree = "<group>"; };
-		9968435A19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTDailyCheckInsViewController.xib; sourceTree = "<group>"; };
 		9968435D19B8E222001CBBAB /* CCTRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTRegisterViewController.h; sourceTree = "<group>"; };
 		9968435E19B8E222001CBBAB /* CCTRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTRegisterViewController.m; sourceTree = "<group>"; };
 		9968435F19B8E222001CBBAB /* CCTRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTRegisterViewController.xib; sourceTree = "<group>"; };
@@ -93,6 +92,12 @@
 		999DF28B19AE429D00DB8E31 /* CCTAuthenticationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTAuthenticationManager.m; sourceTree = "<group>"; };
 		999DF28D19AE42D800DB8E31 /* CCTWebServicesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTWebServicesManager.h; sourceTree = "<group>"; };
 		999DF28E19AE42D800DB8E31 /* CCTWebServicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTWebServicesManager.m; sourceTree = "<group>"; };
+		99D8DDEA19C2334C00332F15 /* CCTUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTUsersViewController.h; sourceTree = "<group>"; };
+		99D8DDEB19C2334C00332F15 /* CCTUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTUsersViewController.m; sourceTree = "<group>"; };
+		99D8DDEC19C2334C00332F15 /* CCTUsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTUsersViewController.xib; sourceTree = "<group>"; };
+		99D8DDEF19C9F73C00332F15 /* CCTUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTUserProfileViewController.h; sourceTree = "<group>"; };
+		99D8DDF019C9F73C00332F15 /* CCTUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTUserProfileViewController.m; sourceTree = "<group>"; };
+		99D8DDF119C9F73C00332F15 /* CCTUserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTUserProfileViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,15 +233,18 @@
 				9968435319B629D0001CBBAB /* CCTDatePickerViewController.h */,
 				9968435419B629D0001CBBAB /* CCTDatePickerViewController.m */,
 				9968435519B629D0001CBBAB /* CCTDatePickerViewController.xib */,
-				9968435819B655DC001CBBAB /* CCTDailyCheckInsViewController.h */,
-				9968435919B655DC001CBBAB /* CCTDailyCheckInsViewController.m */,
-				9968435A19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib */,
 				9968435D19B8E222001CBBAB /* CCTRegisterViewController.h */,
 				9968435E19B8E222001CBBAB /* CCTRegisterViewController.m */,
 				9968435F19B8E222001CBBAB /* CCTRegisterViewController.xib */,
 				9968436219BA1FD9001CBBAB /* CCTResetPasswordViewController.h */,
 				9968436319BA1FD9001CBBAB /* CCTResetPasswordViewController.m */,
 				9968436419BA1FD9001CBBAB /* CCTResetPasswordViewController.xib */,
+				99D8DDEA19C2334C00332F15 /* CCTUsersViewController.h */,
+				99D8DDEB19C2334C00332F15 /* CCTUsersViewController.m */,
+				99D8DDEC19C2334C00332F15 /* CCTUsersViewController.xib */,
+				99D8DDEF19C9F73C00332F15 /* CCTUserProfileViewController.h */,
+				99D8DDF019C9F73C00332F15 /* CCTUserProfileViewController.m */,
+				99D8DDF119C9F73C00332F15 /* CCTUserProfileViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -325,9 +333,10 @@
 				9968436619BA1FD9001CBBAB /* CCTResetPasswordViewController.xib in Resources */,
 				999DF25319AD1A9800DB8E31 /* InfoPlist.strings in Resources */,
 				999DF25B19AD1A9900DB8E31 /* Images.xcassets in Resources */,
-				9968435C19B655DC001CBBAB /* CCTDailyCheckInsViewController.xib in Resources */,
 				999DF27B19AD217500DB8E31 /* CCTSignInViewController.xib in Resources */,
 				994C73F619AF8E8600FD1090 /* CCTCheckInViewController.xib in Resources */,
+				99D8DDEE19C2334C00332F15 /* CCTUsersViewController.xib in Resources */,
+				99D8DDF319C9F73C00332F15 /* CCTUserProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,12 +359,13 @@
 				9968435619B629D0001CBBAB /* CCTDatePickerViewController.m in Sources */,
 				999DF25519AD1A9800DB8E31 /* main.m in Sources */,
 				999DF28F19AE42D800DB8E31 /* CCTWebServicesManager.m in Sources */,
+				99D8DDF219C9F73C00332F15 /* CCTUserProfileViewController.m in Sources */,
 				9968436019B8E222001CBBAB /* CCTRegisterViewController.m in Sources */,
 				999DF27A19AD217500DB8E31 /* CCTSignInViewController.m in Sources */,
 				999DF28619AE3E1600DB8E31 /* CCTSchedule.m in Sources */,
 				999DF28919AE3E2800DB8E31 /* CCTUser.m in Sources */,
-				9968435B19B655DC001CBBAB /* CCTDailyCheckInsViewController.m in Sources */,
 				9968436519BA1FD9001CBBAB /* CCTResetPasswordViewController.m in Sources */,
+				99D8DDED19C2334C00332F15 /* CCTUsersViewController.m in Sources */,
 				999DF28C19AE429D00DB8E31 /* CCTAuthenticationManager.m in Sources */,
 				999DF28319AE3DF800DB8E31 /* CCTCheckIn.m in Sources */,
 				999DF25919AD1A9800DB8E31 /* CCTAppDelegate.m in Sources */,

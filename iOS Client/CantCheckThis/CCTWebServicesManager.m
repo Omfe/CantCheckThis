@@ -53,7 +53,7 @@
         }
         
         if (completion) {
-            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Wait until tommorow" }];
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Cant Check This! Until Tomorrow" }];
             completion(responseDictionary[@"status"], error);
 
         }
@@ -113,7 +113,7 @@
         }
         
         if (completion) {
-            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"There was a problem with the date" }];
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"No Check Ins made" }];
             completion(responseDictionary[@"status"], error);
             
         }
@@ -158,7 +158,7 @@
         }
         
         if (completion) {
-            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Incorrect email or password" }];
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Not a registered email" }];
             completion(responseDictionary[@"status"], error);
         }
     }];
@@ -205,7 +205,58 @@
         }
         
         if (completion) {
-            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Wait until tommorow" }];
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Could not get Schedules" }];
+            completion(responseDictionary[@"status"], error);
+            
+        }
+    }];
+}
+
+- (void)getUsersWithCompletion:(CCTWebServicesGetUsers)completion
+{
+    NSMutableURLRequest *urlRequest;
+    NSURL *url;
+    NSString *urlString;
+    NSString *headerValue;
+    
+    urlString = [kServerURL stringByAppendingPathComponent:@"users_list"];
+    url = [NSURL URLWithString:urlString];
+    urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setHTTPMethod:@"GET"];
+    headerValue = [NSString stringWithFormat:@"Token token=%@", [[CCTAuthenticationManager sharedManager] loggedInUser].rememberToken];
+    [urlRequest setValue:headerValue forHTTPHeaderField:@"Authorization"];
+    [urlRequest addValue:@"application/json" forHTTPHeaderField:@"content-type"];
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {
+        NSDictionary *responseDictionary;
+        NSMutableArray *users;
+        CCTUser *user;
+        
+        if (error) {
+            if (completion) {
+                completion(nil, error);
+            }
+            return;
+        }
+        
+        responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if ([(NSHTTPURLResponse *)urlResponse statusCode] == 200) {
+            users = [[NSMutableArray alloc] init];
+            for (NSDictionary *dictionary in responseDictionary) {
+                user = [[CCTUser alloc] init];
+                [user updateUserFromDictionary:dictionary];
+                [users addObject:user];
+            }
+            
+            if (completion) {
+                completion(users, nil);
+            }
+            return;
+        }
+        
+        if (completion) {
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Could not get Users" }];
             completion(responseDictionary[@"status"], error);
             
         }

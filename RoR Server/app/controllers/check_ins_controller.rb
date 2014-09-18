@@ -83,8 +83,7 @@ class CheckInsController < ApplicationController
         end
       end
     else
-      puts "si fue falso y todo cool   >>>>>>>>>>>>>"
-      render status: 422, json: "Cant Check This! Until tommorow...".to_json
+      render json: {status: 'Cant Check This! Until Tomorrow...'}, status: 422
     end
   end
 

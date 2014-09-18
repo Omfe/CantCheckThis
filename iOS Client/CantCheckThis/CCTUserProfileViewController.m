@@ -1,57 +1,79 @@
 //
-//  CCTRegisterViewController.m
+//  CCTUserProfileViewController.m
 //  CantCheckThis
 //
-//  Created by Omar Gudino on 9/4/14.
+//  Created by Omar Gudino on 9/17/14.
 //  Copyright (c) 2014 Omar Gudino. All rights reserved.
 //
 
-#import "CCTRegisterViewController.h"
-#import "CCTAuthenticationManager.h"
-#import "CCTCheckInViewController.h"
-#import "CCTDatePickerViewController.h"
-#import "CCTWebServicesManager.h"
-#import "CCTSignInViewController.h"
+#import "CCTUserProfileViewController.h"
 #import "CCTSchedule.h"
+#import "CCTWebServicesManager.h"
+#import "CCTAuthenticationManager.h"
+#import "CCTResetPasswordViewController.h"
 
-@interface CCTRegisterViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface CCTUserProfileViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *schedulePickerView;
-@property (strong, nonatomic) NSArray *schedules;
+@property (weak, nonatomic) IBOutlet UIScrollView *userProfileScrollView;
 @property (nonatomic) NSArray *fieldArray;
-@property (weak, nonatomic) IBOutlet UIScrollView *registerScrollView;
+@property (strong, nonatomic) NSArray *schedules;
 
 @end
 
-@implementation CCTRegisterViewController
+@implementation CCTUserProfileViewController
 
 - (void)viewDidLoad
 {
     UITapGestureRecognizer *tapGestureRecognizer;
     
     [scroller setScrollEnabled:YES];
-    [self fetchAllSchedules];
     [super viewDidLoad];
-    [self setTitle:@"Register"];
-    self.fieldArray = [NSArray arrayWithObjects: self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.passwordTextField,  nil];
+    [self fetchAllSchedules];
+    [self setTitle:@"User Profile"];
+    self.fieldArray = [NSArray arrayWithObjects: self.firstNameTextField, self.lastNameTextField, self.emailTextField,  nil];
     
     UIBarButtonItem *dismissViewBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissViewController:)];
-    UIBarButtonItem *confirmRegistrationBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(confirmRegistration:)];
+    UIBarButtonItem *updateUserBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditing:)];
     self.navigationItem.leftBarButtonItem = dismissViewBarButtonItem;
-    self.navigationItem.rightBarButtonItem = confirmRegistrationBarButtonItem;
+    self.navigationItem.rightBarButtonItem = updateUserBarButtonItem;
     
     tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_hideTextView:)];
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
-    self.passwordTextField.secureTextEntry = YES;
+    self.firstNameTextField.text = [CCTAuthenticationManager sharedManager].loggedInUser.firstName;
+    self.lastNameTextField.text = [CCTAuthenticationManager sharedManager].loggedInUser.lastName;
+    self.emailTextField.text = [CCTAuthenticationManager sharedManager].loggedInUser.email;
+}
+- (IBAction)resetPasswordWasPressed:(id)sender
+{
+    CCTResetPasswordViewController *resetPasswordViewController;
+    UINavigationController *navigationController;
+    
+    resetPasswordViewController = [[CCTResetPasswordViewController alloc] initWithNibName:@"CCTResetPasswordViewController" bundle:nil];
+    navigationController = [[UINavigationController alloc] initWithRootViewController:resetPasswordViewController];
+    [self.navigationController pushViewController:resetPasswordViewController animated:YES];
+}
+
+- (IBAction)logoutButtonWasPressed:(id)sender
+{
+    [[CCTAuthenticationManager sharedManager] logoutWithCompletion:^(NSString *message, NSError *error) {
+        if (error) {
+            [[[UIAlertView alloc] initWithTitle:@"Logout" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            return;
+        }
+        
+        [[[UIAlertView alloc] initWithTitle:@"Logout" message:[NSString stringWithFormat:@"%@", message] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        [(UINavigationController *)self.presentingViewController  popViewControllerAnimated:NO];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (void)viewDidLayoutSubviews
 {
-    [scroller setContentSize:CGSizeMake(320, 601)];
+    [scroller setContentSize:CGSizeMake(320, 701)];
 }
 
 #pragma mark - UITextFieldDelegate Methods
@@ -60,13 +82,12 @@
     [self.firstNameTextField resignFirstResponder];
     [self.lastNameTextField resignFirstResponder];
     [self.emailTextField resignFirstResponder];
-    [self.passwordTextField resignFirstResponder];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     CGRect absoluteframe = [textField convertRect:textField.frame toView:[UIApplication sharedApplication].keyWindow];
-    [self.registerScrollView scrollRectToVisible:absoluteframe animated:YES];
+    [self.userProfileScrollView scrollRectToVisible:absoluteframe animated:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -90,9 +111,9 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)confirmRegistration:(UIBarButtonItem *) sender
+- (void)doneEditing:(UIBarButtonItem *) sender
 {
-    [self registrationDone];
+    [self updateUser];
 }
 
 #pragma mark - UIPickerViewDataSource Methods
@@ -110,15 +131,17 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSString *checkIn;
+    NSString *checkOut;
+    NSString *title;
     CCTSchedule *schedule;
     schedule = [[CCTSchedule alloc] init];
     
     schedule = [self.schedules objectAtIndex:row];
     checkIn = [self  stringBetweenString:@"T" andString:@"." withstring:schedule.checkIn];
-//    checkOut = [self stringBetweenString:@"T" andString:@"." withstring:schedule.checkOut];
-//    title = [NSString stringWithFormat:@"%@ - %@", checkIn, checkOut];
+    checkOut = [self stringBetweenString:@"T" andString:@"." withstring:schedule.checkOut];
+    title = [NSString stringWithFormat:@"%@ - %@", checkIn, checkOut];
     
-    return checkIn;
+    return title;
 }
 
 #pragma mark - Private Methods
@@ -134,11 +157,12 @@
         } else {
             self.schedules = schedules;
             [self.schedulePickerView reloadAllComponents];
+            [self.schedulePickerView selectRow:[self currentUserSchedule] inComponent:0 animated:YES];
         }
     }];
 }
 
-- (void)registrationDone
+- (void)updateUser
 {
     if ([self validatedInput]) {
         NSString *scheduleId;
@@ -148,13 +172,13 @@
         selectedSchedule = [self.schedules  objectAtIndex:[self. schedulePickerView selectedRowInComponent:0]];
         scheduleId = [NSString stringWithFormat:@"%@", selectedSchedule.scheduleId];
         
-        [[CCTAuthenticationManager sharedManager] registerWithFirstName:self.firstNameTextField.text andlastName:self.lastNameTextField.text andEmail:self.emailTextField.text andPassword:self.passwordTextField.text andScheduleId:scheduleId andCompletion:^(NSString *message, NSError *error) {
+        [[CCTAuthenticationManager sharedManager] updateUserWithFirstName:self.firstNameTextField.text andlastName:self.lastNameTextField.text andEmail:self.emailTextField.text andScheduleId:scheduleId andCompletion:^(NSString *message, NSError *error) {
             if (error) {
-                [[[UIAlertView alloc] initWithTitle:@"Register" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"User Update" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
                 return;
             } else {
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-                [[[UIAlertView alloc] initWithTitle:@"Register" message:[NSString stringWithFormat:@"Thank you %@", self.firstNameTextField.text] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show ];
+                [[[UIAlertView alloc] initWithTitle:@"User Update" message:[NSString stringWithFormat:@"%@ your changes were made", self.firstNameTextField.text] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show ];
             }
         }];
     }
@@ -181,7 +205,7 @@
     NSPredicate *emailTest =[NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     BOOL myStringMatchesRegEx=[emailTest evaluateWithObject:email];
     
-    if (self.firstNameTextField.text.length == 0 || self.lastNameTextField.text.length == 0 || self.passwordTextField.text.length == 0 ||self.emailTextField.text.length == 0) {
+    if (self.firstNameTextField.text.length == 0 || self.lastNameTextField.text.length == 0 ||self.emailTextField.text.length == 0) {
         [[[UIAlertView alloc] initWithTitle:@"Register" message:@"Fill all the text fields please" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show ];
         return NO;
     } else if (!myStringMatchesRegEx) {
@@ -191,4 +215,24 @@
         return YES;
     }
 }
+
+- (NSInteger)currentUserSchedule
+{
+    NSInteger index = 0;
+    
+    for (CCTSchedule *schedule in self.schedules) {
+        if ([[CCTAuthenticationManager sharedManager].loggedInUser.schedule.scheduleId isEqualToNumber:schedule.scheduleId]) {
+            return index;
+        }
+        index++;
+    }
+    return  0;
+}
+
+//NSDictionary *Health = @{@"1":@"South",@"2":@"North"};
+//int x = 1;
+//NSString *key = [NSString stringWithFormat:@"%i", x];
+//NSString *value = Health[key];
+//NSLog(@"value %@", value);
+
 @end

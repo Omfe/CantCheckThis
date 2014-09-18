@@ -114,7 +114,7 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
         }
         
         if (completion) {
-            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Exited" }];
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Logged out" }];
             completion(responseDictionary[@"status"], error);
             
         }
@@ -162,7 +162,7 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
         }
         
         if (completion) {
-            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Exited" }];
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Incorrect Password" }];
             completion(responseDictionary[@"status"], error);
             
         }
@@ -212,11 +212,59 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
         }
         
         if (completion) {
-            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Make sure its a unique email and fill the text fields." }];
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Make sure you have a valid email" }];
             completion(responseDictionary[@"status"], error);
         }
     }];
     
+}
+
+- (void)updateUserWithFirstName:(NSString *)firstName andlastName:(NSString *)lastName andEmail:(NSString *)email andScheduleId:(NSString *)scheduleId andCompletion:(CCTAuthenticationUpdateUserCompletionBlock)completion
+{
+    NSMutableURLRequest *urlRequest;
+    NSURL *url;
+    NSString *urlString;
+    NSString *headerValue;
+    NSData *bodyData;
+    NSDictionary *bodyDictionary;
+    
+    urlString = [kServerURL stringByAppendingPathComponent:@"update_user"];
+    url = [NSURL URLWithString:urlString];
+    urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    headerValue = [NSString stringWithFormat:@"Token token=%@", [[CCTAuthenticationManager sharedManager] loggedInUser].rememberToken];
+    [urlRequest setValue:headerValue forHTTPHeaderField:@"Authorization"];
+    [urlRequest addValue:@"application/json" forHTTPHeaderField:@"content-type"];
+    bodyDictionary = @{ @"first_name": firstName, @"last_name": lastName, @"email": email, @"schedule_id": scheduleId };
+    bodyData = [NSJSONSerialization dataWithJSONObject:bodyDictionary options:0 error:nil];
+    [urlRequest setHTTPBody:bodyData];
+
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {
+        NSDictionary *responseDictionary;
+        
+        if (error) {
+            if (completion) {
+                completion(nil, error);
+            }
+            return;
+        }
+        
+        responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if ([(NSHTTPURLResponse *)urlResponse statusCode] == 200) {
+            [self.loggedInUser updateUserFromDictionary:responseDictionary];
+            
+            if (completion) {
+                completion(responseDictionary[@"status"], nil);
+            }
+            return;
+        }
+        
+        if (completion) {
+            error = [[NSError alloc] initWithDomain:CCTServerError code:422 userInfo:@{ NSLocalizedDescriptionKey: @"Error 422" }];
+            completion(responseDictionary[@"status"], error);
+        }
+    }];
 }
 
 @end

@@ -14,6 +14,7 @@ typedef void(^CCTAuthenticationLoginCompletionBlock)(NSString *message, NSError 
 typedef void(^CCTAuthenticationLogoutCompletionBlock)(NSString *message, NSError *error);
 typedef void(^CCTAuthenticationResetPasswordCompletionBlock)(NSString *message, NSError *error);
 typedef void(^CCTAuthenticationRegisterCompletionBlock)(NSString *message, NSError *error);
+typedef void(^CCTAuthenticationUpdateUserCompletionBlock)(NSString *message, NSError *error);
 
 @interface CCTAuthenticationManager : NSObject
 
@@ -25,6 +26,6 @@ typedef void(^CCTAuthenticationRegisterCompletionBlock)(NSString *message, NSErr
 - (void)logoutWithCompletion:(CCTAuthenticationLogoutCompletionBlock)completion;
 - (void)resetPasswordWithOldPassword:(NSString *)oldPassword withNewPassword:(NSString *)newPassword andCompletion:(CCTAuthenticationResetPasswordCompletionBlock)completion;
 - (void)registerWithFirstName:(NSString *)firstName andlastName:(NSString *)lastName andEmail:(NSString *)email andPassword:(NSString *)password andScheduleId:(NSString *)scheduleId andCompletion:(CCTAuthenticationRegisterCompletionBlock)completion;
-
+- (void)updateUserWithFirstName:(NSString *)firstName andlastName:(NSString *)lastName andEmail:(NSString *)email andScheduleId:(NSString *)scheduleId andCompletion:(CCTAuthenticationUpdateUserCompletionBlock)completion;
 
 @end

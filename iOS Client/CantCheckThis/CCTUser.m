@@ -7,11 +7,14 @@
 //
 
 #import "CCTUser.h"
+#import "CCTSchedule.h"
 
 @implementation CCTUser
 
 - (void)updateUserFromDictionary:(NSDictionary *)dictionary
 {
+    self.schedule = [[CCTSchedule alloc] init];
+    
     self.userId = dictionary[@"id"];
     self.firstName = dictionary[@"first_name"];
     self.lastName = dictionary[@"last_name"];
@@ -19,6 +22,8 @@
     self.points = dictionary[@"points"];
     self.isAdmin = dictionary[@"is_admin"];
     self.rememberToken = dictionary[@"remember_token"];
+//    self.schedule = dictionary[@"schedule"];
+    [self.schedule updateFromDictionary:dictionary[@"schedule"]];
 }
 
 @end

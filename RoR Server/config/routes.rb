@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   
   get 'all_schedules' => 'schedules#all_schedules'
   
+  post 'update_user' => 'users#update_user'
+  
   root :to => 'sessions#new'
 
   # The priority is based upon order of creation: first created -> highest priority.

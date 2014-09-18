@@ -13,6 +13,7 @@ typedef void(^CCTWebServicesCheckInCompletionBlock)(NSString *message, NSError *
 typedef void(^CCTWebServicesDailyReportCompletionBlock)(NSArray *checkIns, NSError *error);
 typedef void(^CCTWebServicesForgotPasswordCompletionBlock)(NSString *message, NSError *error);
 typedef void(^CCTWebServicesGetSchedules)(NSArray *schedules, NSError *error);
+typedef void(^CCTWebServicesGetUsers)(NSArray *users, NSError *error);
 
 @interface CCTWebServicesManager : NSObject
 
@@ -20,5 +21,6 @@ typedef void(^CCTWebServicesGetSchedules)(NSArray *schedules, NSError *error);
 - (void)getDailyReportWithDate:(NSDate *)date andCompletion:(CCTWebServicesDailyReportCompletionBlock)completion;
 - (void)forgotPasswordWithEmail:(NSString *)email andCompletion:(CCTWebServicesForgotPasswordCompletionBlock)completion;
 - (void)getSchedulesWithCompletion:(CCTWebServicesGetSchedules)completion;
+- (void)getUsersWithCompletion:(CCTWebServicesGetUsers)completion;
 
 @end

@@ -13,11 +13,14 @@
 #import "CCTWebServicesManager.h"
 #import "CCTUser.h"
 #import "CCTRegisterViewController.h"
+#import "CCTUsersViewController.h"
+#import "CCTUserProfileViewController.h"
 
 @interface CCTSignInViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (nonatomic) NSArray *fieldArray;
 
 @end
 
@@ -48,6 +51,7 @@
     [super viewDidLoad];
     self.title = @"Login";
     self.passwordTextField.secureTextEntry = YES;
+    self.fieldArray = [NSArray arrayWithObjects: self.emailTextField, self.passwordTextField, nil];
     
     tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_hideTextView:)];
     [self.view addGestureRecognizer:tapGestureRecognizer];
@@ -56,13 +60,22 @@
 #pragma mark - UITextFieldDelegate Methods
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if ( textField == self.emailTextField ) {
-        [self.passwordTextField becomeFirstResponder];
-    } else {
-        [self login];
+    BOOL didResign = [textField resignFirstResponder];
+    if (!didResign) return NO;
+    
+    NSUInteger index = [self.fieldArray indexOfObject:textField];
+    if (index == NSNotFound || index + 1 == self.fieldArray.count){
+        if ([self isValidInput]) {
+            [self login];
+        }
+        return NO;
     }
     
-    return YES;
+    id nextField = [self.fieldArray objectAtIndex:index + 1];
+    textField = nextField;
+    [nextField becomeFirstResponder];
+    
+    return NO;
 }
 
 - (void)_hideTextView:(UITapGestureRecognizer *)tapGestureRecognizer
@@ -74,21 +87,31 @@
 #pragma mark - AlertView Delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        NSString *email = [alertView textFieldAtIndex:0].text;
         CCTWebServicesManager *webServicesManager;
+        NSString *email = [alertView textFieldAtIndex:0].text;
+        NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+        NSPredicate *emailTest =[NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+        BOOL myStringMatchesRegEx=[emailTest evaluateWithObject:email];
         
-        webServicesManager = [[CCTWebServicesManager alloc] init];
-        [webServicesManager forgotPasswordWithEmail:email andCompletion:^(NSString *message, NSError *error) {
-            UIAlertView *confirmation=[[UIAlertView alloc] initWithTitle:@"Thank You!"      message:@"Email Sent" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [confirmation show];
-        }];
+        if (myStringMatchesRegEx) {
+            webServicesManager = [[CCTWebServicesManager alloc] init];
+            [webServicesManager forgotPasswordWithEmail:email andCompletion:^(NSString *message, NSError *error) {
+                UIAlertView *confirmation=[[UIAlertView alloc] initWithTitle:@"Email Request"  message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [confirmation show];
+            }];
+        } else {
+            UIAlertView *emailSyntaxError=[[UIAlertView alloc] initWithTitle:@"Email Request"  message:@"Not a email syntax" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [emailSyntaxError show];
+        }
     }
 }
 
 #pragma mark - Action Methods
 - (IBAction)loginButtonWasPressed:(id)sender
 {
-    [self login];
+    if ([self isValidInput]) {
+        [self login];
+    }
 }
 
 - (IBAction)registerButtonWasPressed:(id)sender
@@ -115,7 +138,7 @@
     [[CCTAuthenticationManager sharedManager] loginWithEmail:self.emailTextField.text withPassword:self.passwordTextField.text andCompletion:^(NSString *message, NSError *error) {
         
         if (error) {
-            [[[UIAlertView alloc] initWithTitle:@"There was an error!" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"Login!" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
             return;
         }
         [self.view endEditing:YES];
@@ -125,17 +148,14 @@
     }];
 }
 
-- (void)logout:(UIBarButtonItem *)sender
+- (void)navigateToUserProfile:(UIBarButtonItem *)sender
 {
-    [[CCTAuthenticationManager sharedManager] logoutWithCompletion:^(NSString *message, NSError *error) {
-        if (error) {
-            [[[UIAlertView alloc] initWithTitle:@"There was an error!" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-            return;
-        }
-        
-        [[[UIAlertView alloc] initWithTitle:@"Logged Out!" message:[NSString stringWithFormat:@"%@", message] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }];
+    CCTUserProfileViewController *userProfileViewController;
+    UINavigationController *navigationController;
+    
+    userProfileViewController = [[CCTUserProfileViewController alloc] initWithNibName:@"CCTUserProfileViewController" bundle:nil];
+    navigationController = [[UINavigationController alloc] initWithRootViewController:userProfileViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)loggedInUserTravelsToCheckInView
@@ -144,7 +164,7 @@
     
     tabBarController = [[UITabBarController alloc] init];
     [tabBarController setViewControllers:[self tabBarViewControllers]];
-    tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleBordered target:self action:@selector(logout:)];
+    tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"User" style:UIBarButtonItemStyleBordered target:self action:@selector(navigateToUserProfile:)];
     tabBarController.navigationItem.hidesBackButton = YES;
     tabBarController.title = [CCTAuthenticationManager sharedManager].loggedInUser.firstName;
     
@@ -155,20 +175,44 @@
 {
     CCTCheckInViewController *checkInViewController;
     CCTDatePickerViewController *datePickerViewController;
+    CCTUsersViewController *usersViewController;
     UINavigationController *checkInNavController;
     UINavigationController *datePickerNavController;
+    UINavigationController *usersNavController;
     NSArray *viewControllers;
     
     checkInViewController = [[CCTCheckInViewController alloc] initWithNibName:@"CCTCheckInViewController" bundle:nil];
     datePickerViewController = [[CCTDatePickerViewController alloc] initWithNibName:@"CCTDatePickerViewController" bundle:nil];
+    usersViewController = [[CCTUsersViewController alloc] initWithNibName:@"CCTUsersViewController" bundle:nil];
     
     checkInNavController = [[UINavigationController alloc] initWithRootViewController:checkInViewController];
-    datePickerNavController = [[UINavigationController alloc]initWithRootViewController:datePickerViewController];
+    datePickerNavController = [[UINavigationController alloc] initWithRootViewController:datePickerViewController];
+    usersNavController = [[UINavigationController alloc] initWithRootViewController:usersViewController];
     
-    viewControllers = @[checkInNavController, datePickerNavController];
+    viewControllers = @[checkInNavController, datePickerNavController, usersNavController];
     
     [datePickerViewController setTitle:@"Daily Check Ins"];
     [checkInViewController setTitle:@"Check In!"];
+    [usersViewController setTitle:@"Users"];
+    
     return viewControllers;
+}
+
+- (BOOL)isValidInput
+{
+    NSString *email = self.emailTextField.text;
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest =[NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    BOOL myStringMatchesRegEx=[emailTest evaluateWithObject:email];
+    
+    if (self.emailTextField.text.length == 0 || self.passwordTextField.text.length == 0) {
+        [[[UIAlertView alloc] initWithTitle:@"Login!" message:@"Fill the text fields" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        return NO;
+    } else if (!myStringMatchesRegEx){
+        [[[UIAlertView alloc] initWithTitle:@"Login!" message:@"Enter a valid email id" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        return NO;
+    } else{
+        return YES;
+    }
 }
 @end

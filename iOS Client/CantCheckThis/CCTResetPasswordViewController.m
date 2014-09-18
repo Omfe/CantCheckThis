@@ -12,7 +12,7 @@
 @interface CCTResetPasswordViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *oldPasswordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *theNewPasswordTextField;
-@property (weak, nonatomic) IBOutlet UITextField *confirmNewPasswordTextField;
+@property (nonatomic) NSArray *fieldArray;
 
 @end
 
@@ -24,6 +24,8 @@
     
     [super viewDidLoad];
     [self setTitle:@"Reset Password"];
+    self.fieldArray = [NSArray arrayWithObjects: self.oldPasswordTextField, self.theNewPasswordTextField,  nil];
+
     UIBarButtonItem *dismissViewBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissViewController:)];
     self.navigationItem.leftBarButtonItem = dismissViewBarButtonItem;
     
@@ -32,7 +34,6 @@
     
     self.oldPasswordTextField.secureTextEntry = YES;
     self.theNewPasswordTextField.secureTextEntry = YES;
-    self.confirmNewPasswordTextField.secureTextEntry = YES;
 }
 
 #pragma mark - UITextFieldDelegate Methods
@@ -40,39 +41,52 @@
 {
     [self.oldPasswordTextField resignFirstResponder];
     [self.theNewPasswordTextField resignFirstResponder];
-    [self.confirmNewPasswordTextField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    BOOL didResign = [textField resignFirstResponder];
+    if (!didResign) return NO;
+    
+    NSUInteger index = [self.fieldArray indexOfObject:textField];
+    if (index == NSNotFound || index + 1 == self.fieldArray.count) return NO;
+    
+    id nextField = [self.fieldArray objectAtIndex:index + 1];
+    textField = nextField;
+    [nextField becomeFirstResponder];
+    
+    return NO;
 }
 
 - (IBAction)changePasswordButtonWasPressed:(id)sender
 {
-    if ([self.theNewPasswordTextField.text isEqualToString:self.confirmNewPasswordTextField.text]) {
-        [[CCTAuthenticationManager sharedManager] resetPasswordWithOldPassword:self.oldPasswordTextField.text withNewPassword:self.confirmNewPasswordTextField.text andCompletion:^(NSString *message, NSError *error) {
+    if ([self validatedInput]) {
+        [[CCTAuthenticationManager sharedManager] resetPasswordWithOldPassword:self.oldPasswordTextField.text withNewPassword:self.theNewPasswordTextField.text andCompletion:^(NSString *message, NSError *error) {
             if (error) {
-                [[[UIAlertView alloc] initWithTitle:@"There was an error!" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"Password Reset" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
                 return;
             } else {
-                [[[UIAlertView alloc] initWithTitle:@"Password Reset!" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show ];
+                [[[UIAlertView alloc] initWithTitle:@"Password Reset" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show ];
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             }
         }];
-    } else {
-        [[[UIAlertView alloc] initWithTitle:@"Confirm the New Password Correctly" message:@"Did not match" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
     }
 }
 
 - (void)dismissViewController:(UIBarButtonItem *)sender
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+- (BOOL)validatedInput
 {
-    [self.view setFrame:CGRectMake(0,-40,320,460)];
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    [self.view setFrame:CGRectMake(0,0,320,460)];
+    
+    if (self.theNewPasswordTextField.text.length == 0 || self.oldPasswordTextField.text.length == 0) {
+        [[[UIAlertView alloc] initWithTitle:@"Register" message:@"Fill all the text fields please" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show ];
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 @end

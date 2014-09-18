@@ -7,11 +7,19 @@
 //
 
 #import "CCTDatePickerViewController.h"
-#import "CCTDailyCheckInsViewController.h"
+#import "CCTCheckIn.h"
+#import "CCTWebServicesManager.h"
 
-@interface CCTDatePickerViewController ()<UITextFieldDelegate>
+@interface CCTDatePickerViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *dateTextField;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UITableView *checkInsTableView;
+@property (strong, nonatomic) NSArray *dailyCheckIns;
+@property (weak, nonatomic) NSDate *date;
+@property (strong, nonatomic) UIDatePicker *datePicker;
+@property (strong, nonatomic) UIToolbar *toolbar;
+@property (strong, nonatomic) UIView *datePickerHolder;
 
 @end
 
@@ -20,61 +28,163 @@
 - (void)viewDidLoad
 {
     UITapGestureRecognizer *tapGestureRecognizer;
-    UIDatePicker *datePicker;
-    
+    NSDateFormatter *dateFormat;
+
+    self.date = [NSDate date];
+    dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    self.dateLabel.text = [dateFormat stringFromDate:[NSDate date]];
     [super viewDidLoad];
-    datePicker = [[UIDatePicker alloc]init];
-    datePicker.datePickerMode = UIDatePickerModeDate;
-    [datePicker setDate:[NSDate date]];
-    [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
-    [self.dateTextField setInputView:datePicker];
+    [self fetchDailyCheckIns];
+    [self initializeDatePicker];
     
     tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_hideDatePickerView:)];
+    tapGestureRecognizer.delegate = self;
     [self.view addGestureRecognizer:tapGestureRecognizer];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if (touch.view == self.view)
+    {
+        return YES;
+    }
+    return  NO;
 }
 
 #pragma mark - UITextFieldDelegate Methods
 - (void)_hideDatePickerView:(UITapGestureRecognizer *)tapGestureRecognizer
 {
-    [self.dateTextField resignFirstResponder];
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.datePickerHolder.frame = CGRectMake(0, 480, 320, 215);
+                     }];
 }
 
+#pragma mark - UITableViewDataSource Methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dailyCheckIns.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    static NSString *identifier = @"DailyCheckInsTableViewCellIdentifier";
+    CCTCheckIn *checkIn;
+    
+    cell = [self.checkInsTableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    
+    checkIn = [[CCTCheckIn alloc] init];
+    checkIn = [self.dailyCheckIns objectAtIndex:indexPath.row];
+    NSString *timeString=[self stringBetweenString:@"T" andString:@"." withstring:checkIn.checkedInAt];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", checkIn.user.firstName, timeString];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
 #pragma mark - UIDatePicker Action Method
-- (void)updateTextField:(id)sender
+- (void)updateLabel:(id)sender
 {
     NSDateFormatter *dateFormat;
     dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    UIDatePicker *picker = (UIDatePicker*)self.dateTextField.inputView;
-    self.dateTextField.text = [dateFormat stringFromDate:picker.date];
+    self.dateLabel.text = [dateFormat stringFromDate:self.datePicker.date];
 }
 
 #pragma mark - Action Methods
-- (IBAction)okButtonWasPressed:(id)sender
+- (IBAction)chooseDateButtonWasPressed:(id)sender
 {
-    [self choseDate];
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.datePickerHolder.frame = CGRectMake(0, 200, 320, 215);
+                     }];
 }
 
 #pragma mark - Private Methods
-- (void)choseDate
+- (void)chosedDate:(id)sender
 {
-    NSDateFormatter *dateFormatter;
-    NSDate *dateFromString;
+    NSDateFormatter *dateFormat;
+    dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    self.dateLabel.text = [dateFormat stringFromDate:self.datePicker.date];
+    self.date = self.datePicker.date;
     
-    dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    dateFromString = [dateFormatter dateFromString:self.dateTextField.text];
+    [self fetchDailyCheckIns];
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.datePickerHolder.frame = CGRectMake(0, 480, 320, 215);
+                     }];
+}
+
+- (void)fetchDailyCheckIns
+{
+    CCTWebServicesManager *webServicesManager;
+    webServicesManager = [[CCTWebServicesManager alloc] init];
     
-    if (dateFromString == nil) {
-        [[[UIAlertView alloc] initWithTitle:@"Select a Valid Date!" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-    } else {
-        CCTDailyCheckInsViewController *dailyCheckInsViewController;
-        UINavigationController *navigationController;
-        
-        dailyCheckInsViewController = [[CCTDailyCheckInsViewController alloc] initWithNibName:@"CCTDailyCheckInsViewController" bundle:nil];
-        navigationController = [[UINavigationController alloc] initWithRootViewController:dailyCheckInsViewController];
-        dailyCheckInsViewController.date = dateFromString;
-        [self presentViewController:navigationController animated:YES completion:nil];
+    [webServicesManager getDailyReportWithDate:self.date andCompletion:^(NSArray *checkIns, NSError *error)
+     {
+         if (error) {
+             [[[UIAlertView alloc] initWithTitle:@"Daily Check Ins" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+             return;
+         }
+         
+         self.dailyCheckIns = checkIns;
+         [self.checkInsTableView reloadData];
+     }];
+}
+
+- (NSString*)stringBetweenString:(NSString*)start andString:(NSString *)end withstring:(NSString*)str
+{
+    NSScanner* scanner = [NSScanner scannerWithString:str];
+    [scanner setCharactersToBeSkipped:nil];
+    [scanner scanUpToString:start intoString:NULL];
+    if ([scanner scanString:start intoString:NULL]) {
+        NSString* result = nil;
+        if ([scanner scanUpToString:end intoString:&result]) {
+            return result;
+        }
     }
+    return nil;
+}
+
+- (void)initializeDatePicker
+{
+    NSDateFormatter *dateFormat;
+    dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    
+    self.datePickerHolder = [[UIView alloc] init];
+    self.datePickerHolder.frame = CGRectMake(0, 480, 320, 215);
+    
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    self.toolbar.barStyle   = UIBarStyleDefault;
+    
+    UIBarButtonItem *itemDone  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(chosedDate:)];
+    UIBarButtonItem *itemSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    self.toolbar.items = @[itemSpace,itemDone];
+    [self.datePickerHolder addSubview:self.toolbar];
+    
+    CGSize pickerSize = [self.datePicker sizeThatFits:CGSizeZero];
+    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, pickerSize.width, pickerSize.height)];
+    self.datePicker.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    self.datePicker.date = [dateFormat dateFromString:self.dateLabel.text];
+    
+    [self.datePicker addTarget:self action:@selector(updateLabel:) forControlEvents:UIControlEventValueChanged];
+    self.datePicker.backgroundColor = [UIColor whiteColor];
+    
+    [self.datePickerHolder addSubview:self.datePicker];
+    [self.view addSubview:self.datePickerHolder];
 }
 @end

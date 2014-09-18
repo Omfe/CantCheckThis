@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CCTSchedule.h"
 
 @interface CCTUser : NSObject
 
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) NSNumber *isAdmin;
 @property (strong, nonatomic) NSString *rememberToken;
 @property (strong, nonatomic) NSString *encryptedPassword;
+@property (strong, nonatomic) CCTSchedule *schedule;
 
 - (void)updateUserFromDictionary:(NSDictionary *)dictionary;
 

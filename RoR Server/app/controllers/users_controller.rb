@@ -35,10 +35,11 @@ class UsersController < ApplicationController
          user.password = random_password
          user.save!
         UserMailer.send_forgot_password_email(user, random_password).deliver
+        render json: {status: 'Email has been sent'}, status: 200
+        return
       end
     end
-    
-    render json: {status: 'ok'}, status: 200
+    render json: {status: 'Invalid Email'}, status: 422
   end
   
   def reset_password
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
       user.save!
       render json: {status: 'Password Changed Successfully'}, status: 200
     else
-    render json: {status: 'Incorrect Password'}, status: 401
+    render json: {status: 'Incorrect Password'}, status: 422
     end
   end
   
@@ -58,9 +59,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.password = params[:password]
     @user.generate_remember_token
+    @user.points = 0
     respond_to do |format|
       if @user.save
-        format.json { render :show, status: :created, location: @user }
+        format.json { render :register, status: :created, location: @user }
       else
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -95,6 +97,18 @@ class UsersController < ApplicationController
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  # POST /update_user
+  def update_user
+    @user = current_user
+    respond_to do |format|
+      if @user.update(user_params)
+        format.json { render :show, status: :ok, location: @user }
+      else
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

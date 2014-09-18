@@ -7,13 +7,13 @@ class SessionsController < ApplicationController
   def signin
     puts "#{params[:email]}>>>>>>>>>>>>>>>>>"
     puts "#{params[:password]}>>>>>>>>>>>>>>>>>"
-    user = User.find_by(email: params[:email].downcase)
+    @user = User.find_by(email: params[:email].downcase)
     #if user && user.authenticate(params[:session][:password])
-    if user.password == params[:password]
-      user.generate_remember_token
+    if @user.password == params[:password]
+      @user.generate_remember_token
       respond_to do |format| 
-        if user.save!
-          format.json { render json: user, status: :created}
+        if @user.save!
+          format.json { render :login, status: :created}
         else
           format.json { render json: user.errors, status: :unprocessable_entity }
         end
