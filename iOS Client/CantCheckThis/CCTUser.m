@@ -26,4 +26,27 @@
     [self.schedule updateFromDictionary:dictionary[@"schedule"]];
 }
 
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.userId forKey:@"userId"];
+    [encoder encodeObject:self.firstName forKey:@"firstName"];
+    [encoder encodeObject:self.lastName forKey:@"lastName"];
+    [encoder encodeObject:self.email forKey:@"email"];
+    [encoder encodeObject:self.points forKey:@"points"];
+    [encoder encodeObject:self.isAdmin forKey:@"isAdmin"];
+    [encoder encodeObject:self.rememberToken forKey:@"rememberToken"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if((self = [super init])) {
+        self.userId = [decoder decodeObjectForKey:@"userId"];
+        self.firstName = [decoder decodeObjectForKey:@"firstName"];
+        self.lastName = [decoder decodeObjectForKey:@"lastName"];
+        self.email = [decoder decodeObjectForKey:@"email"];
+        self.points = [decoder decodeObjectForKey:@"points"];
+        self.isAdmin = [decoder decodeObjectForKey:@"isAdmin"];
+        self.rememberToken = [decoder decodeObjectForKey:@"rememberToken"];
+    }
+    return self;
+}
+
 @end

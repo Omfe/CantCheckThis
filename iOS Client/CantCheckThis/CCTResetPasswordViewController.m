@@ -49,7 +49,10 @@
     if (!didResign) return NO;
     
     NSUInteger index = [self.fieldArray indexOfObject:textField];
-    if (index == NSNotFound || index + 1 == self.fieldArray.count) return NO;
+    if (index == NSNotFound || index + 1 == self.fieldArray.count){
+        [self resetPassword];
+        return NO;
+    }
     
     id nextField = [self.fieldArray objectAtIndex:index + 1];
     textField = nextField;
@@ -60,17 +63,7 @@
 
 - (IBAction)changePasswordButtonWasPressed:(id)sender
 {
-    if ([self validatedInput]) {
-        [[CCTAuthenticationManager sharedManager] resetPasswordWithOldPassword:self.oldPasswordTextField.text withNewPassword:self.theNewPasswordTextField.text andCompletion:^(NSString *message, NSError *error) {
-            if (error) {
-                [[[UIAlertView alloc] initWithTitle:@"Password Reset" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-                return;
-            } else {
-                [[[UIAlertView alloc] initWithTitle:@"Password Reset" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show ];
-                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-            }
-        }];
-    }
+    [self resetPassword];
 }
 
 - (void)dismissViewController:(UIBarButtonItem *)sender
@@ -86,6 +79,21 @@
         return NO;
     } else {
         return YES;
+    }
+}
+
+- (void)resetPassword
+{
+    if ([self validatedInput]) {
+        [[CCTAuthenticationManager sharedManager] resetPasswordWithOldPassword:self.oldPasswordTextField.text withNewPassword:self.theNewPasswordTextField.text andCompletion:^(NSString *message, NSError *error) {
+            if (error) {
+                [[[UIAlertView alloc] initWithTitle:@"Password Reset" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+                return;
+            } else {
+                [[[UIAlertView alloc] initWithTitle:@"Password Reset" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show ];
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            }
+        }];
     }
 }
 

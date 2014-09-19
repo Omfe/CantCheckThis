@@ -48,6 +48,8 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
     
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {
         NSDictionary *responseDictionary;
+        NSUserDefaults *savedLoggedInUser;
+        NSData *loggedInUser;
         
         if (error) {
             if (completion) {
@@ -63,6 +65,10 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
                 self.loggedInUser = [[CCTUser alloc] init];
             }
             [self.loggedInUser updateUserFromDictionary:responseDictionary];
+            loggedInUser = [NSKeyedArchiver archivedDataWithRootObject:self.loggedInUser];
+            savedLoggedInUser = [NSUserDefaults standardUserDefaults];
+            [savedLoggedInUser setObject:loggedInUser forKey:@"loggedInUser"];
+            [savedLoggedInUser synchronize];
             
             if (completion) {
                 completion(responseDictionary[@"status"], nil);
@@ -107,6 +113,7 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
         
         if ([(NSHTTPURLResponse *)urlResponse statusCode] == 200) {
             self.loggedInUser = nil;
+            [self resetDefaults];
             if (completion) {
                 completion(responseDictionary[@"status"], nil);
             }
@@ -189,6 +196,7 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
     
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {
         NSDictionary *responseDictionary;
+        NSUserDefaults *savedLoggedInUser;
         
         if (error) {
             if (completion) {
@@ -204,6 +212,9 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
                 self.loggedInUser = [[CCTUser alloc] init];
             }
             [self.loggedInUser updateUserFromDictionary:responseDictionary];
+            savedLoggedInUser = [NSUserDefaults standardUserDefaults];
+            [savedLoggedInUser setObject:[CCTAuthenticationManager sharedManager].loggedInUser forKey:@"loggedInUser"];
+            [savedLoggedInUser synchronize];
             
             if (completion) {
                 completion(responseDictionary[@"status"], nil);
@@ -216,7 +227,6 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
             completion(responseDictionary[@"status"], error);
         }
     }];
-    
 }
 
 - (void)updateUserWithFirstName:(NSString *)firstName andlastName:(NSString *)lastName andEmail:(NSString *)email andScheduleId:(NSString *)scheduleId andCompletion:(CCTAuthenticationUpdateUserCompletionBlock)completion
@@ -265,6 +275,15 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
             completion(responseDictionary[@"status"], error);
         }
     }];
+}
+
+- (void)resetDefaults {
+    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+    NSDictionary * dict = [defs dictionaryRepresentation];
+    for (id key in dict) {
+        [defs removeObjectForKey:key];
+    }
+    [defs synchronize];
 }
 
 @end

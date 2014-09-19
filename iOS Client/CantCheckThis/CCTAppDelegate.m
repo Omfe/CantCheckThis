@@ -8,6 +8,9 @@
 
 #import "CCTAppDelegate.h"
 #import "CCTSignInViewController.h"
+#import "CCTAuthenticationManager.h"
+
+
 
 @implementation CCTAppDelegate
 
@@ -16,17 +19,13 @@
     UINavigationController *navigationController;
     CCTSignInViewController *signinViewController;
     
-    //    NSDictionary *item = @{ @"num": @1};
-    //    MSTable *itemTable = [client tableWithName:@"Item"];
-    //
-    //    [itemTable insert:item completion:^(NSDictionary *insertedItem, NSError *error) {
-    //        if (error) {
-    //            NSLog(@"Error: %@", error);
-    //        } else {
-    //            NSLog(@"Item inserted, id: %@", [insertedItem objectForKey:@"id"]);
-    //        }
-    //    }];
-    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* bundleId = [[NSBundle mainBundle] bundleIdentifier];
+    NSDictionary* mainBundleSettings = [defaults persistentDomainForName:bundleId];
+    if (mainBundleSettings) {
+        NSData *loggedInUser = [defaults objectForKey:@"loggedInUser"];
+        [CCTAuthenticationManager sharedManager].loggedInUser = [NSKeyedUnarchiver unarchiveObjectWithData:loggedInUser];
+    }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     signinViewController = [[CCTSignInViewController alloc] initWithNibName:@"CCTSignInViewController" bundle:nil];
