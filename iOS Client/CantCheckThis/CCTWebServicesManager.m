@@ -12,7 +12,8 @@
 #import "CCTCheckIn.h"
 #import "CCTSchedule.h"
 
-#define kServerURL @"http://localhost:3000"
+//#define kServerURL @"http://localhost:3000"
+#define kServerURL @"http://Omar-Gudinos-MacBook-Pro.local:3000"
 
 @implementation CCTWebServicesManager
 

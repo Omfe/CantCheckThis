@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITableView *checkInsTableView;
 @property (strong, nonatomic) NSArray *dailyCheckIns;
-@property (weak, nonatomic) NSDate *date;
+@property (strong, nonatomic) NSDate *date;
 @property (strong, nonatomic) UIDatePicker *datePicker;
 @property (strong, nonatomic) UIToolbar *toolbar;
 @property (strong, nonatomic) UIView *datePickerHolder;
@@ -57,7 +57,7 @@
 {
     [UIView animateWithDuration:0.5
                      animations:^{
-                         self.datePickerHolder.frame = CGRectMake(0, 480, 320, 215);
+                         self.datePickerHolder.frame = CGRectMake(0, 566, 320, 215);
                      }];
 }
 
@@ -122,7 +122,7 @@
     [self fetchDailyCheckIns];
     [UIView animateWithDuration:0.5
                      animations:^{
-                         self.datePickerHolder.frame = CGRectMake(0, 480, 320, 215);
+                         self.datePickerHolder.frame = CGRectMake(0, 566, 320, 215);
                      }];
 }
 
@@ -164,7 +164,7 @@
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     
     self.datePickerHolder = [[UIView alloc] init];
-    self.datePickerHolder.frame = CGRectMake(0, 480, 320, 215);
+    self.datePickerHolder.frame = CGRectMake(0, 566, 320, 215);
     
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     self.toolbar.barStyle   = UIBarStyleDefault;

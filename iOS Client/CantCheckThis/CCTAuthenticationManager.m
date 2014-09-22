@@ -9,7 +9,8 @@
 #import "CCTAuthenticationManager.h"
 #import "CCTUser.h"
 
-#define kServerURL @"http://localhost:3000"
+//#define kServerURL @"http://localhost:3000"
+#define kServerURL @"http://Omar-Gudinos-MacBook-Pro.local:3000"
 
 NSString *CCTServerError = @"CCTServerError";
 
@@ -197,6 +198,7 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {
         NSDictionary *responseDictionary;
         NSUserDefaults *savedLoggedInUser;
+        NSData *loggedInUser;
         
         if (error) {
             if (completion) {
@@ -212,8 +214,9 @@ static CCTAuthenticationManager *_sharedAuthenticationManager = nil;
                 self.loggedInUser = [[CCTUser alloc] init];
             }
             [self.loggedInUser updateUserFromDictionary:responseDictionary];
+            loggedInUser = [NSKeyedArchiver archivedDataWithRootObject:self.loggedInUser];
             savedLoggedInUser = [NSUserDefaults standardUserDefaults];
-            [savedLoggedInUser setObject:[CCTAuthenticationManager sharedManager].loggedInUser forKey:@"loggedInUser"];
+            [savedLoggedInUser setObject:loggedInUser forKey:@"loggedInUser"];
             [savedLoggedInUser synchronize];
             
             if (completion) {

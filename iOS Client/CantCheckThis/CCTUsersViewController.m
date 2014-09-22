@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *usersTableView;
 @property (strong, nonatomic) NSArray *users;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -24,12 +25,21 @@
     [super viewDidLoad];
     [self setTitle:@"Users"];
     [self fetchUsers];
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.usersTableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
     UIBarButtonItem *dismissListBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissViewController:)];
     self.navigationItem.leftBarButtonItem = dismissListBarButtonItem;
 }
 
 #pragma mark - UITableViewDataSource Methods
+- (void)refreshTable
+{
+    [self fetchUsers];
+    [self.refreshControl endRefreshing];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.users.count;
@@ -76,12 +86,4 @@
          [self.usersTableView reloadData];
      }];
 }
-
-//#pragma mark - Public Methods
-//- (void)reloadUsers
-//{
-//    [self fetchUsers];
-//}
-
-
 @end

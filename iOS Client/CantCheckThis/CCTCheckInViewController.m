@@ -45,10 +45,6 @@
          
          [[[UIAlertView alloc] initWithTitle:@"Check In!" message:[NSString stringWithFormat:@"%@", message] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
          [self.view endEditing:YES];
-         
-//         CCTUsersViewController *usersViewController;
-//         usersViewController = [[CCTUsersViewController alloc] init];
-//         [usersViewController reloadUsers];
      }];
 }
 @end

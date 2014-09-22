@@ -110,15 +110,17 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSString *checkIn;
+    NSString *checkOut;
+    NSString *title;
     CCTSchedule *schedule;
     schedule = [[CCTSchedule alloc] init];
     
     schedule = [self.schedules objectAtIndex:row];
     checkIn = [self  stringBetweenString:@"T" andString:@"." withstring:schedule.checkIn];
-//    checkOut = [self stringBetweenString:@"T" andString:@"." withstring:schedule.checkOut];
-//    title = [NSString stringWithFormat:@"%@ - %@", checkIn, checkOut];
+    checkOut = [self stringBetweenString:@"T" andString:@"." withstring:schedule.checkOut];
+    title = [NSString stringWithFormat:@"%@ - %@", checkIn, checkOut];
     
-    return checkIn;
+    return title;
 }
 
 #pragma mark - Private Methods

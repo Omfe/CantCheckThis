@@ -5,8 +5,6 @@ class SessionsController < ApplicationController
   end
 
   def signin
-    puts "#{params[:email]}>>>>>>>>>>>>>>>>>"
-    puts "#{params[:password]}>>>>>>>>>>>>>>>>>"
     @user = User.find_by(email: params[:email].downcase)
     #if user && user.authenticate(params[:session][:password])
     if @user.password == params[:password]
