@@ -46,6 +46,12 @@
     self.firstNameTextField.text = [CCTAuthenticationManager sharedManager].loggedInUser.firstName;
     self.lastNameTextField.text = [CCTAuthenticationManager sharedManager].loggedInUser.lastName;
     self.emailTextField.text = [CCTAuthenticationManager sharedManager].loggedInUser.email;
+    self.emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    self.emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.firstNameTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.firstNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.lastNameTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.lastNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
 }
 - (IBAction)resetPasswordWasPressed:(id)sender
 {

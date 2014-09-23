@@ -47,6 +47,12 @@
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
     self.passwordTextField.secureTextEntry = YES;
+    self.emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    self.emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.firstNameTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.firstNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.lastNameTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.lastNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
 }
 
 - (void)viewDidLayoutSubviews

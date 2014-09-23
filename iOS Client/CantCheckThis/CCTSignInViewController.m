@@ -51,7 +51,8 @@
     [super viewDidLoad];
     self.title = @"Login";
     self.passwordTextField.secureTextEntry = YES;
-//    self.emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    self.emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.fieldArray = [NSArray arrayWithObjects: self.emailTextField, self.passwordTextField, nil];
     
     tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_hideTextView:)];
