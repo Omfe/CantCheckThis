@@ -11,8 +11,12 @@
 #import "CCTAuthenticationManager.h"
 #import "CCTResetPasswordViewController.h"
 #import "CCTUsersViewController.h"
+#import <FYX/FYXVisitManager.h>
+#import <FYX/FYXTransmitter.h>
+#import <FYX/FYX.h>
 
-@interface CCTCheckInViewController ()
+@interface CCTCheckInViewController () <FYXServiceDelegate, FYXVisitDelegate>
+
 @property (weak, nonatomic) IBOutlet UIButton *checkInButton;
 
 @end

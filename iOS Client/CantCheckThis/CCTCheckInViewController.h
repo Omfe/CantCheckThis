@@ -10,4 +10,6 @@
 
 @interface CCTCheckInViewController : UIViewController
 
+- (void)checkIn;
+
 @end

@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		994C73F519AF8E8600FD1090 /* CCTCheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994C73F319AF8E8600FD1090 /* CCTCheckInViewController.m */; };
 		994C73F619AF8E8600FD1090 /* CCTCheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 994C73F419AF8E8600FD1090 /* CCTCheckInViewController.xib */; };
+		9965FB3819D9E71500688209 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB3719D9E71500688209 /* CoreBluetooth.framework */; };
+		9965FB3A19D9E72000688209 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB3919D9E72000688209 /* CoreLocation.framework */; };
+		9965FB3C19D9E72B00688209 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB3B19D9E72B00688209 /* CoreData.framework */; };
+		9965FB3E19D9E73600688209 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB3D19D9E73600688209 /* libz.dylib */; };
+		9965FB4019D9E73F00688209 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB3F19D9E73F00688209 /* MapKit.framework */; };
+		9965FB4219D9E74800688209 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB4119D9E74800688209 /* Security.framework */; };
+		9965FB4D19D9E78A00688209 /* ContextLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB4419D9E78A00688209 /* ContextLocation.framework */; };
+		9965FB4E19D9E78A00688209 /* DataModels.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9965FB4619D9E78A00688209 /* DataModels.bundle */; };
+		9965FB4F19D9E78A00688209 /* ContextCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB4819D9E78A00688209 /* ContextCore.framework */; };
+		9965FB5019D9E78A00688209 /* NetworkServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB4A19D9E78A00688209 /* NetworkServices.framework */; };
+		9965FB5119D9E78A00688209 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB4C19D9E78A00688209 /* Common.framework */; };
+		9965FB5319D9E7AA00688209 /* FYX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB5219D9E7AA00688209 /* FYX.framework */; };
+		9965FB5519D9E92B00688209 /* UserContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9965FB5419D9E92B00688209 /* UserContext.plist */; };
 		9968435619B629D0001CBBAB /* CCTDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968435419B629D0001CBBAB /* CCTDatePickerViewController.m */; };
 		9968435719B629D0001CBBAB /* CCTDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9968435519B629D0001CBBAB /* CCTDatePickerViewController.xib */; };
 		9968436019B8E222001CBBAB /* CCTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9968435E19B8E222001CBBAB /* CCTRegisterViewController.m */; };
@@ -54,6 +67,19 @@
 		994C73F219AF8E8600FD1090 /* CCTCheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTCheckInViewController.h; sourceTree = "<group>"; };
 		994C73F319AF8E8600FD1090 /* CCTCheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTCheckInViewController.m; sourceTree = "<group>"; };
 		994C73F419AF8E8600FD1090 /* CCTCheckInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTCheckInViewController.xib; sourceTree = "<group>"; };
+		9965FB3719D9E71500688209 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		9965FB3919D9E72000688209 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9965FB3B19D9E72B00688209 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9965FB3D19D9E73600688209 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		9965FB3F19D9E73F00688209 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9965FB4119D9E74800688209 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9965FB4419D9E78A00688209 /* ContextLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ContextLocation.framework; sourceTree = "<group>"; };
+		9965FB4619D9E78A00688209 /* DataModels.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DataModels.bundle; sourceTree = "<group>"; };
+		9965FB4819D9E78A00688209 /* ContextCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ContextCore.framework; sourceTree = "<group>"; };
+		9965FB4A19D9E78A00688209 /* NetworkServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NetworkServices.framework; sourceTree = "<group>"; };
+		9965FB4C19D9E78A00688209 /* Common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Common.framework; sourceTree = "<group>"; };
+		9965FB5219D9E7AA00688209 /* FYX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FYX.framework; path = ../../../gimbalsdk_1.26.1_ios/Frameworks/FYX.framework; sourceTree = "<group>"; };
+		9965FB5419D9E92B00688209 /* UserContext.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserContext.plist; sourceTree = "<group>"; };
 		9968435319B629D0001CBBAB /* CCTDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTDatePickerViewController.h; sourceTree = "<group>"; };
 		9968435419B629D0001CBBAB /* CCTDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTDatePickerViewController.m; sourceTree = "<group>"; };
 		9968435519B629D0001CBBAB /* CCTDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTDatePickerViewController.xib; sourceTree = "<group>"; };
@@ -105,7 +131,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9965FB4219D9E74800688209 /* Security.framework in Frameworks */,
+				9965FB4019D9E73F00688209 /* MapKit.framework in Frameworks */,
+				9965FB3E19D9E73600688209 /* libz.dylib in Frameworks */,
+				9965FB3C19D9E72B00688209 /* CoreData.framework in Frameworks */,
+				9965FB5319D9E7AA00688209 /* FYX.framework in Frameworks */,
+				9965FB4F19D9E78A00688209 /* ContextCore.framework in Frameworks */,
+				9965FB3A19D9E72000688209 /* CoreLocation.framework in Frameworks */,
+				9965FB4D19D9E78A00688209 /* ContextLocation.framework in Frameworks */,
+				9965FB5019D9E78A00688209 /* NetworkServices.framework in Frameworks */,
+				9965FB3819D9E71500688209 /* CoreBluetooth.framework in Frameworks */,
 				999DF24B19AD1A9800DB8E31 /* CoreGraphics.framework in Frameworks */,
+				9965FB5119D9E78A00688209 /* Common.framework in Frameworks */,
 				999DF24D19AD1A9800DB8E31 /* UIKit.framework in Frameworks */,
 				999DF24919AD1A9800DB8E31 /* Foundation.framework in Frameworks */,
 			);
@@ -124,6 +161,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9965FB4319D9E78A00688209 /* ContextLocation.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				9965FB4419D9E78A00688209 /* ContextLocation.framework */,
+				9965FB4519D9E78A00688209 /* Resources */,
+			);
+			name = ContextLocation.embeddedframework;
+			path = ../../../gimbalsdk_1.26.1_ios/Frameworks/ContextLocation.embeddedframework;
+			sourceTree = "<group>";
+		};
+		9965FB4519D9E78A00688209 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9965FB4619D9E78A00688209 /* DataModels.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9965FB4719D9E78A00688209 /* ContextCore.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				9965FB4819D9E78A00688209 /* ContextCore.framework */,
+			);
+			name = ContextCore.embeddedframework;
+			path = ../../../gimbalsdk_1.26.1_ios/Frameworks/ContextCore.embeddedframework;
+			sourceTree = "<group>";
+		};
+		9965FB4919D9E78A00688209 /* NetworkServices.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				9965FB4A19D9E78A00688209 /* NetworkServices.framework */,
+			);
+			name = NetworkServices.embeddedframework;
+			path = ../../../gimbalsdk_1.26.1_ios/Frameworks/NetworkServices.embeddedframework;
+			sourceTree = "<group>";
+		};
+		9965FB4B19D9E78A00688209 /* Common.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				9965FB4C19D9E78A00688209 /* Common.framework */,
+			);
+			name = Common.embeddedframework;
+			path = ../../../gimbalsdk_1.26.1_ios/Frameworks/Common.embeddedframework;
+			sourceTree = "<group>";
+		};
 		999DF23C19AD1A9600DB8E31 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +228,17 @@
 		999DF24719AD1A9800DB8E31 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9965FB5219D9E7AA00688209 /* FYX.framework */,
+				9965FB4319D9E78A00688209 /* ContextLocation.embeddedframework */,
+				9965FB4719D9E78A00688209 /* ContextCore.embeddedframework */,
+				9965FB4919D9E78A00688209 /* NetworkServices.embeddedframework */,
+				9965FB4B19D9E78A00688209 /* Common.embeddedframework */,
+				9965FB4119D9E74800688209 /* Security.framework */,
+				9965FB3F19D9E73F00688209 /* MapKit.framework */,
+				9965FB3D19D9E73600688209 /* libz.dylib */,
+				9965FB3B19D9E72B00688209 /* CoreData.framework */,
+				9965FB3919D9E72000688209 /* CoreLocation.framework */,
+				9965FB3719D9E71500688209 /* CoreBluetooth.framework */,
 				999DF24819AD1A9800DB8E31 /* Foundation.framework */,
 				999DF24A19AD1A9800DB8E31 /* CoreGraphics.framework */,
 				999DF24C19AD1A9800DB8E31 /* UIKit.framework */,
@@ -175,6 +268,7 @@
 				999DF25119AD1A9800DB8E31 /* InfoPlist.strings */,
 				999DF25419AD1A9800DB8E31 /* main.m */,
 				999DF25619AD1A9800DB8E31 /* CantCheckThis-Prefix.pch */,
+				9965FB5419D9E92B00688209 /* UserContext.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -331,9 +425,11 @@
 				9968435719B629D0001CBBAB /* CCTDatePickerViewController.xib in Resources */,
 				9968436119B8E222001CBBAB /* CCTRegisterViewController.xib in Resources */,
 				9968436619BA1FD9001CBBAB /* CCTResetPasswordViewController.xib in Resources */,
+				9965FB4E19D9E78A00688209 /* DataModels.bundle in Resources */,
 				999DF25319AD1A9800DB8E31 /* InfoPlist.strings in Resources */,
 				999DF25B19AD1A9900DB8E31 /* Images.xcassets in Resources */,
 				999DF27B19AD217500DB8E31 /* CCTSignInViewController.xib in Resources */,
+				9965FB5519D9E92B00688209 /* UserContext.plist in Resources */,
 				994C73F619AF8E8600FD1090 /* CCTCheckInViewController.xib in Resources */,
 				99D8DDEE19C2334C00332F15 /* CCTUsersViewController.xib in Resources */,
 				99D8DDF319C9F73C00332F15 /* CCTUserProfileViewController.xib in Resources */,
@@ -487,6 +583,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Omfe/Documents/gimbalsdk_1.26.1_ios/Frameworks/ContextLocation.embeddedframework,
+					/Users/Omfe/Documents/gimbalsdk_1.26.1_ios/Frameworks/ContextCore.embeddedframework,
+					/Users/Omfe/Documents/gimbalsdk_1.26.1_ios/Frameworks/NetworkServices.embeddedframework,
+					/Users/Omfe/Documents/gimbalsdk_1.26.1_ios/Frameworks/Common.embeddedframework,
+					/Users/Omfe/Documents/gimbalsdk_1.26.1_ios/Frameworks,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CantCheckThis/CantCheckThis-Prefix.pch";
 				INFOPLIST_FILE = "CantCheckThis/CantCheckThis-Info.plist";
@@ -504,6 +608,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Omfe/Documents/gimbalsdk_1.26.1_ios/Frameworks/ContextLocation.embeddedframework,
+					/Users/Omfe/Documents/gimbalsdk_1.26.1_ios/Frameworks/ContextCore.embeddedframework,
+					/Users/Omfe/Documents/gimbalsdk_1.26.1_ios/Frameworks/NetworkServices.embeddedframework,
+					/Users/Omfe/Documents/gimbalsdk_1.26.1_ios/Frameworks/Common.embeddedframework,
+					/Users/Omfe/Documents/gimbalsdk_1.26.1_ios/Frameworks,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CantCheckThis/CantCheckThis-Prefix.pch";
 				INFOPLIST_FILE = "CantCheckThis/CantCheckThis-Info.plist";

@@ -11,5 +11,6 @@
 @interface CCTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (assign, nonatomic) UIBackgroundTaskIdentifier backgroundTask;
 
 @end
