@@ -66,15 +66,16 @@
 - (IBAction)logoutButtonWasPressed:(id)sender
 {
     [[CCTAuthenticationManager sharedManager] logoutWithCompletion:^(NSString *message, NSError *error) {
-        if (error) {
-            [[[UIAlertView alloc] initWithTitle:@"Logout" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-            return;
-        }
-        
+//        if (error) {
+//            [[[UIAlertView alloc] initWithTitle:@"Logout" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+//            return;
+//        }
         [[[UIAlertView alloc] initWithTitle:@"Logout" message:[NSString stringWithFormat:@"%@", message] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-        [(UINavigationController *)self.presentingViewController  popViewControllerAnimated:NO];
         [self dismissViewControllerAnimated:YES completion:nil];
-    }];
+        [(UINavigationController *)self.presentingViewController  popViewControllerAnimated:NO];
+    }
+     ];
+    NSLog(@"I am %@", self);
 }
 
 - (void)viewDidLayoutSubviews
@@ -234,11 +235,5 @@
     }
     return  0;
 }
-
-//NSDictionary *Health = @{@"1":@"South",@"2":@"North"};
-//int x = 1;
-//NSString *key = [NSString stringWithFormat:@"%i", x];
-//NSString *value = Health[key];
-//NSLog(@"value %@", value);
 
 @end

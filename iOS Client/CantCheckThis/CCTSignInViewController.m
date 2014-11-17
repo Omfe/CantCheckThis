@@ -175,27 +175,31 @@
 
 - (NSArray *)tabBarViewControllers
 {
-    CCTCheckInViewController *checkInViewController;
+   // CCTCheckInViewController *checkInViewController;
     CCTDatePickerViewController *datePickerViewController;
     CCTUsersViewController *usersViewController;
-    UINavigationController *checkInNavController;
+   // UINavigationController *checkInNavController;
     UINavigationController *datePickerNavController;
     UINavigationController *usersNavController;
     NSArray *viewControllers;
     
-    checkInViewController = [[CCTCheckInViewController alloc] initWithNibName:@"CCTCheckInViewController" bundle:nil];
+   // checkInViewController = [[CCTCheckInViewController alloc] initWithNibName:@"CCTCheckInViewController" bundle:nil];
     datePickerViewController = [[CCTDatePickerViewController alloc] initWithNibName:@"CCTDatePickerViewController" bundle:nil];
     usersViewController = [[CCTUsersViewController alloc] initWithNibName:@"CCTUsersViewController" bundle:nil];
     
-    checkInNavController = [[UINavigationController alloc] initWithRootViewController:checkInViewController];
+    //checkInNavController = [[UINavigationController alloc] initWithRootViewController:checkInViewController];
     datePickerNavController = [[UINavigationController alloc] initWithRootViewController:datePickerViewController];
     usersNavController = [[UINavigationController alloc] initWithRootViewController:usersViewController];
     
-    viewControllers = @[checkInNavController, datePickerNavController, usersNavController];
+    viewControllers = @[datePickerNavController, usersNavController];
+    
+    UIImage *datePickerImage = [UIImage imageNamed:@"ClockTabBar.png"];
+    UIImage *usersImage = [UIImage imageNamed:@"UsersTabBar.png"];
     
     [datePickerViewController setTitle:@"Daily Check Ins"];
-    [checkInViewController setTitle:@"Check In!"];
+    [datePickerViewController tabBarItem].image = datePickerImage;
     [usersViewController setTitle:@"Users"];
+    [usersViewController tabBarItem].image = usersImage;
     
     return viewControllers;
 }

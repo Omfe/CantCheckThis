@@ -31,7 +31,7 @@
 #pragma mark - Action Methods
 - (IBAction)checkInButtonWasPressed:(id)sender
 {
-    [self checkIn];
+//    [self checkIn];
 }
 
 #pragma mark - Private Methods

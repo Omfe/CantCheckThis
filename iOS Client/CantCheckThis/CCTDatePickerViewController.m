@@ -106,7 +106,7 @@
 {
     [UIView animateWithDuration:0.5
                      animations:^{
-                         self.datePickerHolder.frame = CGRectMake(0, 200, 320, 215);
+                         self.datePickerHolder.frame = CGRectMake(0, self.view.frame.size.height/2, 320, 215);
                      }];
 }
 
@@ -164,7 +164,7 @@
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     
     self.datePickerHolder = [[UIView alloc] init];
-    self.datePickerHolder.frame = CGRectMake(0, 566, 320, 215);
+    self.datePickerHolder.frame = CGRectMake(0, 800, 320, 215);
     
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     self.toolbar.barStyle   = UIBarStyleDefault;

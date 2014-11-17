@@ -102,6 +102,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString* bundleId = [[NSBundle mainBundle] bundleIdentifier];
     NSDictionary* mainBundleSettings = [defaults persistentDomainForName:bundleId];
+    if (![CCTAuthenticationManager sharedManager].loggedInUser) {
+        return;
+    }
     if (mainBundleSettings) {
         [self.visitManager stop];
         NSData *loggedInUser = [defaults objectForKey:@"loggedInUser"];
@@ -130,6 +133,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString* bundleId = [[NSBundle mainBundle] bundleIdentifier];
     NSDictionary* mainBundleSettings = [defaults persistentDomainForName:bundleId];
+    if (![CCTAuthenticationManager sharedManager].loggedInUser) {
+        return;
+    }
     if (mainBundleSettings) {
         [self.visitManager stop];
         NSData *loggedInUser = [defaults objectForKey:@"loggedInUser"];

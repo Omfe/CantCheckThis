@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		994C73F519AF8E8600FD1090 /* CCTCheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994C73F319AF8E8600FD1090 /* CCTCheckInViewController.m */; };
 		994C73F619AF8E8600FD1090 /* CCTCheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 994C73F419AF8E8600FD1090 /* CCTCheckInViewController.xib */; };
+		9956CBA11A16A974000FDB45 /* UsersTabBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9956CB9F1A16A974000FDB45 /* UsersTabBar.png */; };
+		9956CBA21A16A974000FDB45 /* ClockTabBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9956CBA01A16A974000FDB45 /* ClockTabBar.png */; };
 		9965FB3819D9E71500688209 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB3719D9E71500688209 /* CoreBluetooth.framework */; };
 		9965FB3A19D9E72000688209 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB3919D9E72000688209 /* CoreLocation.framework */; };
 		9965FB3C19D9E72B00688209 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965FB3B19D9E72B00688209 /* CoreData.framework */; };
@@ -67,6 +69,8 @@
 		994C73F219AF8E8600FD1090 /* CCTCheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTCheckInViewController.h; sourceTree = "<group>"; };
 		994C73F319AF8E8600FD1090 /* CCTCheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTCheckInViewController.m; sourceTree = "<group>"; };
 		994C73F419AF8E8600FD1090 /* CCTCheckInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCTCheckInViewController.xib; sourceTree = "<group>"; };
+		9956CB9F1A16A974000FDB45 /* UsersTabBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UsersTabBar.png; sourceTree = "<group>"; };
+		9956CBA01A16A974000FDB45 /* ClockTabBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClockTabBar.png; sourceTree = "<group>"; };
 		9965FB3719D9E71500688209 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		9965FB3919D9E72000688209 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9965FB3B19D9E72B00688209 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -209,6 +213,8 @@
 		999DF23C19AD1A9600DB8E31 = {
 			isa = PBXGroup;
 			children = (
+				9956CB9F1A16A974000FDB45 /* UsersTabBar.png */,
+				9956CBA01A16A974000FDB45 /* ClockTabBar.png */,
 				999DF24E19AD1A9800DB8E31 /* CantCheckThis */,
 				999DF26719AD1A9900DB8E31 /* CantCheckThisTests */,
 				999DF24719AD1A9800DB8E31 /* Frameworks */,
@@ -426,8 +432,10 @@
 				9968436119B8E222001CBBAB /* CCTRegisterViewController.xib in Resources */,
 				9968436619BA1FD9001CBBAB /* CCTResetPasswordViewController.xib in Resources */,
 				9965FB4E19D9E78A00688209 /* DataModels.bundle in Resources */,
+				9956CBA11A16A974000FDB45 /* UsersTabBar.png in Resources */,
 				999DF25319AD1A9800DB8E31 /* InfoPlist.strings in Resources */,
 				999DF25B19AD1A9900DB8E31 /* Images.xcassets in Resources */,
+				9956CBA21A16A974000FDB45 /* ClockTabBar.png in Resources */,
 				999DF27B19AD217500DB8E31 /* CCTSignInViewController.xib in Resources */,
 				9965FB5519D9E92B00688209 /* UserContext.plist in Resources */,
 				994C73F619AF8E8600FD1090 /* CCTCheckInViewController.xib in Resources */,

@@ -10,7 +10,8 @@
 #import "CCTUser.h"
 
 //#define kServerURL @"http://localhost:3000"
-#define kServerURL @"http://Omar-Gudinos-MacBook-Pro.local:3000"
+//#define kServerURL @"http://Omar-Gudinos-MacBook-Pro.local:3000"
+#define kServerURL @"https://murmuring-atoll-9696.herokuapp.com"
 
 NSString *CCTServerError = @"CCTServerError";
 
