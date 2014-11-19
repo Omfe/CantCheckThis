@@ -25,6 +25,11 @@
 
 @implementation CCTDatePickerViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (void)viewDidLoad
 {
     UITapGestureRecognizer *tapGestureRecognizer;

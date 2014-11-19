@@ -20,10 +20,14 @@
 
 @implementation CCTUsersViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitle:@"Users"];
     [self fetchUsers];
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.usersTableView addSubview:self.refreshControl];

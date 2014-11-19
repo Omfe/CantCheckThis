@@ -35,7 +35,15 @@
     [scroller setScrollEnabled:YES];
     [self fetchAllSchedules];
     [super viewDidLoad];
-    [self setTitle:@"Register"];
+    [self setTitle:@"REGISTER"];
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+        // iOS 6.1 or earlier
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
+    } else {
+        // iOS 7.0 or later
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
+        self.navigationController.navigationBar.translucent = NO;
+    }
     self.fieldArray = [NSArray arrayWithObjects: self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.passwordTextField,  nil];
     
     UIBarButtonItem *dismissViewBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissViewController:)];

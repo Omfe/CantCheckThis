@@ -33,6 +33,14 @@
     [super viewDidLoad];
     [self fetchAllSchedules];
     [self setTitle:@"User Profile"];
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+        // iOS 6.1 or earlier
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
+    } else {
+        // iOS 7.0 or later
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
+        self.navigationController.navigationBar.translucent = NO;
+    }
     self.fieldArray = [NSArray arrayWithObjects: self.firstNameTextField, self.lastNameTextField, self.emailTextField,  nil];
     
     UIBarButtonItem *dismissViewBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissViewController:)];
@@ -66,10 +74,10 @@
 - (IBAction)logoutButtonWasPressed:(id)sender
 {
     [[CCTAuthenticationManager sharedManager] logoutWithCompletion:^(NSString *message, NSError *error) {
-//        if (error) {
-//            [[[UIAlertView alloc] initWithTitle:@"Logout" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-//            return;
-//        }
+        if (error) {
+            [[[UIAlertView alloc] initWithTitle:@"Logout" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            return;
+        }
         [[[UIAlertView alloc] initWithTitle:@"Logout" message:[NSString stringWithFormat:@"%@", message] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
         [self dismissViewControllerAnimated:YES completion:nil];
         [(UINavigationController *)self.presentingViewController  popViewControllerAnimated:NO];

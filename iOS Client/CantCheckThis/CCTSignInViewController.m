@@ -15,6 +15,7 @@
 #import "CCTRegisterViewController.h"
 #import "CCTUsersViewController.h"
 #import "CCTUserProfileViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface CCTSignInViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -29,8 +30,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    //[self.navigationController setNavigationBarHidden:NO animated:YES];
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+        // iOS 6.1 or earlier
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
+    } else {
+        // iOS 7.0 or later
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
+        self.navigationController.navigationBar.translucent = NO;
+    }
     
     if (self.emailTextField.text.length == 0) {
         [self.emailTextField becomeFirstResponder];
@@ -47,9 +55,11 @@
 - (void)viewDidLoad
 {
     UITapGestureRecognizer *tapGestureRecognizer;
+//    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+//                                                           [UIFont fontWithName:@"Helvetica-Bold" size:17.0], NSFontAttributeName, nil]];
     
     [super viewDidLoad];
-    self.title = @"Login";
+    self.title = @"CAN'T CHECK THIS";
     self.passwordTextField.secureTextEntry = YES;
     self.emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
     self.emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -57,6 +67,11 @@
     
     tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_hideTextView:)];
     [self.view addGestureRecognizer:tapGestureRecognizer];
+    
+    self.emailTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+    self.emailTextField.layer.borderWidth=1.0;
+    self.passwordTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+    self.passwordTextField.layer.borderWidth=1.0;
 }
 
 #pragma mark - UITextFieldDelegate Methods
