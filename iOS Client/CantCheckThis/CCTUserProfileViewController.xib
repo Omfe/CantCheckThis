@@ -10,6 +10,8 @@
                 <outlet property="emailTextField" destination="Oro-4B-f18" id="oJB-IA-Qwc"/>
                 <outlet property="firstNameTextField" destination="k1h-sD-Tjl" id="VfS-jq-2gz"/>
                 <outlet property="lastNameTextField" destination="FOp-Yi-Lxb" id="apC-67-YPg"/>
+                <outlet property="logoutButton" destination="XNj-hM-boH" id="yZp-ZG-w8o"/>
+                <outlet property="resetPasswordButton" destination="Jcj-3p-GpI" id="7Ua-dz-sZ9"/>
                 <outlet property="schedulePickerView" destination="GQe-Ur-tWr" id="oea-6q-h7B"/>
                 <outlet property="scroller" destination="4hQ-wT-GiY" id="1ML-bw-6B2"/>
                 <outlet property="userProfileScrollView" destination="4hQ-wT-GiY" id="hGE-rx-5Wu"/>
@@ -26,7 +28,7 @@
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k1h-sD-Tjl">
                             <rect key="frame" x="8" y="104" width="304" height="40"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -35,7 +37,7 @@
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FOp-Yi-Lxb">
                             <rect key="frame" x="8" y="143" width="304" height="40"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -44,7 +46,7 @@
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oro-4B-f18">
                             <rect key="frame" x="8" y="182" width="304" height="40"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -53,7 +55,7 @@
                         </textField>
                         <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GQe-Ur-tWr">
                             <rect key="frame" x="0.0" y="275" width="320" height="162"/>
-                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="Wxk-dx-uBW"/>
                                 <outlet property="delegate" destination="-1" id="dZt-GM-GV8"/>
@@ -69,38 +71,32 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dj9-Du-7LO">
-                            <rect key="frame" x="8" y="453" width="304" height="120"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNj-hM-boH">
-                                    <rect key="frame" x="70" y="70" width="164" height="40"/>
-                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                    <state key="normal" title="Logout">
-                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="logoutButtonWasPressed:" destination="-1" eventType="touchUpInside" id="gZa-8B-Lar"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcj-3p-GpI">
-                                    <rect key="frame" x="70" y="10" width="164" height="40"/>
-                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                    <state key="normal" title="Reset Password">
-                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="resetPasswordWasPressed:" destination="-1" eventType="touchUpInside" id="bm1-VR-vrt"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcj-3p-GpI">
+                            <rect key="frame" x="90" y="476" width="140" height="40"/>
+                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                            <state key="normal" title="Reset Password">
+                                <color key="titleColor" red="0.17940144690000001" green="0.79502152420000005" blue="0.79094381280000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="resetPasswordWasPressed:" destination="-1" eventType="touchUpInside" id="bm1-VR-vrt"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNj-hM-boH">
+                            <rect key="frame" x="110" y="546" width="100" height="40"/>
+                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                            <state key="normal" title="Logout">
+                                <color key="titleColor" red="0.17940144690000001" green="0.79502152420000005" blue="0.79094381280000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="logoutButtonWasPressed:" destination="-1" eventType="touchUpInside" id="gZa-8B-Lar"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

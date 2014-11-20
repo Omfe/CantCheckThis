@@ -63,6 +63,7 @@
     user = [[CCTUser alloc] init];
     user = [self.users objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@      :      %@", user.firstName, user.points];
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:16.0f];
     
     return cell;
 }
@@ -83,6 +84,9 @@
 {
     CCTWebServicesManager *webServicesManager;
     webServicesManager = [[CCTWebServicesManager alloc] init];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [indicator startAnimating];
+    [indicator setCenter:self.view.center];
     
     [webServicesManager getUsersWithCompletion:^(NSArray *users, NSError *error)
      {
@@ -92,6 +96,7 @@
          }
          
          self.users = users;
+         [indicator removeFromSuperview];
          [self.usersTableView reloadData];
      }];
 }

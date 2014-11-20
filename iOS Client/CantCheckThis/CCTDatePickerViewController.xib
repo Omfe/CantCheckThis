@@ -17,40 +17,46 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCd-gs-u06">
-                    <rect key="frame" x="194" y="81" width="106" height="36"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="Choose Date">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="chooseDateButtonWasPressed:" destination="-1" eventType="touchUpInside" id="hqN-Vd-Os3"/>
-                    </connections>
-                </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7s-eG-xyF">
-                    <rect key="frame" x="25" y="88" width="151" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="54T-xN-5ns">
-                    <rect key="frame" x="0.0" y="151" width="320" height="329"/>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eHX-nb-u4x">
+                    <rect key="frame" x="8" y="58" width="304" height="60"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7s-eG-xyF">
+                            <rect key="frame" x="8" y="10" width="151" height="40"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="16"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCd-gs-u06">
+                            <rect key="frame" x="190" y="12" width="106" height="36"/>
+                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                            <state key="normal" title="Choose Date">
+                                <color key="titleColor" red="0.17940144690000001" green="0.79502152420000005" blue="0.79094381280000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="chooseDateButtonWasPressed:" destination="-1" eventType="touchUpInside" id="hqN-Vd-Os3"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="54T-xN-5ns">
+                    <rect key="frame" x="0.0" y="162" width="320" height="318"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="6Oi-bK-Stj"/>
                         <outlet property="delegate" destination="-1" id="T1J-hN-2QH"/>
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="rCd-gs-u06" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="81" id="2hb-wY-Cve"/>
-                <constraint firstAttribute="bottom" secondItem="54T-xN-5ns" secondAttribute="bottom" id="II9-9D-GIW"/>
-                <constraint firstItem="U7s-eG-xyF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="88" id="QPG-IH-GLJ"/>
-                <constraint firstAttribute="centerY" secondItem="rCd-gs-u06" secondAttribute="centerY" constant="141" id="bWd-Iu-nZ7"/>
-                <constraint firstAttribute="centerY" secondItem="U7s-eG-xyF" secondAttribute="centerY" constant="141.5" id="jvX-Zc-JYu"/>
+                <constraint firstAttribute="bottom" secondItem="54T-xN-5ns" secondAttribute="bottom" id="YGD-UQ-pES"/>
+                <constraint firstItem="eHX-nb-u4x" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="58" id="mAL-rF-fdS"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="139" y="176"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

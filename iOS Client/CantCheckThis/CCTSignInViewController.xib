@@ -44,9 +44,9 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjE-T7-XDn">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjE-T7-XDn">
                     <rect key="frame" x="119" y="259" width="83" height="37"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                     <state key="normal" title="LOGIN">
@@ -57,18 +57,18 @@
                         <action selector="loginButtonWasPressed:" destination="-1" eventType="touchUpInside" id="rZh-sp-pXM"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jd7-MS-VCE">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jd7-MS-VCE">
                     <rect key="frame" x="8" y="128" width="304" height="40"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="15"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="e7y-hF-mXN"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KKa-wl-mPr">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KKa-wl-mPr">
                     <rect key="frame" x="8" y="167" width="304" height="40"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="15"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -76,10 +76,14 @@
                     </connections>
                 </textField>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <color key="tintColor" red="0.59901872680890544" green="0.65892059948979598" blue="0.65892059948979598" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="Jd7-MS-VCE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="128" id="4nZ-59-Fkh"/>
+                <constraint firstItem="KKa-wl-mPr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="167" id="inC-cV-9hj"/>
+                <constraint firstAttribute="bottom" secondItem="z0p-hF-Fjm" secondAttribute="bottom" id="muc-OQ-dGc"/>
                 <constraint firstAttribute="bottom" secondItem="z0p-hF-Fjm" secondAttribute="bottom" id="r5K-9W-bUM"/>
+                <constraint firstItem="BjE-T7-XDn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="259" id="yEc-OD-7JH"/>
             </constraints>
         </view>
     </objects>

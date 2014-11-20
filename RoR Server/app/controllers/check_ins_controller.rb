@@ -57,7 +57,7 @@ class CheckInsController < ApplicationController
     if did_previous_checkin == true
       user = current_user
       @check_in = CheckIn.new(:checked_in_at => Time.now, :user_id => user.id)
-      userTolerance = user.schedule.check_in + 30.minutes
+      userTolerance = user.schedule.check_in + 20.minutes
       
       if userTolerance.strftime("%H%M") < @check_in.checked_in_at.strftime("%H%M")
         if user.points == nil

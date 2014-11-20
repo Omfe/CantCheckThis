@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *schedulePickerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *userProfileScrollView;
+@property (weak, nonatomic) IBOutlet UIButton *resetPasswordButton;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (nonatomic) NSArray *fieldArray;
 @property (strong, nonatomic) NSArray *schedules;
 
@@ -32,14 +34,15 @@
     [scroller setScrollEnabled:YES];
     [super viewDidLoad];
     [self fetchAllSchedules];
-    [self setTitle:@"User Profile"];
+    [self setTitle:@"USER PROFILE"];
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
         // iOS 6.1 or earlier
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
     } else {
         // iOS 7.0 or later
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
+       // self.navigationController.navigationBar.tintColor = [UIColor blueColor];
         self.navigationController.navigationBar.translucent = NO;
+        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0/255.0f green:153/255.0f blue:255/255.0f alpha:1.0f];
     }
     self.fieldArray = [NSArray arrayWithObjects: self.firstNameTextField, self.lastNameTextField, self.emailTextField,  nil];
     
@@ -56,10 +59,17 @@
     self.emailTextField.text = [CCTAuthenticationManager sharedManager].loggedInUser.email;
     self.emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
     self.emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.emailTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+    self.emailTextField.layer.borderWidth=1.0;
     self.firstNameTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.firstNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.firstNameTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+    self.firstNameTextField.layer.borderWidth=1.0;
     self.lastNameTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.lastNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.lastNameTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+    self.lastNameTextField.layer.borderWidth=1.0;
+    
 }
 - (IBAction)resetPasswordWasPressed:(id)sender
 {

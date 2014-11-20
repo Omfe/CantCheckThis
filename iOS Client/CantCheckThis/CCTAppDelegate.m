@@ -64,6 +64,11 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window setRootViewController:navigationController];
     [self.window makeKeyAndVisible];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0/255.0f green:153/255.0f blue:255/255.0f alpha:1.0f];
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0/255.0f green:153/255.0f blue:255/255.0f alpha:1.0f]];
+    self.window.tintColor = [UIColor whiteColor];
+
     return YES;
 }
 

@@ -32,11 +32,11 @@
     [super viewWillAppear:animated];
     //[self.navigationController setNavigationBarHidden:NO animated:YES];
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
-        // iOS 6.1 or earlier
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
+        // iOS 6.1 or earlier]
     } else {
         // iOS 7.0 or later
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
+        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0/255.0f green:153/255.0f blue:255/255.0f alpha:1.0f];
         self.navigationController.navigationBar.translucent = NO;
     }
     
@@ -152,6 +152,9 @@
 #pragma mark - Private Methods
 - (void)login
 {
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [indicator startAnimating];
+    [indicator setCenter:self.view.center];
     [[CCTAuthenticationManager sharedManager] loginWithEmail:self.emailTextField.text withPassword:self.passwordTextField.text andCompletion:^(NSString *message, NSError *error) {
         
         if (error) {
@@ -161,6 +164,7 @@
         [self.view endEditing:YES];
         self.passwordTextField.text = @"";
         
+        [indicator removeFromSuperview];
         [self loggedInUserTravelsToCheckInView];
     }];
 }

@@ -12,6 +12,7 @@
 @interface CCTResetPasswordViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *oldPasswordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *theNewPasswordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *changePasswordButton;
 @property (nonatomic) NSArray *fieldArray;
 
 @end
@@ -23,7 +24,7 @@
     UITapGestureRecognizer *tapGestureRecognizer;
     
     [super viewDidLoad];
-    [self setTitle:@"Reset Password"];
+    [self setTitle:@"RESET PASSWORD"];
     self.fieldArray = [NSArray arrayWithObjects: self.oldPasswordTextField, self.theNewPasswordTextField,  nil];
 
     UIBarButtonItem *dismissViewBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissViewController:)];
@@ -33,7 +34,14 @@
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
     self.oldPasswordTextField.secureTextEntry = YES;
+    self.oldPasswordTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+    self.oldPasswordTextField.layer.borderWidth=1.0;
     self.theNewPasswordTextField.secureTextEntry = YES;
+    self.theNewPasswordTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+    self.theNewPasswordTextField.layer.borderWidth=1.0;
+//    self.changePasswordButton.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+//    self.changePasswordButton.layer.borderWidth=1.0;
+    
 }
 
 #pragma mark - UITextFieldDelegate Methods

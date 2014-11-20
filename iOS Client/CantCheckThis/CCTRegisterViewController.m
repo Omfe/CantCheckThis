@@ -38,10 +38,10 @@
     [self setTitle:@"REGISTER"];
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
         // iOS 6.1 or earlier
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
     } else {
         // iOS 7.0 or later
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:239/255.0f green:239/255.0f blue:244/255.0f alpha:1.0f];
+        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0/255.0f green:153/255.0f blue:255/255.0f alpha:1.0f];
         self.navigationController.navigationBar.translucent = NO;
     }
     self.fieldArray = [NSArray arrayWithObjects: self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.passwordTextField,  nil];
@@ -55,12 +55,20 @@
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
     self.passwordTextField.secureTextEntry = YES;
+    self.passwordTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+    self.passwordTextField.layer.borderWidth=1.0;
     self.emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
     self.emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.emailTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+    self.emailTextField.layer.borderWidth=1.0;
     self.firstNameTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.firstNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.firstNameTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+    self.firstNameTextField.layer.borderWidth=1.0;
     self.lastNameTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.lastNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.lastNameTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+    self.lastNameTextField.layer.borderWidth=1.0;
 }
 
 - (void)viewDidLayoutSubviews
@@ -163,12 +171,16 @@
         selectedSchedule = [[CCTSchedule alloc] init];
         selectedSchedule = [self.schedules  objectAtIndex:[self. schedulePickerView selectedRowInComponent:0]];
         scheduleId = [NSString stringWithFormat:@"%@", selectedSchedule.scheduleId];
+        UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [indicator startAnimating];
+        [indicator setCenter:self.view.center];
         
         [[CCTAuthenticationManager sharedManager] registerWithFirstName:self.firstNameTextField.text andlastName:self.lastNameTextField.text andEmail:self.emailTextField.text andPassword:self.passwordTextField.text andScheduleId:scheduleId andCompletion:^(NSString *message, NSError *error) {
             if (error) {
                 [[[UIAlertView alloc] initWithTitle:@"Register" message:[NSString stringWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
                 return;
             } else {
+                [indicator removeFromSuperview];
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                 [[[UIAlertView alloc] initWithTitle:@"Register" message:[NSString stringWithFormat:@"Thank you %@", self.firstNameTextField.text] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show ];
             }

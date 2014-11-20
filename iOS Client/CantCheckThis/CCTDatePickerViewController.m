@@ -12,7 +12,6 @@
 
 @interface CCTDatePickerViewController ()<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *dateTextField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITableView *checkInsTableView;
 @property (strong, nonatomic) NSArray *dailyCheckIns;
@@ -35,6 +34,7 @@
     UITapGestureRecognizer *tapGestureRecognizer;
     NSDateFormatter *dateFormat;
 
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0/255.0f green:153/255.0f blue:255/255.0f alpha:1.0f];
     self.date = [NSDate date];
     dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
@@ -86,7 +86,8 @@
     checkIn = [[CCTCheckIn alloc] init];
     checkIn = [self.dailyCheckIns objectAtIndex:indexPath.row];
     NSString *timeString=[self stringBetweenString:@"T" andString:@"." withstring:checkIn.checkedInAt];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", checkIn.user.firstName, timeString];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@  :  %@", checkIn.user.firstName, timeString];
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:16.0f];
     
     return cell;
 }
@@ -135,6 +136,9 @@
 {
     CCTWebServicesManager *webServicesManager;
     webServicesManager = [[CCTWebServicesManager alloc] init];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [indicator startAnimating];
+    [indicator setCenter:self.view.center];
     
     [webServicesManager getDailyReportWithDate:self.date andCompletion:^(NSArray *checkIns, NSError *error)
      {
@@ -144,6 +148,7 @@
          }
          
          self.dailyCheckIns = checkIns;
+         [indicator removeFromSuperview];
          [self.checkInsTableView reloadData];
      }];
 }
@@ -177,6 +182,7 @@
     UIBarButtonItem *itemDone  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(chosedDate:)];
     UIBarButtonItem *itemSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
+    itemDone.tintColor = [UIColor colorWithRed:46/255.0f green:203/255.0f blue:202/255.0f alpha:1.0f];
     self.toolbar.items = @[itemSpace,itemDone];
     [self.datePickerHolder addSubview:self.toolbar];
     
