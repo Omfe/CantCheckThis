@@ -57,14 +57,17 @@
     self.passwordTextField.secureTextEntry = YES;
     self.passwordTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
     self.passwordTextField.layer.borderWidth=1.0;
+    
     self.emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
     self.emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.emailTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
     self.emailTextField.layer.borderWidth=1.0;
+    
     self.firstNameTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.firstNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.firstNameTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
     self.firstNameTextField.layer.borderWidth=1.0;
+    
     self.lastNameTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     self.lastNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.lastNameTextField.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
