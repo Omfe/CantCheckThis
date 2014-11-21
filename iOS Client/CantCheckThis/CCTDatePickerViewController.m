@@ -19,6 +19,7 @@
 @property (strong, nonatomic) UIDatePicker *datePicker;
 @property (strong, nonatomic) UIToolbar *toolbar;
 @property (strong, nonatomic) UIView *datePickerHolder;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -42,6 +43,9 @@
     [super viewDidLoad];
     [self fetchDailyCheckIns];
     [self initializeDatePicker];
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.checkInsTableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
     tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_hideDatePickerView:)];
     tapGestureRecognizer.delegate = self;
@@ -67,6 +71,12 @@
 }
 
 #pragma mark - UITableViewDataSource Methods
+- (void)refreshTable
+{
+    [self fetchDailyCheckIns];
+    [self.refreshControl endRefreshing];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.dailyCheckIns.count;
