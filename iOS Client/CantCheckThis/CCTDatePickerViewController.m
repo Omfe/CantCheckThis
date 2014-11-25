@@ -192,7 +192,7 @@
     UIBarButtonItem *itemDone  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(chosedDate:)];
     UIBarButtonItem *itemSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    itemDone.tintColor = [UIColor colorWithRed:46/255.0f green:203/255.0f blue:202/255.0f alpha:1.0f];
+    self.toolbar.tintColor = [UIColor colorWithRed:46/255.0f green:203/255.0f blue:202/255.0f alpha:1.0f];
     self.toolbar.items = @[itemSpace,itemDone];
     [self.datePickerHolder addSubview:self.toolbar];
     
